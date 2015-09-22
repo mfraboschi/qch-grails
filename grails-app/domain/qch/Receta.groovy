@@ -12,13 +12,13 @@ class Receta {
                       condimentos: CondimentoReceta,
                       categorias: Categoria]   //Cena, almuerzo, ...
 
-    static constraints = {
+    /*static constraints = {
         usuario nullable: true
-    }
+    }*/
 
     static mapping = {
 
     }
-    
+
     //    Hay q agregarle los procedimientos. Son hasta 5
 }
