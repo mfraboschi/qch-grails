@@ -3,8 +3,10 @@ package qch
 class Receta {
     String nombre
     Integer dificultad
-    Integer calorias
-    Usuario usuario
+    Integer caloriasTotal
+    Usuario dueño
+    String temporada
+    Integer cantVisitas
 
     static hasMany = [ingredientes: IngredienteReceta,
                       condimentos: CondimentoReceta,
