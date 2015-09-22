@@ -3,12 +3,14 @@ package qch
 class Usuario {
 
     String nombre
-    String sexo
+    Char sexo
     Date fechaNacimiento
+    String id
     String password
     Integer alturaEnCentimetros
     Integer pesoEnGramos
-
+    String complexion      // Pequeña, Media y Grande.
+    
     //TODO: pasar a otra entidad
     String contextura
     String dieta
@@ -16,5 +18,7 @@ class Usuario {
 
 
     static belongsTo = Grupo
-    static hasMany = [recetas: Receta, grupos: Grupo]
+    static hasMany = [recetas: Receta, grupos: Grupo, String: Preferencias]
+                                                      //Tiene muchas preferencias
+    
 }
