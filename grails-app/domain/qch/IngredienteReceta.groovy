@@ -6,6 +6,7 @@ class IngredienteReceta implements Serializable {
 
     Ingrediente ingrediente
     Integer cantidadEnMiligramos
+    Integer calorias
 
     static mapping = {
         id composite: ['receta', 'ingrediente']

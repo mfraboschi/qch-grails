@@ -1,23 +1,34 @@
 package qch
 
+import qch.enums.CondicionPreexistente
+import qch.enums.Dificultad
+import qch.enums.Temporada
+
 class Receta {
     String nombre
-    Integer dificultad
+    Dificultad dificultad
     Integer caloriasTotal
-    Usuario dueño          //Lo llame dueño
-    String temporada
-    Integer cantVisitas   //Acumular las veces que un Usuario visito la receta
+    Integer calificacion
+    Integer porciones
+    Usuario duenio
+    Temporada temporada
+    Integer cantVisitas = 0
+    CondicionPreexistente condicionPreexistente
 
     static hasMany = [ingredientes: IngredienteReceta,
                       condimentos: CondimentoReceta,
-                      categorias: Categoria]   //Cena, almuerzo, ...
+                      categorias: Categoria]
 
-    /*static constraints = {
-        usuario nullable: true
-    }*/
+    static constraints = {
+        duenio nullable: true
+        calificacion nullable: true
+        condicionPreexistente nullable: true
+    }
 
     static mapping = {
-
+        dificultad sqlType: 'enum'
+        temporada sqlType: 'enum'
+        condicionPreexistente sqlType: 'enum', column: 'condicion_preexistente'
     }
 
     //    Hay q agregarle los procedimientos. Son hasta 5

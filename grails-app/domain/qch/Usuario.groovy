@@ -1,24 +1,29 @@
 package qch
 
+import qch.enums.Contextura
+import qch.enums.Dieta
+import qch.enums.Rutina
+import qch.enums.Sexo
+
 class Usuario {
 
     String nombre
-    Character sexo
+    Sexo sexo
     Date fechaNacimiento
-    String id
     String password
     Integer alturaEnCentimetros
     Integer pesoEnGramos
-    String complexion      // Pequeña, Media y Grande.
 
-    //TODO: pasar a otra entidad
-    String contextura
-    String dieta
-    String rutina
+    Contextura contextura
+    Dieta dieta
+    Rutina rutina
 
-
-    static belongsTo = Grupo //No siempre pertenece a un grupo
-    static hasMany = [recetas: Receta, grupos: Grupo] //Le quite las preferencias para que compile por ahora
-                                                      //Tiene muchas preferencias
-
+    static belongsTo = Grupo
+    static hasMany = [recetas: Receta, grupos: Grupo]
+    static mapping = {
+        contextura sqlType: 'enum'
+        dieta sqlType: 'enum'
+        rutina sqlType: 'enum'
+        sexo sqlType: 'enum'
+    }
 }
