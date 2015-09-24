@@ -7,7 +7,8 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
+				"/crearUsuario"(view:"/crearUsuario") //no se usarlo
+        "/index"(view:"/index")
         "500"(view:'/error')
 	}
 }
