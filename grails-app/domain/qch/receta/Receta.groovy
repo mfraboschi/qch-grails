@@ -11,7 +11,7 @@ class Receta {
     String nombre
     Dificultad dificultad
     Integer caloriasTotal
-    Integer calificacion
+    Integer calificacionPromedio
     Integer porciones
     Usuario duenio
     Temporada temporada
@@ -20,11 +20,12 @@ class Receta {
 
     static hasMany = [ingredientes: IngredienteReceta,
                       condimentos: CondimentoReceta,
-                      categorias: Categoria]
+                      categorias: Categoria,
+                      calificaciones: Calificacion]
 
     static constraints = {
         duenio nullable: true
-        calificacion nullable: true
+        calificacionPromedio nullable: true
         condicionPreexistente nullable: true
     }
 
@@ -34,5 +35,5 @@ class Receta {
         condicionPreexistente sqlType: 'enum', column: 'condicion_preexistente'
     }
 
-    //    Hay q agregarle los procedimientos. Son hasta 5
+    //    Hay q agregarle los procedimientos y las fotos. Son hasta 5
 }
