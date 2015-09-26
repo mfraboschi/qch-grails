@@ -1,5 +1,6 @@
-package qch
+package qch.usuario
 
+import qch.receta.Receta
 import qch.enums.Contextura
 import qch.enums.Dieta
 import qch.enums.Rutina

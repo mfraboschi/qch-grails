@@ -1,4 +1,7 @@
-package qch
+package qch.receta.ingrediente
+
+import qch.receta.Receta
+import qch.receta.ingrediente.Condimento
 
 class CondimentoReceta implements Serializable {
 

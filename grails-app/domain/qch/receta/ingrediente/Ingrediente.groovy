@@ -1,4 +1,4 @@
-package qch
+package qch.receta.ingrediente
 
 class Ingrediente {
     String nombre

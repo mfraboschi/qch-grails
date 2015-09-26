@@ -1,8 +1,11 @@
-package qch
+package qch.receta
 
 import qch.enums.CondicionPreexistente
 import qch.enums.Dificultad
 import qch.enums.Temporada
+import qch.receta.ingrediente.CondimentoReceta
+import qch.receta.ingrediente.IngredienteReceta
+import qch.usuario.Usuario
 
 class Receta {
     String nombre

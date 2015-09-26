@@ -1,4 +1,4 @@
-package qch
+package qch.usuario
 
 class Grupo {
     String nombre

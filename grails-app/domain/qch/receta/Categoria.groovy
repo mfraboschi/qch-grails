@@ -1,4 +1,4 @@
-package qch
+package qch.receta
 
 import qch.enums.CategoriaEnum
 

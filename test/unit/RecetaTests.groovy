@@ -1,10 +1,9 @@
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
-import qch.Categoria
-import qch.Ingrediente
-import qch.IngredienteReceta
-import qch.Receta
-import qch.enums.CondicionPreexistente
+import qch.receta.Categoria
+import qch.receta.ingrediente.Ingrediente
+import qch.receta.ingrediente.IngredienteReceta
+import qch.receta.Receta
 import qch.enums.Dificultad
 import qch.enums.Temporada
 
