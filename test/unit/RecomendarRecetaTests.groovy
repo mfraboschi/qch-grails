@@ -22,4 +22,8 @@ class RecomendarRecetaTests {
         receta.save()
     }
 
+    void "test vacio"() {
+        assertTrue true
+    }
+
 }
