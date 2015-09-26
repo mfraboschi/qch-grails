@@ -11,13 +11,16 @@ class Usuario {
     String nombre
     Sexo sexo
     Date fechaNacimiento
-    String password
     Integer alturaEnCentimetros
     Integer pesoEnGramos
+
+    String id
+    String password
 
     Contextura contextura
     Dieta dieta
     Rutina rutina
+
 
     static belongsTo = Grupo
     static hasMany = [recetas: Receta, grupos: Grupo]
