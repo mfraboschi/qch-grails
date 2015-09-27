@@ -5,8 +5,8 @@ import qch.receta.ingrediente.Condimento
 
 class CondimentoReceta implements Serializable {
 
-    Condimento condimento
     Integer cantidadEnMiligramos
+    Condimento condimento
 
     static belongsTo = [receta: Receta]
 

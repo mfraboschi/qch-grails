@@ -4,11 +4,11 @@ class Condimento {
 
     String nombre
     String tipo
-    static constraints = {
-    }
 
+    static constraints = {
+        tipo nullable: true
+    }
     static mapping = {
-        id name: 'nombre'
-        version false
+        id generator: 'assigned', name: 'nombre'
     }
 }

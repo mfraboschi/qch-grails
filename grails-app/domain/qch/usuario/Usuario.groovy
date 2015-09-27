@@ -21,13 +21,6 @@ class Usuario {
     Dieta dieta
     Rutina rutina
 
-
-    static belongsTo = Grupo
     static hasMany = [recetas: Receta, grupos: Grupo]
-    static mapping = {
-        contextura sqlType: 'enum'
-        dieta sqlType: 'enum'
-        rutina sqlType: 'enum'
-        sexo sqlType: 'enum'
-    }
+
 }

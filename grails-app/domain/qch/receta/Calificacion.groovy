@@ -2,7 +2,7 @@ package qch.receta
 
 import qch.usuario.Usuario
 
-class Calificacion {
+class Calificacion implements Serializable {
     static belongsTo = [receta: Receta, usuario: Usuario]
 
     static mapping = {
@@ -11,3 +11,4 @@ class Calificacion {
 
     Integer puntaje
 }
+

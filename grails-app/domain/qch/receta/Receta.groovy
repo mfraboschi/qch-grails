@@ -1,6 +1,7 @@
 package qch.receta
 
 import qch.enums.CondicionPreexistente
+import qch.enums.Dieta
 import qch.enums.Dificultad
 import qch.enums.Temporada
 import qch.receta.ingrediente.CondimentoReceta
@@ -13,27 +14,28 @@ class Receta {
     Integer caloriasTotal
     Integer calificacionPromedio
     Integer porciones
-    Usuario duenio
-    Temporada temporada
+    Usuario creador
     Integer cantVisitas = 0
-    CondicionPreexistente condicionPreexistente
+    Dieta dieta
+    List procedimientos
 
     static hasMany = [ingredientes: IngredienteReceta,
                       condimentos: CondimentoReceta,
                       categorias: Categoria,
-                      calificaciones: Calificacion]
+                      calificaciones: Calificacion,
+                      contraindicaciones: Contraindicacion,
+                      temporadas: TemporadaReceta,
+                      procedimientos: String]
 
     static constraints = {
-        duenio nullable: true
+        creador nullable: true
         calificacionPromedio nullable: true
-        condicionPreexistente nullable: true
+
     }
 
-    static mapping = {
-        dificultad sqlType: 'enum'
-        temporada sqlType: 'enum'
-        condicionPreexistente sqlType: 'enum', column: 'condicion_preexistente'
-    }
+    def obtenerIngredientePrincipal() {
+        def ingredienteReceta = this.ingredientes.find { it.esIngredientePrincipal }
 
-    //    Hay q agregarle los procedimientos y las fotos. Son hasta 5
+        return ingredienteReceta.ingrediente
+    }
 }

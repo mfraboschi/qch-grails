@@ -1,6 +1,14 @@
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
+import qch.enums.CategoriaEnum
+import qch.enums.CondicionPreexistente
+import qch.enums.Dieta
+import qch.enums.PiramideAlimenticia
 import qch.receta.Categoria
+import qch.receta.Contraindicacion
+import qch.receta.TemporadaReceta
+import qch.receta.ingrediente.Condimento
+import qch.receta.ingrediente.CondimentoReceta
 import qch.receta.ingrediente.Ingrediente
 import qch.receta.ingrediente.IngredienteReceta
 import qch.receta.Receta
@@ -21,7 +29,8 @@ class RecetaTests {
                 cantVisitas: 10,
                 dificultad: Dificultad.BAJA,
                 nombre:"Arroz con pollo",
-                temporada: Temporada.VERANO,
+                procedimientos: ["Encender hornalla","Condimentar el Pollo","Hacer el Arroz"],
+                dieta: Dieta.NORMAL,
                 porciones: 5)
 
         receta.save()
@@ -35,7 +44,9 @@ class RecetaTests {
                 cantVisitas: 10,
                 dificultad: Dificultad.BAJA,
                 nombre:"Arroz con pollo",
-                temporada: Temporada.VERANO,
+                condimentos: [ new CondimentoReceta(condimento: new Condimento(nombre: "Sal"), cantidadEnMiligramos: 30)],
+                procedimientos: ["Encender hornalla","Condimentar el Pollo","Hacer el Arroz"],
+                dieta: Dieta.NORMAL,
                 porciones: 5)
 
         receta.save()
@@ -44,6 +55,6 @@ class RecetaTests {
 
         assertFalse recetaDos.dificultad == Dificultad.MEDIA
         assertTrue recetaDos.dificultad == Dificultad.BAJA
-        assertTrue recetaDos.temporada == Temporada.VERANO
+        assertTrue recetaDos.dieta == Dieta.NORMAL
     }
 }

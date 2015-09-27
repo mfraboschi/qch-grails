@@ -1,26 +1,9 @@
 import grails.test.mixin.TestFor
-import org.junit.Before
-import qch.enums.Dificultad
-import qch.enums.Temporada
-import qch.receta.Receta
+import grails.test.mixin.TestMixin
+import grails.test.mixin.support.GrailsUnitTestMixin
 
-/**
- * Created by mfraboschi on 26/9/15.
- */
-@TestFor(RecomendarReceta)
+@TestMixin(GrailsUnitTestMixin)
 class RecomendarRecetaTests {
-    @Before
-    void setUp() {
-        Receta receta = new Receta(
-                caloriasTotal: 300,
-                cantVisitas: 10,
-                dificultad: Dificultad.BAJA,
-                nombre:"Arroz con pollo",
-                temporada: Temporada.VERANO,
-                porciones: 5)
-
-        receta.save()
-    }
 
     void "test vacio"() {
         assertTrue true

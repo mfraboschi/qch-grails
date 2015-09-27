@@ -7,8 +7,8 @@ class Categoria {
 
     static belongsTo = Receta
     static hasMany = [ recetas: Receta ]
-    static mapping = {
-        id name: 'nombre'
-        nombre sqlType: 'enum'
+
+    static constraints = {
+        nombre unique: true
     }
 }

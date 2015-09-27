@@ -13,8 +13,4 @@ class HistorialUsuario {
     CategoriaEnum categoria
     Date fechaCreacion
 
-    static mapping = {
-        categoria sqlType: 'enum'
-    }
-
 }

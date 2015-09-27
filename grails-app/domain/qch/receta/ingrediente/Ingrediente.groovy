@@ -1,10 +1,12 @@
 package qch.receta.ingrediente
 
+import qch.enums.PiramideAlimenticia
+
 class Ingrediente {
     String nombre
-    String contraindicaciones  //:DD
-    Integer ubEnPiramide  //  La posicion enla piramide
+    PiramideAlimenticia nivelPiramide
+
     static mapping = {
-        id name: 'nombre'
+        id generator:'assigned', name: 'nombre'
     }
 }
