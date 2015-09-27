@@ -2,7 +2,7 @@ package qch.enums
 
 enum Sexo {
     MASCULINO('masculino'),
-    FEMENINI('femenino')
+    FEMENINO('femenino')
 
     private String texto
 

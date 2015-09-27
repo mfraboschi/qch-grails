@@ -4,8 +4,8 @@ package qch.enums
  * Created by mfraboschi on 22/9/15.
  */
 enum Rutina {
-    LEVE('leve','Sedentaria con algo de ejercicio (-30 min.)'),
     NADA('nada','Sedentaria con nada de ejercicio.'),
+    LEVE('leve','Sedentaria con algo de ejercicio (-30 min.)'),
     MEDIANO('mediano','Sedentaria con ejercicio (+30 min.)'),
     INTENSIVO('intensivo','Activa con ejercicio adicional (+30 min.)'),
     ACTIVA('activa','Activa sin ejercicio adicional (+30 min)')
