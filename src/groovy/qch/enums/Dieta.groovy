@@ -4,7 +4,7 @@ enum Dieta {
     VEGETARIANO('vegetariano'),
     VEGANO('vegano'),
     OVOLACTO('ovolacto'),
-    DIET('diet'),
+    NATURISTA('naturista'),
     DEPORTE('deporte'),
     NORMAL('normal');
 

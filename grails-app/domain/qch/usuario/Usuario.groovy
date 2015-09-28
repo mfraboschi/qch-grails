@@ -14,7 +14,7 @@ class Usuario {
     Integer alturaEnCentimetros
     Integer pesoEnGramos
 
-    String id
+    String nickName
     String password
 
     Contextura contextura
@@ -22,5 +22,9 @@ class Usuario {
     Rutina rutina
 
     static hasMany = [recetas: Receta, grupos: Grupo]
+
+    static mapping = {
+        id generator:'assigned', name: 'nickName'
+    }
 
 }

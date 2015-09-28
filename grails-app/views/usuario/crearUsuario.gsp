@@ -9,13 +9,13 @@
 	</head>
   <body>
     <h1>Ingrese sus datos</h1>
-    <g:form name="formNuevoUsuario" controller="app" action="guardarUsuario">
+    <g:form name="formNuevoUsuario" controller="usuario" action="guardarUsuario">
     	Nombre: <g:textField name="nombre"/><br>
 			-----------------------------<br>
-			Usuario: <g:textField name="id"/><br>
+			Usuario: <g:textField name="nickName"/><br>
 		  Password: <g:passwordField name="password"/><br>
 			-----------------------------<br>
-			Fecha Nacimiento: <g:formatDate name="fechaNacimiento" date="${new Date()}"/><br>
+			Fecha Nacimiento: <input type="text" name="fechaNacimiento"/><br>
 		  Altura (cm): <g:textField name="alturaEnCentimetros"/><br>
 		  Peso (g): <g:textField name="pesoEnGramos"/><br>
 			-----------------------------<br>
