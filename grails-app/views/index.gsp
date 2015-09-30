@@ -19,6 +19,7 @@
         <h3>Menu</h3>
         <ul>
             <li><a href="login">Login</a></li>
+            <li><a href="crearUsuario">Crear usuario</a></li>
             <li><a href="about.html">Últimas recetas</a></li>
         </ul>
     </nav>

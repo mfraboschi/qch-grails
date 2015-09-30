@@ -13,7 +13,7 @@ class UsuarioController {
         userNuevo.nombre = params.nombre
         userNuevo.nickName = params.nickName
         userNuevo.password = params.password
-        userNuevo.fechaNacimiento = Date.parse("dd/MM/yyyy", params.fechaNacimiento)
+        userNuevo.fechaNacimiento =  params.fechaNacimiento
         userNuevo.alturaEnCentimetros = Integer.parseInt(params.alturaEnCentimetros)
         userNuevo.pesoEnGramos = Integer.parseInt(params.pesoEnGramos)
         userNuevo.sexo = params.sexo

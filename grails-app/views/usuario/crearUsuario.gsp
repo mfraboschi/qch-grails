@@ -15,7 +15,8 @@
 			Usuario: <g:textField name="nickName"/><br>
 		  Password: <g:passwordField name="password"/><br>
 			-----------------------------<br>
-			Fecha Nacimiento: <input type="text" name="fechaNacimiento"/><br>
+			Fecha Nacimiento: <g:datePicker name="fechaNacimiento" value="${new Date()}"
+             precision="day" years="${1930..2010}"/><br>
 		  Altura (cm): <g:textField name="alturaEnCentimetros"/><br>
 		  Peso (g): <g:textField name="pesoEnGramos"/><br>
 			-----------------------------<br>
