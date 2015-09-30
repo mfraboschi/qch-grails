@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>¿Que comemos hoy? - Ingresar</title>
-	</head>
-  <body>
-    <g:form name="formLogin" controller="usuario" action="autenticar">
-    	Usuario:<g:textField name="nickname"/><br>
-		  Password:<g:passwordField name="password"/><br>
-    	<g:submitButton name="ingresar" value="Ingresar"/>
-    </g:form>
-    <label>${mensaje}</label>
-  </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>¿Qué comemos hoy?</title>
+    <asset:stylesheet href="default.css"/>
+    <!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header>
+    <h1><a href="index.html"></a></h1>
+    <h2>¿Qué comemos hoy?</h2>
+</header>
+<section id="mainContent" class="clear">
+    <nav>
+        <h3>Menu</h3>
+        <ul>
+            <li><a href="index.html">Buscar recetas</a></li>
+            <li><a href="about.html">Recomendación del día</a></li>
+            <li><a href="services.html">Grupos</a></li>
+        </ul>
+    </nav>
+    <section id="mainRight">
+        <h1>Login</h1>
+        <g:form name="formLogin" controller="usuario" action="autenticar">
+        <table>
+            <tr>
+                <td><label for="nick">Usuario:</label></td><td><g:textField id="nick" name="nickname"/></td>
+            </tr>
+            <tr>
+                <td><label for="pass">Contraseña:</label></td><td><g:passwordField id="pass" name="password"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><g:submitButton name="ingresar" value="Ingresar"/></td>
+            </tr>
+        </table>
+        </g:form>
+        <label style="color: red">${mensaje}</label>
+
+    </section>
+    <!-- end mainRight -->
+</section>
+<!-- end mainContent -->
+<footer>
+    <p>&copy;2015 UTN - Diseño de Sistemas &nbsp;&nbsp; </p>
+</footer>
+</body>
 </html>

@@ -58,6 +58,41 @@ class BootStrap {
 
         receta.save()
 
+        receta = new Receta(nombre: "Pollo relleno con papas dauphine", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL)
+
+        receta.addToProcedimientos("Deshuesar el pollo (con piel) manteniendo la forma para lograr una especie de bolsa para luego rellenar.")
+        receta.addToProcedimientos("Para el relleno, en sartén con oliva, rehogar los champignones en cuartos, sin mover hasta que doren, dar vuelta y dorar del otro lado. Sumar la panceta en bastones, el jamón en tiritas, la cebolla y puerro picados y condimentar.")
+        receta.addToProcedimientos("Integrar bien e incorporar los tomates secos picados, salsa barbacoa, desglasar con vino blanco y cuando evapora el alcohol pasar a un bol y dejar enfriar.")
+        receta.addToProcedimientos("Rellenar el pollo. Cocer con hilo parrillero de todos lados. Salpimentar y cocer al horno en placa aceitada por unos 30 minutos.")
+        receta.addToProcedimientos("Aparte, colocar el agua en una olla grande y llevar a fuego. Cuando hierve, sumar la harina y la manteca y revolver siempre hasta lograr una masa que se despegue de los bordes. Retirar del fuego y sumar el huevo, volver a integrar (va a costar integrarlo).")
+        receta.addToProcedimientos("Freír bolitas (hacerlas con manos húmedos) en aceite bien caliente.")
+        receta.addToProcedimientos("Para la salsa, llevar a fuego la crema con el jugo de limón, incorporar la ralladura, el azafrán y salpimentar. Terminar con vino blanco hasta que reduzca un poco y evapore el alcohol.")
+
+        receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 50))
+        receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Pimienta"), cantidadEnMiligramos: 50))
+        receta.addToCondimentos(new CondimentoReceta(condimento: new Condimento(nombre: "Salsa barbacoa").save(), cantidadEnMiligramos: 100))
+
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Aceite neutro", nivelPiramide: PiramideAlimenticia.QUINTO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 50, calorias:1213))
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Aceite de oliva", nivelPiramide: PiramideAlimenticia.QUINTO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 50, calorias:1213))
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Pollo", nivelPiramide: PiramideAlimenticia.CUARTO_NIVEL).save(), esIngredientePrincipal: true, cantidadGramos: 1000, calorias:12313))
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Champignones", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 150, calorias:12313))
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Panceta ahumada"), esIngredientePrincipal: false, cantidadGramos: 100, calorias:12313))
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Jamon cocido", nivelPiramide: PiramideAlimenticia.CUARTO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 150, calorias:12313))
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Cebolla"), esIngredientePrincipal: false, cantidadGramos: 200, calorias:12313))
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Puerro", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 150, calorias:12313))
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Tomate seco", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 150, calorias:12313))
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Espinaca", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 150, calorias:12313))
+
+        receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+        receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+        receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+
+        receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.HIPERTENSION))
+
+        receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
+        receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+
+        receta.save()
     }
 
     def crearCondimentos() {
