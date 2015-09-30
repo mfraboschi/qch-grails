@@ -14,7 +14,13 @@
 <h1>Recetas recomendadas</h1>
 <label>Bienvenido ${usuario.nombre}</label>
 <ul>
-			<li><a href="crearGrupo">Crear Grupo</a></li>
-	  </ul>
+	
+	<g:each var="receta" in="${recetas}">
+	<li>
+		<g:link action="show" id="${receta.id}">${receta.nombre}</g:link>
+	</li>
+	</g:each>
+	
+</ul>
 </body>
 </html>

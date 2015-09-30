@@ -9,7 +9,7 @@ class UsuarioController {
     }
 
     def guardarUsuario() {
-        def userNuevo = new Usuario()
+        Usuario userNuevo = new Usuario()
 
         if(!params.nombre) {
             return render(view:"crearUsuario", model: [error: "Debes completar el nombre"])
