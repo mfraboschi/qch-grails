@@ -11,7 +11,11 @@ class GrupoController {
 
 	def guardarGrupo() {
 		def grupoNuevo = new Grupo()
+		
+		session.getAttribute("user")
+		
 		grupoNuevo.nombre = params.nombre
+		
 		userNuevo.save(flush:true)
 
 		redirect(uri: "/")

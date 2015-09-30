@@ -13,5 +13,8 @@
 <body>
 <h1>Recetas recomendadas</h1>
 <label>Bienvenido ${usuario.nombre}</label>
+<ul>
+			<li><a href="crearGrupo">Crear Grupo</a></li>
+	  </ul>
 </body>
 </html>
