@@ -70,7 +70,7 @@ class BootStrap {
 		receta.addToCondimentos(new CondimentoReceta(condimento: new Condimento(nombre: "Canela en rama").save(), cantidadEnMiligramos: 200))
 
 		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Suprema de pollo", nivelPiramide: PiramideAlimenticia.CUARTO_NIVEL).save(), esIngredientePrincipal: true, cantidadGramos: 1000, calorias:7897))
-		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Cebolla", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 200, calorias:123))
+        receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Cebolla"), esIngredientePrincipal: false, cantidadGramos: 200, calorias:12313))
 		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Morron rojo", nivelPiramide: PiramideAlimenticia.CUARTO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 150, calorias:435))
 		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Aceituna", nivelPiramide: PiramideAlimenticia.PRIMER_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 150, calorias:200))
 		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Morron adobo", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 1000, calorias:12))
@@ -128,6 +128,42 @@ class BootStrap {
         receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
 
         receta.save()
+		
+		
+		
+		receta = new Receta(nombre: "Bifes de chorizo a la mostaza al disco con papas fritas", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL)
+		
+		receta.addToProcedimientos("En disco con oliva, sellar los bifes de ambos lados, y cuando doran agregar la cebolla y morrones fileteados.")
+		receta.addToProcedimientos("Para elAl transparentar los vegetales, sumar el ajo picado. Desglasar con vino blanco. Cuando evapora el alcohol, sumar la mostaza y cocer por unos 15 minutos.")
+		receta.addToProcedimientos("Antes de servir, agregar la crema e integrar.")
+		receta.addToProcedimientos("Para la guarnición, cortar las papas en cuña, con piel y freír.")
+
+		receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 50))
+		receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Pimienta"), cantidadEnMiligramos: 50))
+		receta.addToCondimentos(new CondimentoReceta(condimento: new Condimento(nombre: "Salsa barbacoa").save(), cantidadEnMiligramos: 100))
+		receta.addToCondimentos(new CondimentoReceta(condimento: new Condimento(nombre: "Mostaza").save(), cantidadEnMiligramos: 100))
+		
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Bife de chorizo", nivelPiramide: PiramideAlimenticia.QUINTO_NIVEL).save(), esIngredientePrincipal: true, cantidadGramos: 1000, calorias:2000))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Aceite de oliva"), esIngredientePrincipal: false, cantidadGramos: 50, calorias:1213))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Cebolla"), esIngredientePrincipal: false, cantidadGramos: 200, calorias:12313))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Morron rojo"), esIngredientePrincipal: false, cantidadGramos: 150, calorias:435))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Morron verde", nivelPiramide: PiramideAlimenticia.CUARTO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 150, calorias:485))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Ajo", nivelPiramide: PiramideAlimenticia.TERCER_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 100, calorias:1800))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Vino blanco", nivelPiramide: PiramideAlimenticia.TERCER_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 1000, calorias:2000))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Papa"), esIngredientePrincipal: false, cantidadGramos: 500, calorias:14319))
+		
+		
+		receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+		receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+		receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+
+		receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.HIPERTENSION))
+
+		receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
+		receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+
+		receta.save()
+	
     }
 
     def crearCondimentos() {
