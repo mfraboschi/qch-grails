@@ -163,7 +163,39 @@ class BootStrap {
 		receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
 
 		receta.save()
-	
+
+		
+		
+		
+		receta = new Receta(nombre: "Milanesas de ciervo napolitanas", dificultad: Dificultad.FACIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL)
+		
+		receta.addToProcedimientos("Cortar las milanesas del lomo. Salar.")
+		receta.addToProcedimientos("Pasar los bifes por el batido de huevos con ajo y perejil picados, sal, orégano, ají molido y pimienta. Pasar por pan rallado y freír.")
+		receta.addToProcedimientos("Gratinar al horno cubiertas con salsa, mozzarella y tomate.")
+
+		receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 50))
+		receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Pimienta"), cantidadEnMiligramos: 50))
+		
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Lomo de ciervo", nivelPiramide: PiramideAlimenticia.QUINTO_NIVEL).save(), esIngredientePrincipal: true, cantidadGramos: 1000, calorias:3500))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Aceite neutro"), esIngredientePrincipal: false, cantidadGramos: 70, calorias:1213))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Mozzarella", nivelPiramide: PiramideAlimenticia.CUARTO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 500, calorias:900))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Tomate", nivelPiramide: PiramideAlimenticia.TERCER_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 300, calorias:1800))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Salsa de tomate", nivelPiramide: PiramideAlimenticia.TERCER_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 200, calorias:700))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Huevo", nivelPiramide: PiramideAlimenticia.TERCER_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 400, calorias:800))
+		receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Pan rallado", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 50, calorias:800))
+		
+		
+		receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+		receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+		receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+		receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
+
+		receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.HIPERTENSION))
+
+		receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
+		receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+
+		receta.save()
     }
 
     def crearCondimentos() {
