@@ -10,6 +10,30 @@ class UsuarioController {
 
     def guardarUsuario() {
         def userNuevo = new Usuario()
+
+        if(!params.nombre) {
+            return render(view:"crearUsuario", model: [error: "Debes completar el nombre"])
+        }
+        if(!params.nickName) {
+            return render(view:"crearUsuario", model: [error: "Debes completar el nickname"])
+        }
+        if(!params.password) {
+            return render(view:"crearUsuario", model: [error: "Debes completar el password"])
+        }
+        if(!params.fechaNacimiento) {
+            return render(view:"crearUsuario", model: [error: "Debes completar tu fecha de nacimiento"])
+        }
+        try{
+            Integer.parseInt(params.alturaEnCentimetros)
+        } catch(Exception e) {
+            return render(view:"crearUsuario", model: [error: "Tu altura debe ser un numero (en centímetros)"])
+        }
+        try{
+            Integer.parseInt(params.pesoEnGramos)
+        } catch(Exception e) {
+            return render(view:"crearUsuario", model: [error: "Tu peso debe ser un numero (en gramos)"])
+        }
+
         userNuevo.nombre = params.nombre
         userNuevo.nickName = params.nickName
         userNuevo.password = params.password
@@ -22,7 +46,7 @@ class UsuarioController {
         userNuevo.rutina = params.rutina
         userNuevo.save(flush:true)
 
-        redirect(uri: "/")
+        render(view:"crearUsuario", model: [exito: "El usuario ${userNuevo.nickName} ha sido creado!"])
     }
 
     def autenticar() {

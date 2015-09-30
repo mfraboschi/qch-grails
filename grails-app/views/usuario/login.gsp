@@ -18,9 +18,9 @@
     <nav>
         <h3>Menu</h3>
         <ul>
-            <li><a href="index.html">Buscar recetas</a></li>
-            <li><a href="about.html">Recomendación del día</a></li>
-            <li><a href="services.html">Grupos</a></li>
+            <li><a href="/que-comemos-hoy/login">Login</a></li>
+            <li><a href="/que-comemos-hoy/crearUsuario">Crear usuario</a></li>
+            <li><a href="about.html">Últimas recetas</a></li>
         </ul>
     </nav>
     <section id="mainRight">

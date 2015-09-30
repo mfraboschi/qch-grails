@@ -440,6 +440,14 @@ footer ul li a {
 footer ul li a:hover {
     color: #000;
 }
+
+td label {
+    margin-right: 5px;
+}
+tr td {
+    padding: 4px;
+}
+
 @media screen and (max-width: 768px)
 {
     nav {
@@ -512,4 +520,5 @@ footer ul li a:hover {
         float: none;
         width: 100%;
     }
+
 }
