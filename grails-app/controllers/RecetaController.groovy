@@ -11,7 +11,7 @@ class RecetaController {
      * @return
      */
     def index() {
-        List recetas = Receta.list()
+        List recetas = Receta.findAll()
         Usuario usuario = session.user
         render(view:"main", model: [usuario: usuario, recetas: recetas])
     }
@@ -23,7 +23,7 @@ class RecetaController {
    	def detalle(){
    		if(params.id){
     		Long id = params.id.toLong()
-    		Receta recetaActual = Receta.get(id)
+    		Receta recetaActual = Receta.findById(id)
     		return render(view:"detalleReceta", model: [receta: recetaActual]) 
     	}
    	}
