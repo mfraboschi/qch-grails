@@ -365,7 +365,7 @@ nav ul li a:hover {
 
 #mainRight, #mainRight2 {
     float: right;
-    width: 58.333333%; /* 560/960 */
+    width: 70%; /* 560/960 */
     text-align: left;
 }
 
@@ -379,7 +379,10 @@ nav ul li a:hover {
     font-size: 1.2em;
     margin: 0;
     padding-top: 10px;
+    padding-bottom: 20px;
     text-transform: uppercase;
+    font-weight: 800;
+    color: #61771F;
 }
 
 img {

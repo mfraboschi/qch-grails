@@ -31,14 +31,17 @@
     </nav>
     <section id="mainRight">
         <h1>Recetas recomendadas</h1>
-        <label>Bienvenido ${usuario.nombre}</label>
-        <ul>
+        <div>
+        <ul style="margin-left:0px; font-size:15px;">
             <g:each var="receta" in="${recetas}">
                 <li>
-                    <g:link action="detalle" id="${receta.id}">${receta.nombre}</g:link>
+                    <div style="display: inline-block; border-style: solid; border-color: #E3E0BB; height: 55px; width: 500px;">
+                        <b><g:link style="color:#85A32F" action="detalle" id="${receta.id}">${receta.nombre}</g:link></b>
+                    </div>
                 </li>
             </g:each>
         </ul>
+        </div>
     </section>
     <!-- end mainRight -->
 </section>

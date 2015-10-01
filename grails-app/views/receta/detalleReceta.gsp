@@ -31,24 +31,38 @@
     </nav>
     <section id="mainRight">
         <ul>
-            <h1>${receta.nombre}</h1>
-            <ul>
+            <b><h2>${receta.nombre}</h2></b>
+            <ul style="list-style:initial">
             <g:each var="procedimiento" in="${receta.procedimientos}">
                 <li>${procedimiento}</li>
             </g:each>
             </ul>
             <table>
                 <tr>
-                    <td><label>Dificultad: </label></td>
-                    <td><label>${receta.dificultad}</label></td>
-                </tr>
-                <tr>
-                    <td><label>Dieta: </label></td>
-                    <td><label>${receta.dieta}</label></td>
-                </tr>
-                <tr>
-                    <td><label>Contraindicaciones: </label></td>
-                    <td><label><g:each var="contraind" in="${receta.contraindicaciones}">${contraind.condicionPreexistente} </g:each></label></td>
+                    <td>
+                        <b><label>Ingredientes:</label></b>
+                        <ul style="list-style:initial">
+                            <g:each var="ingrediente" in="${receta.ingredientes}">
+                                <li>${ingrediente.ingrediente.nombre} ${ingrediente.cantidadGramos}grs</li>
+                            </g:each>
+                        </ul>
+                    </td>
+                    <td style="padding-left: 180px;">
+                        <table>
+                            <tr>
+                                <td><label><b>Dificultad: </b></label></td>
+                                <td><label>${receta.dificultad}</label></td>
+                            </tr>
+                            <tr>
+                                <td><label><b>Dieta: </b></label></td>
+                                <td><label>${receta.dieta}</label></td>
+                            </tr>
+                            <tr>
+                                <td><label><b>Contraindicaciones: </b></label></td>
+                                <td><label><g:each var="contraind" in="${receta.contraindicaciones}">${contraind.condicionPreexistente} </g:each></label></td>
+                            </tr>
+                        </table>
+                    </td>
                 </tr>
             </table>
         </ul>
