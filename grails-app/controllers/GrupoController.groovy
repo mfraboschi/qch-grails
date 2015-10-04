@@ -9,16 +9,21 @@ class GrupoController {
 			//Averiguar como pasar parametros
 		}
 
-	def guardarGrupo() {
-		def grupoNuevo = new Grupo()
+	def crearGrupo() {
+		Grupo grupoNuevo = new Grupo()
 		
-		session.getAttribute("user")
+        Usuario usuario = session.user
 		
+		grupoNuevo.creador = usuario
 		grupoNuevo.nombre = params.nombre
-		
-		userNuevo.save(flush:true)
+		grupoNuevo.descripcion = params.descripcion
 
-		redirect(uri: "/")
+		usuario.addToGrupos(grupoNuevo)
+		usuario.save()
+		
+		grupoNuevo.save(flush:true)
+		
+		render(view:"crearGrupo", model: [exito: "El Grupo ${grupoNuevo.nombre} ha sido creado!"])
 	}
 
 
