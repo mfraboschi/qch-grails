@@ -29,7 +29,7 @@
     </nav>
     <section id="mainRight">
         <h1>Ingrese sus datos</h1>
-        <g:form name="formNuevoGrupo" controller="grupo" action="crearGrupo">
+        <g:form name="guardarGrupo" controller="grupo" action="crearGrupo">
             <table>
                 <tr>
                     <td><label for="name">Nombre:</label></td>

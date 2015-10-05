@@ -1,4 +1,5 @@
 import qch.receta.Receta
+import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
 
 /**
@@ -27,6 +28,22 @@ class RecetaController {
     		return render(view:"detalleReceta", model: [receta: recetaActual]) 
     	}
    	}
+
+    def seleccionar() {
+        if(params.id) {
+            Long id = params.id.toLong()
+            Receta recetaActual = Receta.findById(id)
+
+            HistorialUsuario historial = new HistorialUsuario()
+            historial.receta = recetaActual
+            historial.usuario = session.user
+            historial.fechaCreacion = new Date()
+
+            historial.save()
+
+            return render(view:"detalleReceta", model:[receta: recetaActual, exito:"Seleccionaste la receta!"])
+        }
+    }
 
     /**
      * Crea y guarda una nueva receta

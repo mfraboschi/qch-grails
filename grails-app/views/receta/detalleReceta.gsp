@@ -1,3 +1,4 @@
+<%@ page import="qch.enums.CategoriaEnum" %>
 <%--
   Created by IntelliJ IDEA.
   User: mfraboschi
@@ -32,6 +33,7 @@
     <section id="mainRight">
         <ul>
             <b><h2>${receta.nombre}</h2></b>
+            <label style="color: green">${exito}</label>
             <ul style="list-style:initial">
             <g:each var="procedimiento" in="${receta.procedimientos}">
                 <li>${procedimiento}</li>
@@ -66,6 +68,15 @@
                 </tr>
             </table>
         </ul>
+        <form action="/que-comemos-hoy/receta/seleccionar/${receta.id}">
+        <table>
+            <tr>
+                <td>
+                    <input type="submit" value="Seleccionar"/>
+                </td>
+            </tr>
+        </table>
+        </form>
     </section>
     <!-- end mainRight -->
 </section>

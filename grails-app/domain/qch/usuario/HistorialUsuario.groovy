@@ -10,7 +10,7 @@ import qch.receta.Receta
 class HistorialUsuario {
     Usuario usuario
     Receta receta
-    CategoriaEnum categoria
+    //CategoriaEnum categoria
     Date fechaCreacion
 
 }

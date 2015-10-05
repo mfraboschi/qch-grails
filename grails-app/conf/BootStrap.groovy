@@ -1,9 +1,12 @@
 import grails.util.Environment
 import qch.enums.CategoriaEnum
 import qch.enums.CondicionPreexistente
+import qch.enums.Contextura
 import qch.enums.Dieta
 import qch.enums.Dificultad
 import qch.enums.PiramideAlimenticia
+import qch.enums.Rutina
+import qch.enums.Sexo
 import qch.enums.Temporada
 import qch.receta.Categoria
 import qch.receta.Contraindicacion
@@ -13,6 +16,7 @@ import qch.receta.ingrediente.Condimento
 import qch.receta.ingrediente.CondimentoReceta
 import qch.receta.ingrediente.Ingrediente
 import qch.receta.ingrediente.IngredienteReceta
+import qch.usuario.Usuario
 
 class BootStrap {
 
@@ -25,6 +29,16 @@ class BootStrap {
     }
 
     def crearRecetas() {
+
+        Usuario.withTransaction {
+            Usuario user = new Usuario(rutina: Rutina.ACTIVA, pesoEnGramos: 8000, sexo: Sexo.MASCULINO, nombre: "QCH", alturaEnCentimetros: 180, contextura: Contextura.MEDIA, dieta: Dieta.DEPORTE, fechaNacimiento: new Date(), nickName: "qch", password: "qch").save()
+
+            if(user.errors.errorCount) {
+                for(error in user.errors.errors) {
+                    println error
+                }
+            }
+        }
 
         Receta.withTransaction {
             Receta receta = new Receta(nombre: "Bondiola con salsa de panceta y porotos con batatas agridulces", dificultad: Dificultad.MEDIA, porciones: 6, caloriasTotal: 123131, dieta: Dieta.NORMAL)

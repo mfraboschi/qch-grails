@@ -26,7 +26,7 @@
         <ul>
             <li><a href="/que-comemos-hoy/login">Login</a></li>
             <li><a href="/que-comemos-hoy/crearUsuario">Crear usuario</a></li>
-            <li><a href="/que-comemos-hoy/grupo/crearGrupo">Crear Grupo</a></li>
+            <li><a href="/que-comemos-hoy/grupo/index">Crear Grupo</a></li>
             <li><a href="about.html">Últimas recetas</a></li>
         </ul>
     </nav>
