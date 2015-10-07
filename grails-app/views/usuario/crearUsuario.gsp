@@ -22,9 +22,8 @@
     <nav>
         <h3>Menu</h3>
         <ul>
-            <li><a href="/que-comemos-hoy/login">Login</a></li>
-            <li><a href="/que-comemos-hoy/crearUsuario">Crear usuario</a></li>
-            <li><a href="about.html">Últimas recetas</a></li>
+            <li><a href="/que-comemos-hoy/usuario/login">Login</a></li>
+            <li><a href="/que-comemos-hoy/usuario/crearUsuario">Crear usuario</a></li>
         </ul>
     </nav>
     <section id="mainRight">

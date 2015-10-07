@@ -13,4 +13,8 @@ class HistorialUsuario {
     //CategoriaEnum categoria
     Date fechaCreacion
 
+    static mapping = {
+        receta lazy: false
+    }
+
 }

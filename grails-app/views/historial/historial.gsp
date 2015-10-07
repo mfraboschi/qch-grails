@@ -1,3 +1,7 @@
+<%@ page import="qch.enums.Sexo" %>
+<%@ page import="qch.enums.Dieta" %>
+<%@ page import="qch.enums.Rutina" %>
+<%@ page import="qch.enums.Contextura" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,27 +22,20 @@
     <nav>
         <h3>Menu</h3>
         <ul>
-            <li><a href="/que-comemos-hoy/usuario/login">Login</a></li>
-            <li><a href="/que-comemos-hoy/usuario/crearUsuario">Crear usuario</a></li>
+            <li><a href="/que-comemos-hoy/receta/index">Home</a></li>
         </ul>
     </nav>
     <section id="mainRight">
-        <h1>Login</h1>
-        <g:form name="formLogin" controller="usuario" action="autenticar">
+        <h1>Tu historial</h1>
         <table>
+        <g:each var="historia" in="${historial}">
             <tr>
-                <td><label for="nick">Usuario:</label></td><td><g:textField id="nick" name="nickname"/></td>
+                <td><label>${historia.receta.nombre}</label></td>
+                <td><label>${historia.fechaCreacion}</label></td>
             </tr>
-            <tr>
-                <td><label for="pass">Contraseña:</label></td><td><g:passwordField id="pass" name="password"/></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center"><g:submitButton name="ingresar" value="Ingresar"/></td>
-            </tr>
+        </g:each>
         </table>
-        </g:form>
-        <label style="color: red">${mensaje}</label>
-
+        <label style="color: #cc0000">${mensaje}</label>
     </section>
     <!-- end mainRight -->
 </section>

@@ -1,3 +1,4 @@
+import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
 
 import java.text.DateFormat
@@ -59,5 +60,17 @@ class UsuarioController {
             return redirect(controller: "receta", action: "index") //no se si es asi
         }
         render (view:"login", model: [mensaje: "Nombre de usuario o contraseña inválidos"])
+    }
+
+    def index() {
+        render(view: 'index')
+    }
+
+    def login() {
+        render(view: 'login')
+    }
+
+    def crearUsuario() {
+        render(view: 'crearUsuario')
     }
 }

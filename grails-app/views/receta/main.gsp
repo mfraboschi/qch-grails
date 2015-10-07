@@ -24,10 +24,8 @@
     <nav>
         <h3>Menu</h3>
         <ul>
-            <li><a href="/que-comemos-hoy/login">Login</a></li>
-            <li><a href="/que-comemos-hoy/crearUsuario">Crear usuario</a></li>
             <li><a href="/que-comemos-hoy/grupo/index">Crear Grupo</a></li>
-            <li><a href="about.html">Últimas recetas</a></li>
+            <li><a href="/que-comemos-hoy/historial/historialRecetas">Tu historial</a></li>
         </ul>
     </nav>
     <section id="mainRight">

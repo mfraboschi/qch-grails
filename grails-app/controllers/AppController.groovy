@@ -4,6 +4,7 @@ import qch.usuario.Usuario
 class AppController {
 
     def index() {
+        render(view:'index')
     }
 
 
