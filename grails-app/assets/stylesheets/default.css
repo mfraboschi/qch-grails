@@ -18,7 +18,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     border: 4px;
     outline: 0;
     font-size: 100%;
-    vertical-align: baseline;
     background: transparent;
 }
 
@@ -222,14 +221,8 @@ blockquote {
     padding: 5px 0 20px 0;
 }
 
-ul, ol {
-    margin-left: 25px;
-    padding-left: 0;
-}
-
 li {
-    margin-bottom: 15px;
-    margin-left: 15px;
+    margin: 5px 0px 15px 15px;
 }
 
 p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
@@ -451,6 +444,15 @@ tr td {
     padding: 4px;
 }
 
+.lista-ingredientes {
+    border-style: solid;
+    border-color: #E3E0BB;
+    border-width: 2px;
+    text-align: left;
+    padding-left: 10px;
+    list-style-type: square;
+}
+
 @media screen and (max-width: 768px)
 {
     nav {
@@ -484,6 +486,9 @@ tr td {
         width: 100%;
     }
 }
+
+
+
 @media screen and (max-width: 480px)
 {
     header h1 a {

@@ -32,7 +32,6 @@
     <section id="mainRight">
         <ul>
             <b><h2>${receta.nombre}</h2></b>
-            <label style="color: green">${exito}</label>
             <ul style="list-style:initial">
             <g:each var="procedimiento" in="${receta.procedimientos}">
                 <li>${procedimiento}</li>
@@ -40,15 +39,16 @@
             </ul>
             <table>
                 <tr>
-                    <td>
-                        <b><label>Ingredientes:</label></b>
-                        <ul style="list-style:initial">
+                    <td style="width: 200px">
+                        <b><div style="text-align: center">Ingredientes</div></b>
+                        <ul class="lista-ingredientes">
                             <g:each var="ingrediente" in="${receta.ingredientes}">
                                 <li>${ingrediente.ingrediente.nombre} ${ingrediente.cantidadGramos}grs</li>
                             </g:each>
                         </ul>
                     </td>
-                    <td style="padding-left: 180px;">
+                    <td style="padding-left: 140px;">
+                        <div><img src="http://www.cocinerosargentinos.com/images/1_bondiola-con-salsa-de-panceta-y-porotos-con-batatas-agridulces.jpg"></div>
                         <table>
                             <tr>
                                 <td><label><b>Dificultad: </b></label></td>
@@ -68,13 +68,12 @@
             </table>
         </ul>
         <form action="/que-comemos-hoy/receta/seleccionar/${receta.id}">
-        <table>
-            <tr>
-                <td>
-                    <input type="submit" value="Seleccionar"/>
-                </td>
-            </tr>
-        </table>
+            <div style="text-align: center;">
+                        <input style="width: 150px;" type="submit" value="Seleccionar"/>
+            </div>
+            <div style="text-align: center; margin-top: 10px">
+                <label style="color: green; font-size: large;">${exito}</label>
+            </div>
         </form>
     </section>
     <!-- end mainRight -->
