@@ -23,6 +23,7 @@ class BootStrap {
     def init = { servletContext ->
         if(Environment.current == Environment.DEVELOPMENT) {
             crearRecetas()
+			crearGrupo()
         }
     }
     def destroy = {
@@ -226,4 +227,9 @@ class BootStrap {
         new Condimento(nombre: "Romero").save()
         new Condimento(nombre: "Canela").save()
     }
+	def crearGrupo() {
+		new Grupo(creador: Usuario.findByNickName("qch"), nombre: "Amantes de la pizza", descripcion: "Adoramos la pizza").save()
+		new Grupo(creador: Usuario.findByNickName("qch"), nombre: "Los cuadraditos de maizena", descripcion: "Aguante el rock y los alfajores de maizena").save()
+		new Grupo(creador: Usuario.findByNickName("qch"), nombre: "Alto guiso", descripcion: "Con 15 pesos nomas nos arreglamos").save()
+	}
 }

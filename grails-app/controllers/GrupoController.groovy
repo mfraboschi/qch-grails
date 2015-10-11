@@ -25,5 +25,10 @@ class GrupoController {
 		
 		render(view:"crearGrupo", model: [exito: "El Grupo ${grupoNuevo.nombre} ha sido creado!"])
 	}
-
+	
+	def verGrupos() {
+		List grupos = Grupo.findAll()
+		Usuario usuario = session.user
+		render(view:"verGrupos", model: [usuario: usuario, grupos: grupos])
+	}
 }
