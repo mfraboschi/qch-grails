@@ -8,7 +8,4 @@ class Condimento {
     static constraints = {
         tipo nullable: true
     }
-    static mapping = {
-        id generator: 'assigned', name: 'nombre'
-    }
 }
