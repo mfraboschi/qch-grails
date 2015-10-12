@@ -30,4 +30,14 @@ class Usuario {
         grupos lazy: false
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if(!object instanceof Usuario){
+            return false
+        }
+
+        ((Usuario)object).id == this.id
+    }
+
+
 }
