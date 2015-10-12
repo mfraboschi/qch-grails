@@ -17,6 +17,7 @@ import qch.receta.ingrediente.CondimentoReceta
 import qch.receta.ingrediente.Ingrediente
 import qch.receta.ingrediente.IngredienteReceta
 import qch.usuario.Usuario
+import qch.usuario.Grupo
 
 class BootStrap {
 

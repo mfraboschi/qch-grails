@@ -23,7 +23,8 @@
 <section id="mainContent" class="clear">
     <nav>
         <h3>Menu</h3>
-        <ul>
+        <ul> 
+            <li><a href="/que-comemos-hoy/receta/index">Home</a></li>
             <li><a href="/que-comemos-hoy/grupo/index">Crear Grupo</a></li>
             <li><a href="/que-comemos-hoy/historial/historialRecetas">Tu historial</a></li>            
         </ul>
@@ -35,7 +36,7 @@
             <g:each var="grupo" in="${grupos}">
                 <li>
                     <div style="display: inline-block; border-style: solid; border-color: #E3E0BB; height: 55px; width: 500px;">
-                        <b><g:link style="color:#85A32F" action="detalle" id="${grupo.nombre}">${grupo.descripcion}</g:link></b>
+                        <b><g:link style="color:#85A32F" action="detalle" id="${grupo.id}">${grupo.nombre}</g:link></b>
                     </div>
                 </li>
             </g:each>

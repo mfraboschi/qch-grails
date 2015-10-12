@@ -1,3 +1,4 @@
+<%@ page import="qch.enums.CategoriaEnum" %>
 <%--
   Created by IntelliJ IDEA.
   User: mfraboschi
@@ -24,24 +25,28 @@
     <nav>
         <h3>Menu</h3>
         <ul>
+            <li><a href="/que-comemos-hoy/receta/index">Home</a></li>
             <li><a href="/que-comemos-hoy/grupo/index">Crear Grupo</a></li>
             <li><a href="/que-comemos-hoy/historial/historialRecetas">Tu historial</a></li>
-            <li><a href="/que-comemos-hoy/grupo/verGrupos">Ver Grupos</a></li>
         </ul>
     </nav>
     <section id="mainRight">
-        <h1>Recetas recomendadas</h1>
-        <div>
-        <ul style="margin-left:0px; font-size:15px;">
-            <g:each var="receta" in="${recetas}">
-                <li>
-                    <div style="display: inline-block; border-style: solid; border-color: #E3E0BB; height: 55px; width: 500px;">
-                        <b><g:link style="color:#85A32F" action="detalle" id="${receta.id}">${receta.nombre}</g:link></b>
-                    </div>
-                </li>
-            </g:each>
+        <ul>
+            <b><h2>${grupo.nombre}</h2></b>
+            <ul style="list-style:initial">
+            <b>Descipcion: </b>
+               ${grupo.descripcion}
+            </div>
+            <p><b>Creador: </b>
+                ${grupo.creador.nombre}</p>
+            </ul>
+			 <b><g:link style="color:#85A32F" action="unirseAGrupo" id="${grupo.id}">${abandonar}</g:link></b>
+             <b><g:link style="color:#85A32F" action="unirseAGrupo" id="${grupo.id}">${unirse}</g:link></b>
+             
+             <div style="text-align: center; margin-top: 10px">
+                <label style="color: green; font-size: large;">${exito}</label>
+            </div>
         </ul>
-        </div>
     </section>
     <!-- end mainRight -->
 </section>

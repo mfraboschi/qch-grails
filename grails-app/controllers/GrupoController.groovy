@@ -17,6 +17,7 @@ class GrupoController {
             grupoNuevo.creador = usuario
             grupoNuevo.nombre = params.nombre
             grupoNuevo.descripcion = params.descripcion
+
             grupoNuevo.save()
 
             usuario.addToGrupos(grupoNuevo)
@@ -29,6 +30,37 @@ class GrupoController {
 	def verGrupos() {
 		List grupos = Grupo.findAll()
 		Usuario usuario = session.user
+		
 		render(view:"verGrupos", model: [usuario: usuario, grupos: grupos])
+	}
+	
+	def detalle(){
+		if(params.id){	
+		 Long id = params.id.toLong()
+    	 Grupo grupoActual = Grupo.findById(id)
+		 Usuario usuario = session.user
+		 
+		 if(grupoActual?.creador.nickName.equals(usuario.nickName))
+		  {
+			  return render(view:"detalleGrupo", model: [abandonar:"Abandonar Grupo", grupo: grupoActual])
+		  }
+		  else
+		  {
+			  return render(view:"detalleGrupo", model: [unirse:"Unirse al Grupo", grupo: grupoActual])
+ 			 
+		  }
+		}
+	}
+	
+	def unirseAGrupo() {
+		if(params.id){
+			Long id = params.id.toLong()
+			Grupo grupoActual = Grupo.findById(id)
+			Usuario usuario = session.user
+
+			usuario.addToGrupos(grupoActual)
+			usuario.save()
+		}		
+		 return render(view:"detalleGrupo")
 	}
 }
