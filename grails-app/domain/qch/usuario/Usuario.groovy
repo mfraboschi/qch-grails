@@ -27,6 +27,7 @@ class Usuario {
 
     static mapping = {
         id generator:'assigned', name: 'nickName'
+        grupos lazy: false
     }
 
 }
