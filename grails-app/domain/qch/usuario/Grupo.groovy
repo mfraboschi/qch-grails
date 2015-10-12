@@ -8,4 +8,14 @@ class Grupo {
 	String descripcion
 	
     static hasMany = [usuarios: Usuario]
+	
+	def pertenece(Usuario usuario) 
+	{
+		 if(this?.creador.equals(usuario))
+		 {
+			 return true
+		 }
+		
+		 return false
+	}
 }

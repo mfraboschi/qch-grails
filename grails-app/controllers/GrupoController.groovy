@@ -40,7 +40,7 @@ class GrupoController {
     	 Grupo grupoActual = Grupo.findById(id)
 		 Usuario usuario = session.user
 		 
-		 if(grupoActual?.creador.nickName.equals(usuario.nickName))
+		 if(grupoActual.pertenece(usuario))
 		  {
 			  return render(view:"detalleGrupo", model: [abandonar:"Abandonar Grupo", grupo: grupoActual])
 		  }
@@ -61,6 +61,7 @@ class GrupoController {
 			usuario.addToGrupos(grupoActual)
 			usuario.save()
 		}		
-		 return render(view:"detalleGrupo")
+        
+		return redirect(controller: "grupo", action: "detalle") //no se si es asi
 	}
 }
