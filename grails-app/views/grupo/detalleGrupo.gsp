@@ -40,7 +40,7 @@
             <p><b>Creador: </b>
                 ${grupo.creador.nombre}</p>
             </ul>
-			 <b><g:link style="color:#85A32F" action="unirseAGrupo" id="${grupo.id}">${abandonar}</g:link></b>
+			 <b><g:link style="color:red" action="unirseAGrupo" id="${grupo.id}">${abandonar}</g:link></b>
              <b><g:link style="color:#85A32F" action="unirseAGrupo" id="${grupo.id}">${unirse}</g:link></b>
              
              <div style="text-align: center; margin-top: 10px">
