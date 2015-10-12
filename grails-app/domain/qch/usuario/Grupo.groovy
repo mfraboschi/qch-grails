@@ -11,7 +11,7 @@ class Grupo {
 	
 	def pertenece(Usuario usuario) 
 	{
-		 if(this?.creador.equals(usuario))
+		 if( (this?.creador.nickName.equals(usuario.nickName)) || (this.usuarios.contains(usuario)) )
 		 {
 			 return true
 		 }

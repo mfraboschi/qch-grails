@@ -42,12 +42,11 @@ class GrupoController {
 		 
 		 if(grupoActual.pertenece(usuario))
 		  {
-			  return render(view:"detalleGrupo", model: [abandonar:"Abandonar Grupo", grupo: grupoActual])
+			  return render(view:"detalleGrupo", model: [abandonar:"Abandonar Grupo", grupo: grupoActual])	
 		  }
 		  else
 		  {
 			  return render(view:"detalleGrupo", model: [unirse:"Unirse al Grupo", grupo: grupoActual])
- 			 
 		  }
 		}
 	}
@@ -58,10 +57,13 @@ class GrupoController {
 			Grupo grupoActual = Grupo.findById(id)
 			Usuario usuario = session.user
 
+			grupoActual.addToUsuarios(usuario)
+			grupoActual.save()
+			
 			usuario.addToGrupos(grupoActual)
 			usuario.save()
+			
+			return redirect(controller: "grupo", action: "detalle", id:"${grupoActual.id}")
 		}		
-        
-		return redirect(controller: "grupo", action: "detalle") //no se si es asi
 	}
 }
