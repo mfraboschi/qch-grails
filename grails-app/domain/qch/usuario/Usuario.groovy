@@ -23,8 +23,6 @@ class Usuario {
 
     static hasMany = [recetas: Receta, grupos: Grupo]
 
-    static belongsTo = Grupo
-
     static mapping = {
         id generator:'assigned', name: 'nickName'
         grupos lazy: false
