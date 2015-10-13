@@ -9,9 +9,9 @@ class Grupo {
 	
     static hasMany = [usuarios: Usuario]
 	
-	def pertenece(Usuario usuario) 
+	public boolean pertenece(Usuario usuario) 
 	{
-		 if( (this?.creador.nickName.equals(usuario.nickName)) || (this.usuarios.contains(usuario)) )
+		 if( (this?.creador.equals(usuario)) || (this.usuarios.contains(usuario)) )
 		 {
 			 return true
 		 }
