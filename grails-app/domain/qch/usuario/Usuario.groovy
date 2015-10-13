@@ -36,7 +36,7 @@ class Usuario {
             return false
         }
 
-        ((Usuario)object).id == this.id
+        ((Usuario)object).nickName == this.nickName
     }
 
 

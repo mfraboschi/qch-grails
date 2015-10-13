@@ -9,13 +9,7 @@ class Grupo {
 	
     static hasMany = [usuarios: Usuario]
 	
-	public boolean pertenece(Usuario usuario) 
-	{
-		 if( (this?.creador.equals(usuario)) || (this.usuarios.contains(usuario)) )
-		 {
-			 return true
-		 }
-		
-		 return false
+	public boolean pertenece(Usuario usuario) {
+		 this.creador.equals(usuario) || (this.usuarios.contains(usuario))
 	}
 }

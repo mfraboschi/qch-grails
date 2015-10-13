@@ -40,14 +40,11 @@ class GrupoController {
     	 Grupo grupoActual = Grupo.findById(id)
 		 Usuario usuario = session.user
 		 
-		 if(grupoActual.pertenece(usuario))
-		  {
+		 if(grupoActual.pertenece(usuario))	  {
 			  return render(view:"detalleGrupo", model: [abandonar:"Abandonar Grupo", grupo: grupoActual])	
 		  }
-		  else
-		  {
-			  return render(view:"detalleGrupo", model: [unirse:"Unirse al Grupo", grupo: grupoActual])
-		  }
+
+            return render(view:"detalleGrupo", model: [unirse:"Unirse al Grupo", grupo: grupoActual])
 		}
 	}
 	
