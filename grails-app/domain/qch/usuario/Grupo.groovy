@@ -4,7 +4,7 @@ import qch.receta.ingrediente.Ingrediente
 
 class Grupo {
     String nombre
-    Usuario creador
+    String creadorId
 	String descripcion
 	
     static hasMany = [usuarios: Usuario]
