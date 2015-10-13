@@ -24,8 +24,8 @@
     <nav>
         <h3>Menu</h3>
         <ul>
-            <li><a href="/que-comemos-hoy/grupo/index">Crear Grupo</a></li>
             <li><a href="/que-comemos-hoy/historial/historialRecetas">Tu historial</a></li>
+            <li><a href="/que-comemos-hoy/grupo/index">Crear Grupo</a></li>
             <li><a href="/que-comemos-hoy/grupo/verGrupos">Ver Grupos</a></li>
         </ul>
     </nav>
