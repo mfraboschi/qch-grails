@@ -26,8 +26,9 @@
         <h3>Menu</h3>
         <ul>
             <li><a href="/que-comemos-hoy/receta/index">Home</a></li>
-            <li><a href="/que-comemos-hoy/grupo/index">Crear Grupo</a></li>
             <li><a href="/que-comemos-hoy/historial/historialRecetas">Tu historial</a></li>
+            <li><a href="/que-comemos-hoy/grupo/index">Crear Grupo</a></li>
+            <li><a href="/que-comemos-hoy/grupo/verGrupos">Ver Grupos</a></li>
         </ul>
     </nav>
     <section id="mainRight">
@@ -40,6 +41,7 @@
             <p><b>Creador: </b>
                 ${grupo.creador.nombre}</p>
             </ul>
+             <b><g:link style="color:blue" action="eliminarGrupo" id="${grupo.id}">${eliminar}</g:link></b>
 			 <b><g:link style="color:red" action="unirseAGrupo" id="${grupo.id}">${abandonar}</g:link></b>
              <b><g:link style="color:#85A32F" action="unirseAGrupo" id="${grupo.id}">${unirse}</g:link></b>
              

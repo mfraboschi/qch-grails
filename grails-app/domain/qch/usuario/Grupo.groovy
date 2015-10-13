@@ -12,6 +12,6 @@ class Grupo {
     static belongsTo = Usuario
 	
 	public boolean pertenece(Usuario usuario) {
-		 this.creador.equals(usuario) || (this.usuarios.contains(usuario))
+		 (this.usuarios.contains(usuario))
 	}
 }
