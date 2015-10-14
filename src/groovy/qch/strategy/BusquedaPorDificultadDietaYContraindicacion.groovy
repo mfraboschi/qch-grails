@@ -1,6 +1,8 @@
 package qch.strategy
 
 import qch.enums.CondicionPreexistente
+import qch.enums.Dieta
+import qch.enums.Dificultad
 import qch.receta.Contraindicacion
 import qch.receta.Receta
 
@@ -13,14 +15,16 @@ class BusquedaPorDificultadDietaYContraindicacion implements EstrategiaBusqueda 
         def contraindicacion = new Contraindicacion(condicionPreexistente: CondicionPreexistente.valueOf(parametros.contraindicacion))
         //Receta.findAllByDificultadAndDietaAndContraindicacionesInList(parametros.dificultad, parametros.dieta, [contraindicacion])
 
-        def criteria = Receta.createCriteria()
+        def criteria = Contraindicacion.createCriteria()
 
         def result = criteria.list {
-            eq "dificultad", parametros.dificultad
-            eq "dieta", parametros.dieta
-            eq 'contraindicaciones.condicionPreexistente',parametros.contraindicacion
+            "receta" {
+                eq "dificultad", Dificultad.valueOf(parametros.dificultad)
+                eq "dieta", Dieta.valueOf(parametros.dieta)
+            }
+            eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)
         }
 
-        return result
+        return result.collect { it.receta }
     }
 }
