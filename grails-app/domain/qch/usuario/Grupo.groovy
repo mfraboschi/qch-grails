@@ -1,7 +1,5 @@
 package qch.usuario
 
-import qch.receta.ingrediente.Ingrediente
-
 class Grupo {
     String nombre
     String creadorId
@@ -10,6 +8,8 @@ class Grupo {
     static hasMany = [usuarios: Usuario]
 
     static belongsTo = Usuario
+
+    static mapping = { usuarios lazy: false }
 	
 	public boolean pertenece(Usuario usuario) {
 		 (this.usuarios.contains(usuario))
