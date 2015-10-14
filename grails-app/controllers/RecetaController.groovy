@@ -1,4 +1,5 @@
 import qch.receta.Receta
+import qch.strategy.EstrategiaBusqueda
 import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
 
@@ -6,6 +7,8 @@ import qch.usuario.Usuario
  * Created by mfraboschi on 27/9/15.
  */
 class RecetaController {
+
+    def recetaService
 
     /**
      * Listado total de recetas creadas
@@ -67,6 +70,20 @@ class RecetaController {
         nuevaReceta.save(flush:true)
 
         render(view:"crearReceta", model: [exito: "La receta ha sido creada!"])
+    }
+
+    def buscar() {
+
+        def recetas = []
+
+
+        EstrategiaBusqueda estrategiaDeBusqueda = recetaService.obtenerEstrategiaDeBusqueda(params.findAll { it.value != 'null'}.keySet())
+
+        if (estrategiaDeBusqueda) {
+            recetas = estrategiaDeBusqueda.obtenerResultados(params)
+        }
+
+        render(view:"buscarReceta", model: [recetas: recetas])
     }
     
 }
