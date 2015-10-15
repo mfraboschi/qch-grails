@@ -67,6 +67,22 @@ class GrupoController {
 		}		
 	}
 	
+	def abandonarGrupo() {
+		if(params.id){
+			Long id = params.id.toLong()
+			Grupo grupoActual = Grupo.findById(id)
+			Usuario usuario = session.user
+
+			Usuario.withTransaction 
+			{	
+				usuario.removeFromGrupos(grupoActual)
+				usuario.save()
+			}
+			
+			return redirect(controller: "grupo", action: "verGrupos")
+		}
+	}
+	
 	def eliminarGrupo() {
 		if(params.id){
 			Long id = params.id.toLong()
