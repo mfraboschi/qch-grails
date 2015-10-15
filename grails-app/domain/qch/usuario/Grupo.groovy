@@ -17,5 +17,7 @@ class Grupo {
 
     public borrar() {
         this.delete(flush: true)
+
+        this.removeF
     }
 }
