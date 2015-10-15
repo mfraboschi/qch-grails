@@ -28,6 +28,8 @@ class Usuario {
         grupos lazy: false
     }
 
+    static belongsTo = Grupo
+
     @Override
     public boolean equals(Object object) {
         if(!object instanceof Usuario){

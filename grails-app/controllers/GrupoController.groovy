@@ -19,9 +19,6 @@ class GrupoController {
             grupoNuevo.descripcion = params.descripcion
 
             grupoNuevo.save()
-
-            usuario.addToGrupos(grupoNuevo)
-            usuario.save()
         }
 		
 		render(view:"crearGrupo", model: [exito: "El Grupo ${grupoNuevo.nombre} ha sido creado!"])

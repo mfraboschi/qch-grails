@@ -7,8 +7,6 @@ class Grupo {
 	
     static hasMany = [usuarios: Usuario]
 
-    static belongsTo = Usuario
-
     static mapping = { usuarios lazy: false }
 	
 	public boolean pertenece(Usuario usuario) {
@@ -17,7 +15,5 @@ class Grupo {
 
     public borrar() {
         this.delete(flush: true)
-
-        this.removeF
     }
 }
