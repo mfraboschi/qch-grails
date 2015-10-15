@@ -12,6 +12,10 @@ class Grupo {
     static mapping = { usuarios lazy: false }
 	
 	public boolean pertenece(Usuario usuario) {
-		 (this.usuarios.contains(usuario))
+		 (this.usuarios.asList().contains(usuario))
 	}
+
+    public borrar() {
+        this.delete(flush: true)
+    }
 }

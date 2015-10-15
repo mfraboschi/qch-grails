@@ -40,13 +40,11 @@ class GrupoController {
     	 Grupo grupoActual = Grupo.findById(id)
 		 Usuario usuario = session.user
 		 
-		 if ( grupoActual.creadorId.equals(usuario.nickName) )
-		 {
+		 if ( grupoActual.creadorId.equals(usuario.nickName)) {
 			 return render(view:"detalleGrupo", model: [eliminar:"Eliminar Grupo", grupo: grupoActual])
 		 }
 		 
-		 if( grupoActual.pertenece(usuario) )	 
-		  {
+		 if( grupoActual.pertenece(usuario) ) {
 			  return render(view:"detalleGrupo", model: [abandonar:"Abandonar Grupo", grupo: grupoActual])
 		  }
 		  
@@ -60,11 +58,10 @@ class GrupoController {
 			Grupo grupoActual = Grupo.findById(id)
 			Usuario usuario = session.user
 
-			grupoActual.addToUsuarios(usuario)
-			grupoActual.save()
-			
-			usuario.addToGrupos(grupoActual)
-			usuario.save()
+            Usuario.withTransaction {
+                usuario.addToGrupos(grupoActual)
+                usuario.save()
+            }
 			
 			return redirect(controller: "grupo", action: "detalle", id:"${grupoActual.id}")
 		}		
@@ -75,7 +72,7 @@ class GrupoController {
 			Long id = params.id.toLong()
 			Grupo grupoActual = Grupo.findById(id)
 			
-			grupoActual.delete()
+			grupoActual.borrar()
 						
 			return redirect(controller: "grupo", action: "verGrupos")
 		}
