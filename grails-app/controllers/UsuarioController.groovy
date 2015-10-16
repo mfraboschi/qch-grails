@@ -4,10 +4,6 @@ import qch.usuario.Usuario
 import java.text.DateFormat
 
 class UsuarioController {
-    def begin(Usuario userActual) {
-        render "OK"
-        //Averiguar como pasar parametros
-    }
 
     def guardarUsuario() {
         Usuario userNuevo = new Usuario()
@@ -35,7 +31,7 @@ class UsuarioController {
             return render(view:"crearUsuario", model: [error: "Tu peso debe ser un numero (en gramos)"])
         }
 
-        userNuevo.nombre = params.nombre
+        userNuevo.nombre = params.nombre + " " + params.apellido
         userNuevo.nickName = params.nickName
         userNuevo.password = params.password
         userNuevo.fechaNacimiento =  params.fechaNacimiento

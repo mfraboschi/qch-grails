@@ -12,6 +12,6 @@ class HistorialController {
             mensaje = "Aún no has seleccionado ninguna receta"
         }
 
-        render (view:"historial", model: [historial: historial, mensaje: mensaje])
+        render (view:"historial", model: [historial: historial, mensaje: mensaje, usuario: session.user])
     }
 }

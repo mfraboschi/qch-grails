@@ -3,9 +3,6 @@ import qch.strategy.EstrategiaBusqueda
 import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
 
-/**
- * Created by mfraboschi on 27/9/15.
- */
 class RecetaController {
 
     def recetaService
@@ -28,7 +25,7 @@ class RecetaController {
    		if(params.id){
     		Long id = params.id.toLong()
     		Receta recetaActual = Receta.findById(id)
-    		return render(view:"detalleReceta", model: [receta: recetaActual]) 
+    		return render(view:"detalleReceta", model: [receta: recetaActual])
     	}
    	}
 
@@ -85,5 +82,5 @@ class RecetaController {
 
         render(view:"buscarReceta", model: [recetas: recetas])
     }
-    
+
 }

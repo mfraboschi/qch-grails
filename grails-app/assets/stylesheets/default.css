@@ -280,11 +280,20 @@ header h2 {
     float: right;
     font-size: 3.0em;
     line-height: 1.2em;
-    margin-top: 70px;
+    margin-top: 64px;
     padding-bottom: 15px;
     width: 58.3333333%; /* 560/960 */
     text-align: left;
     border-bottom: 4px double #dedbac;
+}
+
+header h4 {
+    float: right;
+    font-size: 1.4em;
+    padding-top: 2px;
+    padding-right: 15px;
+    width: 58.3333333%; /* 560/960 */
+    text-align: right;
 }
 
 #mainContent {
