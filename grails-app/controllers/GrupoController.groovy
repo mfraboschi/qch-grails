@@ -66,7 +66,9 @@ class GrupoController {
 
             Usuario.withTransaction {
                 usuario.addToGrupos(grupoActual)
+				grupoActual.addToUsuarios(usuario)
                 usuario.save()
+				grupoActual.save()
             }
       			return redirect(controller: "grupo", action: "detalle", id:"${grupoActual.id}")
     		}
@@ -80,7 +82,9 @@ class GrupoController {
             Usuario.withTransaction {
                 def grupo = usuario.grupos.asList().find { it.id == id }
                 usuario.removeFromGrupos(grupo)
+				grupo.removeFromUsuarios(usuario)
                 usuario.save()
+				grupo.save()
             }
 
             return redirect(controller: "grupo", action: "detalle", id:"${id}")
@@ -100,7 +104,7 @@ class GrupoController {
 
       			grupoActual.borrar()
 
-      			return redirect(controller: "grupo", action: "verGrupos")
+      			return redirect(controller: "grupo", action: "index")
     		}
   	}
 }

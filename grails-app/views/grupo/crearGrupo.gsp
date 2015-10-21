@@ -23,7 +23,7 @@
                 <ul>
                     <li><a href="/que-comemos-hoy/receta/index">Home</a></li>
                     <li><a href="/que-comemos-hoy/grupo/index">Mis grupos</a></li>
-                    <li><a href="/que-comemos-hoy/grupo/verGrupos">Buscar Grupos</a></li>
+                    <li><a href="/que-comemos-hoy/grupo/verGrupos">Ver Grupos</a></li>
                 </ul>
             </nav>
             <section id="mainRight">
