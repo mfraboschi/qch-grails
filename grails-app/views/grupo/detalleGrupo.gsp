@@ -40,6 +40,7 @@
             <p><b>Creador: </b>
                 ${grupo.creadorId}</p>
             </ul>
+             <div style="display: inline-block; border-style: solid; border-color: #E3E0BB; height: 20px; width: 120px;">
              <b><g:link style="color:blue" action="eliminarGrupo" id="${grupo.id}">${eliminar}</g:link></b>
 			 <b><g:link style="color:red" action="abandonarGrupo" id="${grupo.id}">${abandonar}</g:link></b>
              <b><g:link style="color:green" action="unirseAGrupo" id="${grupo.id}">${unirse}</g:link></b>
