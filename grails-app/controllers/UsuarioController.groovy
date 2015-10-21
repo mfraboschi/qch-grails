@@ -17,15 +17,13 @@ class UsuarioController {
         if(!params.password) {
             return render(view:"crearUsuario", model: [error: "Debes completar el password"])
         }
-        if(!params.fechaNacimiento) {
-            return render(view:"crearUsuario", model: [error: "Debes completar tu fecha de nacimiento"])
-        }
-        try{
+
+        try {
             Integer.parseInt(params.alturaEnCentimetros)
         } catch(Exception e) {
             return render(view:"crearUsuario", model: [error: "Tu altura debe ser un numero (en centímetros)"])
         }
-        try{
+        try {
             Integer.parseInt(params.pesoEnGramos)
         } catch(Exception e) {
             return render(view:"crearUsuario", model: [error: "Tu peso debe ser un numero (en gramos)"])

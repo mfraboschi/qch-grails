@@ -7,7 +7,7 @@ enum CondicionPreexistente {
 
     DIABETES('Diabetes'),
     HIPERTENSION('Hipertension'),
-    CELIASIS('Celiasis')
+    CELIAQUIA('Celiasis')
 
     private String texto
 

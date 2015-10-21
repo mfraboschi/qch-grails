@@ -14,7 +14,7 @@ class Receta {
     Integer caloriasTotal
     Integer calificacionPromedio
     Integer porciones
-    Usuario creador
+    String creador
     Integer cantVisitas = 0
     Dieta dieta
     List procedimientos

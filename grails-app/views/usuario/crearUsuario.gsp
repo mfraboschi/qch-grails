@@ -36,9 +36,8 @@
                             <td><label for="surname">Apellido:</label></td>
                             <td><g:textField id="surname" name="apellido"/></td>
                         </tr>
-                        <tr>
-                            <td colspan="3"></td>
-                        </tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
                         <tr>
                             <td><label for="nick">Nombre de Usuario:</label></td>
                             <td><g:textField id="nick" name="nickName"/></td>
@@ -47,9 +46,8 @@
                             <td><label for="pass">Contraseña:</label></td>
                             <td><g:passwordField id="pass" name="password"/></td>
                         </tr>
-                        <tr>
-                            <td colspan="3"></td>
-                        </tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
                         <tr>
                             <td><label>Fecha de Nacimiento:</label></td>
                             <td><g:datePicker name="fechaNacimiento" value="${new Date()}" precision="day" years="${1930..2010}"/></td>
@@ -78,9 +76,7 @@
                             <td><label>Rutina:</label></td>
                             <td><g:select name="rutina" from="${Rutina.values()}" valueMessagePrefix="ENUM.Rutina"/></td>
                         </tr>
-                        <tr>
-                            <td colspan="3"></td>
-                        </tr>
+                        <tr><td></td></tr>
                         <tr>
                             <td><g:submitButton name="ingresar" value="Crear"/></td>
                         </tr>

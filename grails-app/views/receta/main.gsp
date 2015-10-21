@@ -17,9 +17,8 @@
                 <h3>Menu</h3>
                 <ul>
                     <li><a href="/que-comemos-hoy/receta/todas">Mis recetas</a></li>
-                    <li><a href="/que-comemos-hoy/receta/buscar">Buscar Recetas</a></li>
                     <li><a href="/que-comemos-hoy/grupo/index">Mis grupos</a></li>
-                    <li><a href="/que-comemos-hoy/grupo/verGrupos">Recomendaciones</a></li>
+                    <li><a href="/que-comemos-hoy/receta/recomendadas">Recomendaciones</a></li>
                     <li><a href="/que-comemos-hoy/historial/historialRecetas">Historial</a></li>
                 </ul>
             </nav>
