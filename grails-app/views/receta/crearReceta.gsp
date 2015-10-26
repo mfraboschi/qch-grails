@@ -86,15 +86,15 @@
                         </tr>
                         <tr>
                             <td><label>Dieta:</label></td>
-                            <td><g:select name="dieta" from="${Dieta.values()}" valueMessagePrefix="ENUM.Dieta"/></td>
+                            <td><g:select name="dieta" from="${Dieta.values()}" valueMessagePrefix="ENUM.Dieta" noSelection="['':'Seleccionar']"/></td>
                         </tr>
                         <tr>
                             <td><label>Dificultad:</label></td>
-                            <td><g:select name="dificultad" from="${Dificultad.values()}" valueMessagePrefix="ENUM.Dificultad"/></td>
+                            <td><g:select name="dificultad" from="${Dificultad.values()}" valueMessagePrefix="ENUM.Dificultad" noSelection="['':'Seleccionar']"/></td>
                         </tr>
                         <tr>
                             <td><label>Contraindicacion:</label></td>
-                            <td><g:select name="precondicion" from="${CondicionPreexistente.values()}" valueMessagePrefix="ENUM.Dificultad"/></td>
+                            <td><g:select name="precondicion" from="${CondicionPreexistente.values()}" valueMessagePrefix="ENUM.CondicionPreexistente" noSelection="['':'Seleccionar']"/></td>
                         </tr>
                     </table>
                     <br><b><span>Procedimiento: </span></b><a href="#" id="addScnt">(Agregar otro Paso)</a><br><br>
@@ -103,7 +103,7 @@
                     </div>
                     <br><b><span>Ingredientes: </span></b><a href="#" id="addIngrediente">(Agregar otro)</a><br><br>
                     <div id="div_ingredientes">
-                        <p id="p_ingrediente"><g:select name="ingredientes" id="ingrediente" from="${ingredientes}" optionKey="id" optionValue="nombre"/> <label>Cantidad:</label><input type="text" name="cantidades"/></p>
+                        <p id="p_ingrediente"><g:select name="ingredientes" id="ingrediente" from="${ingredientes}" optionKey="id" optionValue="nombre" noSelection="['':'Seleccionar']"/> <label>Cantidad:</label><input type="text" name="cantidades"/></p>
                     </div>
                     <g:submitButton name="ingresar" value="Crear"/>
                 </g:form>
