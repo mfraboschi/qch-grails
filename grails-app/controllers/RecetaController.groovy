@@ -1,4 +1,6 @@
 import qch.receta.Receta
+import qch.receta.ingrediente.Ingrediente
+import qch.receta.ingrediente.IngredienteReceta
 import qch.strategy.EstrategiaBusqueda
 import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
@@ -55,7 +57,8 @@ class RecetaController {
     }
 
     def nueva() {
-        render (view:"crearReceta", model:[usuario: session.user])
+        def ingredientes = Ingrediente.findAll()
+        render (view:"crearReceta", model:[usuario: session.user, ingredientes: ingredientes])
     }
 
     /**
@@ -75,22 +78,37 @@ class RecetaController {
         if(!params.porciones) {
             return render(view:"crearReceta", model: [usuario: usuario, error: "Debes completar la cantidad de porciones"])
         }
+        if(!params.procedimientos) {
+            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes agregar al menos un procedimiento"])
+        }
+
+        if(!params.ingredientes) {
+            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes agregar al menos un ingrediente"])
+        }
+
+        if(!params.cantidades) {
+            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes especificar las cantidades"])
+        }
 
         nuevaReceta.nombre = params.nombre
-        nuevaReceta.caloriasTotal = params.caloriasTotal
-        nuevaReceta.porciones = params.porciones
+        nuevaReceta.caloriasTotal = Integer.valueOf(params.caloriasTotal)
+        nuevaReceta.porciones = Integer.valueOf(params.porciones)
         nuevaReceta.dificultad = params.dificultad
         nuevaReceta.creador = usuario.nickName
         nuevaReceta.dieta = params.dieta
-        nuevaReceta.addToProcedimientos(params.paso1)
 
-        /* NO ME FUNCA AUN
-        if (!params.paso2) { nuevaReceta.addToProcedimientos(params.paso2) }
-        if (!params.paso3) { nuevaReceta.addToProcedimientos(params.paso3) }
-        if (!params.paso4) { nuevaReceta.addToProcedimientos(params.paso4) }
-        if (!params.paso5) { nuevaReceta.addToProcedimientos(params.paso5) }
-        */
-        
+        def ingredientes = params.ingredientes instanceof String[] ? params.ingredientes : [params.ingredientes]
+        def cantidades = params.cantidades instanceof String[] ? params.cantidades : [params.cantidades]
+        def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]
+
+        procedimientos.each {
+            nuevaReceta.addToProcedimientos(it)
+        }
+
+        [ingredientes, cantidades].transpose().each() {
+            nuevaReceta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findById(it[0]), cantidadGramos: it[1], calorias: 1234, esIngredientePrincipal: false))
+        }
+
         nuevaReceta.save(flush:true)
 
         render(view:"crearReceta", model: [usuario: usuario, exito: "La receta ha sido creada!"])

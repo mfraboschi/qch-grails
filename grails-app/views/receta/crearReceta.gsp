@@ -1,5 +1,6 @@
-<%@ page import="qch.enums.Dificultad" %>
+<%@ page import="qch.enums.CondicionPreexistente; qch.enums.Dificultad" %>
 <%@ page import="qch.enums.Dieta" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -13,20 +14,39 @@
             $(function() {
                 var scntDiv = $('#p_scents');
                 var i = $('#p_scents p').size() + 1;
+                var j = $('#div_ingredientes p').size() + 1;
 
                 $('#addScnt').live('click', function() {
-                        $('<p><label for="p_scnts">Paso '+i+': &emsp;<input type="text" size="80" id="p_scnt" name="paso'+i+'"/></label><a href="#" id="remScnt"> Quitar paso</a></p>').appendTo(scntDiv);
+                        $('<p><label for="p_scnts">Paso '+i+': &emsp;<input type="text" size="80" id="p_scnt" name="procedimientos"/></label><a href="#" id="remScnt"> Quitar paso</a></p>').appendTo(scntDiv);
                         i++;
                         return false;
                 });
 
                 $('#remScnt').live('click', function() {
-                        if( i > 2 ) {
-                                $(this).parents('p').remove();
-                                i--;
-                        }
-                        return false;
+                    if (i > 2) {
+                        $(this).parents('p').remove();
+                        i--;
+                    }
+                    return false;
                 });
+
+                $('#addIngrediente').live('click', function() {
+                    var elclon = $('#p_ingrediente').clone();
+                    elclon.attr('id', j);
+                    $('<a href="#" id="remIngrediente"> Quitar ingrediente</a>').appendTo(elclon);
+                    elclon.appendTo($('#div_ingredientes'));
+                    j++;
+                    return false;
+                });
+
+                $('#remIngrediente').live('click', function() {
+                    if (j > 2) {
+                        $(this).parents('p').remove();
+                        j--;
+                    }
+                    return false;
+                });
+
             });
         </script>
         <style>
@@ -72,10 +92,18 @@
                             <td><label>Dificultad:</label></td>
                             <td><g:select name="dificultad" from="${Dificultad.values()}" valueMessagePrefix="ENUM.Dificultad"/></td>
                         </tr>
+                        <tr>
+                            <td><label>Contraindicacion:</label></td>
+                            <td><g:select name="precondicion" from="${CondicionPreexistente.values()}" valueMessagePrefix="ENUM.Dificultad"/></td>
+                        </tr>
                     </table>
                     <br><b><span>Procedimiento: </span></b><a href="#" id="addScnt">(Agregar otro Paso)</a><br><br>
                     <div id="p_scents">
-                        <p><label for="p_scnts">Paso 1: &emsp;<input type="text" size="80" id="p_scnt" name="paso1"/></label></p>
+                        <p><label for="p_scnts">Paso 1: &emsp;<input type="text" size="80" id="p_scnt" name="procedimientos"/></label></p>
+                    </div>
+                    <br><b><span>Ingredientes: </span></b><a href="#" id="addIngrediente">(Agregar otro)</a><br><br>
+                    <div id="div_ingredientes">
+                        <p id="p_ingrediente"><g:select name="ingredientes" id="ingrediente" from="${ingredientes}" optionKey="id" optionValue="nombre"/> <label>Cantidad:</label><input type="text" name="cantidades"/></p>
                     </div>
                     <g:submitButton name="ingresar" value="Crear"/>
                 </g:form>
