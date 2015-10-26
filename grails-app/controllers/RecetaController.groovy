@@ -27,6 +27,9 @@ class RecetaController {
    		if(params.id){
     		Long id = params.id.toLong()
     		Receta recetaActual = Receta.findById(id)
+            recetaActual.cantVisitas = recetaActual.cantVisitas + 1
+            recetaActual.save(flush: true)
+
     		return render(view:"detalleReceta", model: [receta: recetaActual])
     	}
    	}

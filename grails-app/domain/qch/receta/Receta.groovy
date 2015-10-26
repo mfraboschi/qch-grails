@@ -12,7 +12,7 @@ class Receta {
     String nombre
     Dificultad dificultad
     Integer caloriasTotal
-    Integer calificacionPromedio
+    Integer calificacionPromedio = 0
     Integer porciones
     String creador
     Integer cantVisitas = 0
@@ -29,8 +29,6 @@ class Receta {
 
     static constraints = {
         creador nullable: true
-        calificacionPromedio nullable: true
-
     }
 
     def obtenerIngredientePrincipal() {

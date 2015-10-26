@@ -1,4 +1,4 @@
-<%@ page import="qch.enums.CategoriaEnum" %>
+    <%@ page import="qch.enums.CategoriaEnum" %>
 <%--
   Created by IntelliJ IDEA.
   User: mfraboschi
@@ -15,6 +15,9 @@
     <!--[if IE]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <style>
+
+    </style>
 </head>
 <body>
 <header>
@@ -76,6 +79,36 @@
                 <label style="color: green; font-size: large;">${exito}</label>
             </div>
         </form>
+        <div style="text-align:center;">
+        <div style="width:250px; border: #E3E0BB; border-style: solid; ">
+            <h1>Dejá tu opinión</h1>
+            <form action="/que-comemos-hoy/receta/${receta.id}/calificar">
+                <div style="text-align:center;">
+                    <label>Calificación:</label>
+                    <span class="rating">
+                        <input type="radio" class="rating-input"
+                               id="rating-input-1-5" name="calificacion">
+                        <label for="rating-input-1-5" class="rating-star"></label>
+                        <input type="radio" class="rating-input"
+                               id="rating-input-1-4" name="calificacion">
+                        <label for="rating-input-1-4" class="rating-star"></label>
+                        <input type="radio" class="rating-input"
+                               id="rating-input-1-3" name="calificacion">
+                        <label for="rating-input-1-3" class="rating-star"></label>
+                        <input type="radio" class="rating-input"
+                               id="rating-input-1-2" name="calificacion">
+                        <label for="rating-input-1-2" class="rating-star"></label>
+                        <input type="radio" class="rating-input"
+                               id="rating-input-1-1" name="calificacion">
+                        <label for="rating-input-1-1" class="rating-star"></label>
+                    </span>
+                </div>
+                <div style="text-align:center;">
+                    <input type="submit" value="Enviar"/>
+                </div>
+            </form>
+        </div>
+        </div>
     </section>
     <!-- end mainRight -->
 </section>
