@@ -3,6 +3,7 @@ import qch.receta.Receta
 import qch.receta.ingrediente.Ingrediente
 import qch.receta.ingrediente.IngredienteReceta
 import qch.strategy.EstrategiaBusqueda
+import qch.strategy.EstrategiaEstadistica
 import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
 
@@ -29,8 +30,19 @@ class RecetaController {
     		Long id = params.id.toLong()
     		Receta recetaActual = Receta.findById(id)
             recetaActual.cantVisitas = recetaActual.cantVisitas + 1
+			
+			if(session.user.sexo.equals('femenino'))
+			{
+				cantVisitasHembras = cantVisitasHembras + 1;
+			}
+			else
+			{
+				cantVisitasMachos = cantVisitasMachos + 1;
+			}
+			
             recetaActual.save(flush: true)
 
+			println(recetaActual.cantVisitas);
             def calificacion = Calificacion.findByRecetaAndUsuario(recetaActual, session.user)
 
     		return render(view:"detalleReceta", model: [receta: recetaActual, calificacion: calificacion])
@@ -135,7 +147,21 @@ class RecetaController {
 
         render(view:"buscarReceta", model: [recetas: recetas])
     }
+	
+	def estadisticas()
+	{
+		def recetas = []
 
+
+		EstrategiaEstadistica estrategiaDeEstadisticas = recetaService.obtenerEstrategiaDeEstadisticas(params.estadistica)
+		
+		if (estrategiaDeEstadisticas) {
+			recetas = estrategiaDeEstadisticas.obtenerEstadisticas(params)
+		}
+		
+		render(view:"estadisticas", model: [recetas: recetas])
+	}
+	
     def calificar() {
         def calificacion = new Calificacion()
 

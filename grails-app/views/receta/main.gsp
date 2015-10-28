@@ -20,6 +20,7 @@
                     <li><a href="/que-comemos-hoy/grupo/index">Mis grupos</a></li>
                     <li><a href="/que-comemos-hoy/receta/recomendadas">Recomendaciones</a></li>
                     <li><a href="/que-comemos-hoy/historial/historialRecetas">Historial</a></li>
+                    <li><a href="/que-comemos-hoy/receta/estadisticas">Ver Estadisticas</a></li>
                 </ul>
             </nav>
             <section id="mainRight">
