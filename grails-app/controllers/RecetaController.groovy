@@ -3,7 +3,6 @@ import qch.receta.Receta
 import qch.receta.ingrediente.Ingrediente
 import qch.receta.ingrediente.IngredienteReceta
 import qch.strategy.EstrategiaBusqueda
-import qch.strategy.EstrategiaEstadistica
 import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
 
@@ -148,7 +147,7 @@ class RecetaController {
         render(view:"buscarReceta", model: [recetas: recetas])
     }
 	
-	def estadisticas()
+	/*def estadisticas()
 	{
 		def recetas = []
 
@@ -160,7 +159,7 @@ class RecetaController {
 		}
 		
 		render(view:"estadisticas", model: [recetas: recetas])
-	}
+	}*/
 	
     def calificar() {
         def calificacion = new Calificacion()

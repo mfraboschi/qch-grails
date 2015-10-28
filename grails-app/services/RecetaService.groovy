@@ -11,11 +11,7 @@ import qch.strategy.BusquedaPorDificultadDietaContraindicacionEIngredientePrinci
 import qch.strategy.BusquedaPorDificultadDietaYContraindicacion
 import qch.strategy.BusquedaPorDificultadYContraindicacion
 import qch.strategy.BusquedaPorDificultadYDieta
-import qch.strategy.EstadisticaPorDificultad
-import qch.strategy.EstadisticaPorMasConsultadas
-import qch.strategy.EstadisticaPorSexo
 import qch.strategy.EstrategiaBusqueda
-import qch.strategy.EstrategiaEstadistica
 
 /**
  * Created by mfraboschi on 27/9/15.
@@ -54,7 +50,7 @@ class RecetaService {
         return busquedas[key]
     }
 	
-	public EstrategiaEstadistica obtenerEstrategiaDeEstadisticas(estadistica) 
+	/*public EstrategiaEstadistica obtenerEstrategiaDeEstadisticas(estadistica)
 	{
 		if(estadistica.equals("masVisto"))
 		{
@@ -64,5 +60,5 @@ class RecetaService {
 		{
 			return new EstadisticaPorDificultad()
 		}
-	}
+	}*/
 }
