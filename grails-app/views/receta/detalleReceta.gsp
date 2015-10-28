@@ -15,9 +15,42 @@
     <!--[if IE]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        var frm = $('#calificar');
+        $('#calificar').submit(function () {
+            $.ajax({
+                type: frm.attr('method'),
+                url: frm.attr('action'),
+                data: frm.serialize(),
+                success: function (data) {
+                    $('#form-calificar').hide();
+                    $('#calificacion').text('¡Gracias por dejar tu opinión!');
+                }
+            });
 
-    </style>
+            return false;
+        });
+
+        var frmSelec =  $('#seleccionar');
+        frmSelec.submit(function () {
+            $.ajax({
+                type: frmSelec.attr('method'),
+                url: frmSelec.attr('action'),
+                data: frmSelec.serialize(),
+                success: function (data) {
+                    $('#seleccionar-div').hide();
+                    $('#mensaje-exito').text('¡Seleccionaste la Receta!');
+                }
+            });
+
+            return false;
+        });
+
+
+    });
+    </script>
 </head>
 <body>
 <header>
@@ -71,44 +104,47 @@
                 </tr>
             </table>
         </ul>
-        <form action="/que-comemos-hoy/receta/seleccionar/${receta.id}">
-            <div style="text-align: center;">
+        <form action="/que-comemos-hoy/receta/seleccionar/${receta.id}" id="seleccionar" method="post">
+            <div style="text-align: center;" id="seleccionar-div">
                         <input style="width: 150px;" type="submit" value="Seleccionar"/>
             </div>
             <div style="text-align: center; margin-top: 10px">
-                <label style="color: green; font-size: large;">${exito}</label>
+                <label id="mensaje-exito" style="color: green; font-size: large;">${exito}</label>
             </div>
         </form>
-        <div style="text-align:center;">
-        <div style="width:250px; border: #E3E0BB; border-style: solid; ">
-            <h1>Dejá tu opinión</h1>
-            <form action="/que-comemos-hoy/receta/${receta.id}/calificar">
+        <g:if test="${!calificacion}">
+        <div style="text-align:center; margin-top:20px;">
+        <div style="width:250px; border: #E3E0BB; border-style: solid; display: inline-block;" id="form-calificar">
+            <h1 style="margin-bottom: 5px;">Calificar receta</h1>
+            <form id="calificar" action="/que-comemos-hoy/receta/calificar/${receta.id}" method="post">
                 <div style="text-align:center;">
-                    <label>Calificación:</label>
                     <span class="rating">
                         <input type="radio" class="rating-input"
-                               id="rating-input-1-5" name="calificacion">
-                        <label for="rating-input-1-5" class="rating-star"></label>
+                               id="rating-input-1-5" name="calificacion" value="5">
+                        <label for="rating-input-1-5" class="rating-star" ></label>
                         <input type="radio" class="rating-input"
-                               id="rating-input-1-4" name="calificacion">
+                               id="rating-input-1-4" name="calificacion" value="4">
                         <label for="rating-input-1-4" class="rating-star"></label>
                         <input type="radio" class="rating-input"
-                               id="rating-input-1-3" name="calificacion">
+                               id="rating-input-1-3" name="calificacion" value="3">
                         <label for="rating-input-1-3" class="rating-star"></label>
                         <input type="radio" class="rating-input"
-                               id="rating-input-1-2" name="calificacion">
+                               id="rating-input-1-2" name="calificacion" value="2">
                         <label for="rating-input-1-2" class="rating-star"></label>
                         <input type="radio" class="rating-input"
-                               id="rating-input-1-1" name="calificacion">
+                               id="rating-input-1-1" name="calificacion" value="1">
                         <label for="rating-input-1-1" class="rating-star"></label>
                     </span>
                 </div>
-                <div style="text-align:center;">
+                <div style="text-align:center; margin-top: 5px;">
                     <input type="submit" value="Enviar"/>
                 </div>
             </form>
         </div>
+        <div style="text-align: center; margin-top: 10px">
+            <label id="calificacion" style="color: green; font-size: large;"></label>
         </div>
+        </g:if>
     </section>
     <!-- end mainRight -->
 </section>

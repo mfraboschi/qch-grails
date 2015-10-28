@@ -1,3 +1,4 @@
+import qch.receta.Calificacion
 import qch.receta.Receta
 import qch.receta.ingrediente.Ingrediente
 import qch.receta.ingrediente.IngredienteReceta
@@ -30,7 +31,9 @@ class RecetaController {
             recetaActual.cantVisitas = recetaActual.cantVisitas + 1
             recetaActual.save(flush: true)
 
-    		return render(view:"detalleReceta", model: [receta: recetaActual])
+            def calificacion = Calificacion.findByRecetaAndUsuario(recetaActual, session.user)
+
+    		return render(view:"detalleReceta", model: [receta: recetaActual, calificacion: calificacion])
     	}
    	}
 
@@ -48,6 +51,8 @@ class RecetaController {
 
             return render(view:"detalleReceta", model:[receta: recetaActual, exito:"Seleccionaste la receta!"])
         }
+
+        Receta.findAllByCantVisitasGreaterThan()
     }
 
     def todas() {
@@ -129,6 +134,18 @@ class RecetaController {
         }
 
         render(view:"buscarReceta", model: [recetas: recetas])
+    }
+
+    def calificar() {
+        def calificacion = new Calificacion()
+
+        calificacion.receta = Receta.findById(params.id)
+        calificacion.usuario = session.user
+        calificacion.puntaje = Integer.valueOf(params.calificacion)
+
+        calificacion.save(flush: true)
+
+        render(status: 200)
     }
 
 }
