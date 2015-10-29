@@ -4,6 +4,7 @@ import qch.enums.CondicionPreexistente
 import qch.enums.Dieta
 import qch.enums.Dificultad
 import qch.enums.Temporada
+import qch.receta.ingrediente.Ingrediente
 import qch.receta.ingrediente.CondimentoReceta
 import qch.receta.ingrediente.IngredienteReceta
 import qch.usuario.Usuario
@@ -38,4 +39,5 @@ class Receta {
 
         return ingredienteReceta.ingrediente
     }
+	
 }

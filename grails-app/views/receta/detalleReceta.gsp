@@ -62,8 +62,8 @@
         <h3>Menu</h3>
         <ul>
             <li><a href="/que-comemos-hoy/receta/index">Home</a></li>
-            <li><a href="/que-comemos-hoy/grupo/index">Crear Grupo</a></li>
-            <li><a href="/que-comemos-hoy/grupo/verGrupos">Ver Grupos</a></li>
+			<li><a href="/que-comemos-hoy/receta/todas">Mis recetas</a></li>
+            <li><a href="/que-comemos-hoy/grupo/index">Mis grupos</a></li>
         </ul>
     </nav>
     <section id="mainRight">

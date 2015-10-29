@@ -39,5 +39,30 @@ class Usuario {
         ((Usuario)object).nickName == this.nickName
     }
 
+	public guardar(formNuevoUsuario)
+	{
+		this.nombre = formNuevoUsuario.nombre + " " + formNuevoUsuario.apellido
+		this.nickName = formNuevoUsuario.nickName
+		this.password = formNuevoUsuario.password
+		this.fechaNacimiento =  formNuevoUsuario.fechaNacimiento
+		this.alturaEnCentimetros = Integer.parseInt(formNuevoUsuario.alturaEnCentimetros)
+		this.pesoEnGramos = Integer.parseInt(formNuevoUsuario.pesoEnGramos)
+		this.sexo = formNuevoUsuario.sexo
+		this.contextura = formNuevoUsuario.contextura
+		this.dieta = formNuevoUsuario.dieta
+		this.rutina = formNuevoUsuario.rutina
+		this.save(flush:true)
+	}
+	
+	public agregarA(Grupo grupo)
+	{
+		this.addToGrupos(grupo)
+		this.save()
+	}
 
+	public removerA(Grupo grupo)
+	{
+        this.removeFromGrupos(grupo)
+		this.save()
+	}
 }

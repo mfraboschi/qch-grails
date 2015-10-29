@@ -18,21 +18,25 @@ class GrupoController {
         render(view:"crearGrupo", model: [usuario: session.user])
     }
 
-  	def nuevoGrupo() {
-    		Grupo grupoNuevo = new Grupo()
-    		Usuario usuario = session.user
+	def nuevoGrupo() 
+	{
+		Grupo grupoNuevo = new Grupo()
+		Usuario usuario = session.user
 
-        Grupo.withTransaction {
-            grupoNuevo.creadorId = usuario.nickName
-            grupoNuevo.nombre = params.nombre
-            grupoNuevo.descripcion = params.descripcion
-            grupoNuevo.addToUsuarios(usuario)
-            grupoNuevo.save()
-        }
+		Grupo.withTransaction {
+			/*
+			grupoNuevo.creadorId = usuario.nickName
+			grupoNuevo.nombre = params.nombre
+			grupoNuevo.descripcion = params.descripcion
+			grupoNuevo.addToUsuarios(usuario)
+			grupoNuevo.save()
+			*/
+			grupoNuevo.crearGrupo(params, usuario)
+	}
 
-    		render(view:"crearGrupo", model: [usuario: usuario, exito: "El Grupo ${grupoNuevo.nombre} ha sido creado!"])
-  	}
-
+		render(view:"crearGrupo", model: [usuario: usuario, exito: "El Grupo ${grupoNuevo.nombre} ha sido creado!"])
+    }
+	
   	def verGrupos() {
     		List grupos = Grupo.findAll()
     		Usuario usuario = session.user
@@ -64,11 +68,11 @@ class GrupoController {
       			Grupo grupoActual = Grupo.findById(id)
       			Usuario usuario = session.user
 
-            Usuario.withTransaction {
-                usuario.addToGrupos(grupoActual)
-				grupoActual.addToUsuarios(usuario)
-                usuario.save()
-				grupoActual.save()
+            Usuario.withTransaction 
+			{
+                usuario.agregarA(grupoActual)
+				
+				grupoActual.agregarA(usuario)
             }
       			return redirect(controller: "grupo", action: "detalle", id:"${grupoActual.id}")
     		}
@@ -79,12 +83,13 @@ class GrupoController {
       			Long id = params.id.toLong()
       			Usuario usuario = session.user
 
-            Usuario.withTransaction {
-                def grupo = usuario.grupos.asList().find { it.id == id }
-                usuario.removeFromGrupos(grupo)
-				grupo.removeFromUsuarios(usuario)
-                usuario.save()
-				grupo.save()
+            Usuario.withTransaction 
+			{
+				def grupo = usuario.grupos.asList().find { it.id == id }
+				
+				grupo.removerA(usuario)
+				usuario.removerA(grupo)
+           
             }
 
             return redirect(controller: "grupo", action: "detalle", id:"${id}")

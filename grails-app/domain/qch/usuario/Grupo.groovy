@@ -16,4 +16,25 @@ class Grupo {
     public borrar() {
         this.delete(flush: true)
     }
+	
+	public crearGrupo(guardarGrupo, Usuario usuario)
+	{
+		this.creadorId = usuario.nickName
+		this.nombre = guardarGrupo.nombre
+		this.descripcion = guardarGrupo.descripcion
+		this.addToUsuarios(usuario)
+		this.save()
+	}
+	
+	public agregarA(Usuario usuario)
+	{
+		this.addToUsuarios(usuario)
+		this.save()
+	}
+	
+	public removerA(Usuario usuario)
+	{
+		this.removeFromUsuarios(usuario)
+		this.save()
+	}
 }

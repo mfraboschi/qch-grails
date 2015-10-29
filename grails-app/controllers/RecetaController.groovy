@@ -119,7 +119,7 @@ class RecetaController {
         }
 
         nuevaReceta.save(flush:true)
-
+		
         render(view:"crearReceta", model: [usuario: usuario, exito: "La receta ha sido creada!"])
     }
 
@@ -156,7 +156,8 @@ class RecetaController {
 
         calificacion.receta = Receta.findById(params.id)
         calificacion.usuario = session.user
-        calificacion.puntaje = Integer.valueOf(params.calificacion)
+
+		calificacion.puntaje = Integer.valueOf(params.calificacion)
 
         calificacion.save(flush: true)
 
