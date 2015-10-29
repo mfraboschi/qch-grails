@@ -30,19 +30,9 @@ class RecetaController {
     		Receta recetaActual = Receta.findById(id)
             recetaActual.cantVisitas = recetaActual.cantVisitas + 1
 			
-			if(session.user.sexo.equals('femenino'))
-			{
-				cantVisitasHembras = cantVisitasHembras + 1;
-			}
-			else
-			{
-				cantVisitasMachos = cantVisitasMachos + 1;
-			}
-			
             recetaActual.save(flush: true)
 
-			println(recetaActual.cantVisitas);
-            def calificacion = Calificacion.findByRecetaAndUsuario(recetaActual, session.user)
+			def calificacion = Calificacion.findByRecetaAndUsuario(recetaActual, session.user)
 
     		return render(view:"detalleReceta", model: [receta: recetaActual, calificacion: calificacion])
     	}
