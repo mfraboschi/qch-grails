@@ -1,6 +1,8 @@
-<%@ page import="qch.enums.CondicionPreexistente; qch.enums.Dificultad" %>
+<%@ page import="qch.enums.CondicionPreexistente" %>
+<%@ page import="qch.enums.Dificultad" %>
 <%@ page import="qch.enums.Dieta" %>
-
+<%@ page import="qch.enums.Temporada" %>
+<%@ page import="qch.enums.CategoriaEnum" %>
 
 <!DOCTYPE html>
 <html>
@@ -82,7 +84,7 @@
                         </tr>
                         <tr>
                             <td><label for="portion">Porciones:</label></td>
-                            <td><g:textField id="portion" name="porciones"/></td>
+                            <td><g:select id="portion" name="porciones" from="${1..10}"/></td>
                         </tr>
                         <tr>
                             <td><label>Dieta:</label></td>
@@ -93,8 +95,32 @@
                             <td><g:select name="dificultad" from="${Dificultad.values()}" valueMessagePrefix="ENUM.Dificultad" noSelection="['':'Seleccionar']"/></td>
                         </tr>
                         <tr>
-                            <td><label>Contraindicacion:</label></td>
+                            <td><label>Condicion especial:</label></td>
                             <td><g:select name="precondicion" from="${CondicionPreexistente.values()}" valueMessagePrefix="ENUM.CondicionPreexistente" noSelection="['':'Seleccionar']"/></td>
+                        </tr>
+                        <tr>
+                            <td><label>Temporada:</label></td>
+                            <td><g:checkBox name="boxInvierno" value="${Temporada.INVIERNO}"/> Invierno</td>
+                            <td><label>Categoria:</label></td>
+                            <td><g:checkBox name="boxDesayuno" value="${CategoriaEnum.DESAYUNO}"/> Desayuno</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><g:checkBox name="boxVerano" value="${Temporada.VERANO}"/> Verano</td>
+                            <td></td>
+                            <td><g:checkBox name="boxAlmuerzo" value="${CategoriaEnum.ALMUERZO}"/> Almuerzo</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><g:checkBox name="boxOtonio" value="${Temporada.OTONIO}"/> Otoño</td>
+                            <td></td>
+                            <td><g:checkBox name="boxMerienda" value="${CategoriaEnum.MERIENDA}"/> Merienda</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><g:checkBox name="boxPrimavera" value="${Temporada.PRIMAVERA}"/> Primavera</td>
+                            <td></td>
+                            <td><g:checkBox name="boxCena" value="${CategoriaEnum.CENA}"/> Cena</td>
                         </tr>
                     </table>
                     <br><b><span>Procedimiento: </span></b><a href="#" id="addScnt">(Agregar otro Paso)</a><br><br>
@@ -103,7 +129,7 @@
                     </div>
                     <br><b><span>Ingredientes: </span></b><a href="#" id="addIngrediente">(Agregar otro)</a><br><br>
                     <div id="div_ingredientes">
-                        <p id="p_ingrediente"><g:select name="ingredientes" id="ingrediente" from="${ingredientes}" optionKey="id" optionValue="nombre" noSelection="['':'Seleccionar']"/> <label>Cantidad:</label><input type="text" name="cantidades"/></p>
+                        <p id="p_ingrediente"><g:select name="ingredientes" id="ingrediente" from="${ingredientes}" optionKey="id" optionValue="nombre" noSelection="['':'Seleccionar']"/><label>&nbsp&nbsp Cantidad: (g/cm³) </label><input type="text" name="cantidades" size="5"/></p>
                     </div>
                     <g:submitButton name="ingresar" value="Crear"/>
                 </g:form>

@@ -2,9 +2,14 @@ import qch.receta.Calificacion
 import qch.receta.Receta
 import qch.receta.ingrediente.Ingrediente
 import qch.receta.ingrediente.IngredienteReceta
+import qch.receta.TemporadaReceta
+import qch.receta.Categoria
+import qch.receta.Contraindicacion
 import qch.strategy.EstrategiaBusqueda
 import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
+import qch.enums.Temporada
+import qch.enums.CategoriaEnum
 
 class RecetaController {
 
@@ -29,7 +34,7 @@ class RecetaController {
     		Long id = params.id.toLong()
     		Receta recetaActual = Receta.findById(id)
             recetaActual.cantVisitas = recetaActual.cantVisitas + 1
-			
+
             recetaActual.save(flush: true)
 
 			def calificacion = Calificacion.findByRecetaAndUsuario(recetaActual, session.user)
@@ -84,17 +89,12 @@ class RecetaController {
         if(!params.caloriasTotal) {
             return render(view:"crearReceta", model: [usuario: usuario, error: "Debes completar las calorías"])
         }
-        if(!params.porciones) {
-            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes completar la cantidad de porciones"])
-        }
         if(!params.procedimientos) {
             return render(view:"crearReceta", model: [usuario: usuario, error: "Debes agregar al menos un procedimiento"])
         }
-
         if(!params.ingredientes) {
             return render(view:"crearReceta", model: [usuario: usuario, error: "Debes agregar al menos un ingrediente"])
         }
-
         if(!params.cantidades) {
             return render(view:"crearReceta", model: [usuario: usuario, error: "Debes especificar las cantidades"])
         }
@@ -105,6 +105,24 @@ class RecetaController {
         nuevaReceta.dificultad = params.dificultad
         nuevaReceta.creador = usuario.nickName
         nuevaReceta.dieta = params.dieta
+        nuevaReceta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: params.precondicion))
+
+        def invierno = params.boxInvierno
+        if (invierno == Temporada.INVIERNO) nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+        def verano = params.boxVerano
+        if (verano == Temporada.VERANO) nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
+        def otonio = params.boxOtonio
+        if (otonio == Temporada.OTONIO) nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+        def primavera = params.boxPrimavera
+        if (primavera == Temporada.PRIMAVERA) nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+        def desayuno = params.boxDesayuno
+        if (desayuno == CategoriaEnum.DESAYUNO) nuevaReceta.addToTemporadas(new Categoria(nombre: CategoriaEnum.DESAYUNO))
+        def almuerzo = params.boxAlmuerzo
+        if (almuerzo == CategoriaEnum.ALMUERZO) nuevaReceta.addToTemporadas(new Categoria(nombre: CategoriaEnum.ALMUERZO))
+        def merienda = params.boxMerienda
+        if (merienda == CategoriaEnum.MERIENDA) nuevaReceta.addToTemporadas(new Categoria(nombre: CategoriaEnum.MERIENDA))
+        def cena = params.boxCena
+        if (cena == CategoriaEnum.CENA) nuevaReceta.addToTemporadas(new Categoria(nombre: CategoriaEnum.CENA))
 
         def ingredientes = params.ingredientes instanceof String[] ? params.ingredientes : [params.ingredientes]
         def cantidades = params.cantidades instanceof String[] ? params.cantidades : [params.cantidades]
@@ -119,7 +137,7 @@ class RecetaController {
         }
 
         nuevaReceta.save(flush:true)
-		
+
         render(view:"crearReceta", model: [usuario: usuario, exito: "La receta ha sido creada!"])
     }
 
@@ -136,21 +154,21 @@ class RecetaController {
 
         render(view:"buscarReceta", model: [recetas: recetas])
     }
-	
+
 	/*def estadisticas()
 	{
 		def recetas = []
 
 
 		EstrategiaEstadistica estrategiaDeEstadisticas = recetaService.obtenerEstrategiaDeEstadisticas(params.estadistica)
-		
+
 		if (estrategiaDeEstadisticas) {
 			recetas = estrategiaDeEstadisticas.obtenerEstadisticas(params)
 		}
-		
+
 		render(view:"estadisticas", model: [recetas: recetas])
 	}*/
-	
+
     def calificar() {
         def calificacion = new Calificacion()
 
