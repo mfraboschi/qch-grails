@@ -32,7 +32,8 @@ class BootStrap {
 
     def crearRecetas() {
 
-        Usuario.withTransaction {
+        Usuario.withTransaction 
+		{
             Usuario user = new Usuario(rutina: Rutina.ACTIVA, pesoEnGramos: 8000, sexo: Sexo.MASCULINO, nombre: "QCH", alturaEnCentimetros: 180, contextura: Contextura.MEDIA, dieta: Dieta.DEPORTE, fechaNacimiento: new Date(), nickName: "qch", password: "qch").save()
 
             if(user.errors.errorCount) {
@@ -114,7 +115,7 @@ class BootStrap {
 
         Receta.withTransaction {
 
-            Receta receta = new Receta(nombre: "Pollo relleno con papas dauphine", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL)
+            Receta receta = new Receta(nombre: "Pollo relleno con papas dauphine", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.DEPORTE)
 
             receta.addToProcedimientos("Deshuesar el pollo (con piel) manteniendo la forma para lograr una especie de bolsa para luego rellenar.")
             receta.addToProcedimientos("Para el relleno, en sartÃ©n con oliva, rehogar los champignones en cuartos, sin mover hasta que doren, dar vuelta y dorar del otro lado. Sumar la panceta en bastones, el jamÃ³n en tiritas, la cebolla y puerro picados y condimentar.")
@@ -190,7 +191,7 @@ class BootStrap {
 
         Receta.withTransaction {
 
-            Receta receta = new Receta(nombre: "Milanesas de ciervo napolitanas", dificultad: Dificultad.BAJA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL)
+            Receta receta = new Receta(nombre: "Milanesas de ciervo napolitanas", dificultad: Dificultad.BAJA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.DEPORTE)
 
             receta.addToProcedimientos("Cortar las milanesas del lomo. Salar.")
             receta.addToProcedimientos("Pasar los bifes por el batido de huevos con ajo y perejil picados, sal, orï¿½gano, ajï¿½ molido y pimienta. Pasar por pan rallado y freï¿½r.")
@@ -220,8 +221,122 @@ class BootStrap {
 
             receta.save()
         }
-    }
+		
+		Receta.withTransaction
+		{
+			Receta receta = new Receta(nombre: "Tortilla al horno", dificultad: Dificultad.MEDIA, porciones: 2, caloriasTotal: 1231321, dieta: Dieta.VEGANO)
 
+			receta.addToProcedimientos("Pelar y cortar en cubos a las papas . Rayar las zanahorias.")
+			receta.addToProcedimientos("En un molde de horno, poner aceite en aerosol.")
+			receta.addToProcedimientos("Mezclar las papas con la sal/pimienta y el aceite. Colocarlo en el molde. Llevar al horno (350 grados faringes) hasta que las papas esten cocidas (aprox. unos 20').")
+			receta.addToProcedimientos("Batir los huevos, agregar las zanahorias rayadas. Esperar que esten las papas y agregarle esta preparacion. Cocinar nuevamente por unos 15' o hasta que el huevo este solidificado.")
+			receta.addToProcedimientos("Dejar enfriar y desmoldar.")
+			
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 50))
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Pimienta"), cantidadEnMiligramos: 50))
+
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Papa"), esIngredientePrincipal: true, cantidadGramos: 400, calorias: 4231))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Huevo"), esIngredientePrincipal: false, cantidadGramos: 600, calorias: 7231))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Zanahoria", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 200, calorias: 800))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Aceite de oliva"), esIngredientePrincipal: false, cantidadGramos: 50, calorias: 1213))
+			
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+
+			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.CELIAQUIA))
+
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+
+			receta.save()
+		}
+		
+		Receta.withTransaction
+		{
+			Receta receta = new Receta(nombre: "Pizza express sin horno y muy crocantita", dificultad: Dificultad.BAJA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.VEGETARIANO)
+
+			receta.addToProcedimientos("Hacemos una corona en el centro añadimos el aceite y la levadura disuelta en el agua lejitos por algun costadito agregamos la sal ya que si la agregamos junto a la levadura esta moriria y no tendria efecto la misma.")
+			receta.addToProcedimientos("Armamos la masa amasando muy bien hasta que este lisita y elástica, tapamos con trapo húmedo o bolsa de polietileno hasta que duplique su volumen.")
+			receta.addToProcedimientos("Una vez duplicado su volumen desgasificamos y cortamos 4 bollos iguales bollamos y dejamos descansar hasta que dupliquen otra vez. Una vez infladitos procedemos a estirar el bollo dentro del sarten previamente aceitado.")
+			receta.addToProcedimientos("Una vez estirada la masa dentro de la sartén disponemos salsa de tomate, mozzarella y lo que se nos ocurra como cualquier pizza tapamos y cocinamos en fuego corona unos 10 minutos o hasta que esta bien cocida.")
+			receta.addToProcedimientos("Abajo decoramos con aceite con condimentos, perejil, queso rallado y aceitunas.")
+			
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 10))
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Pimienta"), cantidadEnMiligramos: 50))
+			
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Harina", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 10, calorias: 800))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Agua"), esIngredientePrincipal: false, cantidadGramos: 250, calorias: 200))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Mozzarella"), esIngredientePrincipal: false, cantidadGramos: 1700, calorias: 17231))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Aceite de oliva"), esIngredientePrincipal: false, cantidadGramos: 15, calorias: 1213))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Levadura fresca de cerveza", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 10, calorias: 800))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Aceituna"), esIngredientePrincipal: false, cantidadGramos: 100, calorias: 2573))
+			
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+
+			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.CELIAQUIA))
+
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+			receta.save()
+		}
+		
+
+		Receta.withTransaction
+		{
+			Receta receta = new Receta(nombre: "Torreja al Horno", dificultad: Dificultad.MEDIA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.VEGANO)
+
+			receta.addToProcedimientos("Hacer una capa de salsa blanca, luego un colchón de espinaca (cruda) y los dos huevos crudos.")
+			receta.addToProcedimientos("Sobre los huevos poner otra capa de salsa blanca y otra de espinaca cruda. Después los granos de choclo, queso y algo de orégano.")
+			receta.addToProcedimientos("Llevar al horno unos 15' o hasta q el queso se derrita.")
+		
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 10))
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Pimienta"), cantidadEnMiligramos: 50))
+			
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Espinaca"), esIngredientePrincipal: false, cantidadGramos: 250, calorias: 200))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Huevo"), esIngredientePrincipal: false, cantidadGramos: 600, calorias: 7231))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Choclo", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 100, calorias: 2900))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Salsa blanca", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 10, calorias: 800))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Queso"), esIngredientePrincipal: false, cantidadGramos: 100, calorias: 2573))
+			
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+
+			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.CELIAQUIA))
+
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+			receta.save()
+		}
+		
+		Receta.withTransaction
+		{
+			Receta receta = new Receta(nombre: "Lomos De Pescado al horno", dificultad: Dificultad.MEDIA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.OVOLACTO)
+
+			receta.addToProcedimientos("Hacer una capa de salsa blanca, luego un colchón de espinaca (cruda) y los dos huevos crudos.")
+			receta.addToProcedimientos("Sobre los huevos poner otra capa de salsa blanca y otra de espinaca cruda. Después los granos de choclo, queso y algo de orégano.")
+			receta.addToProcedimientos("Llevar al horno unos 15' o hasta q el queso se derrita.")
+		
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 10))
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Pimienta"), cantidadEnMiligramos: 50))
+			
+            receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Cebolla"), esIngredientePrincipal: false, cantidadGramos: 200, calorias: 12313))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Lomos de pescado", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: true, cantidadGramos: 1000, calorias: 8900))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Anchoa", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 300, calorias: 800))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Salsa blanca"), esIngredientePrincipal: false, cantidadGramos: 100, calorias: 2573))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Manteca"), esIngredientePrincipal: false, cantidadGramos: 100, calorias: 1231))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Queso rallado", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 500, calorias: 5700))
+			
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+
+			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.DIABETES))
+
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+			receta.save()
+		}
+    }
     def crearCondimentos() {
         new Condimento(nombre: "Sal").save()
         new Condimento(nombre: "Pimienta").save()
