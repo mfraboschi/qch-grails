@@ -37,5 +37,25 @@ class Receta {
 
         return ingredienteReceta.ingrediente
     }
+
+    static Receta buscarPorId(id) {
+        Receta.findById(id)
+    }
+
+    def actualizarCalificacionPromedio() {
+        def calificacionesReceta = Calificacion.findAllByReceta(this)
+        Integer promedio = 0
+        calificacionesReceta.each() {
+            promedio += it.puntaje
+        }
+
+        this.calificacionPromedio = promedio / calificacionesReceta.size()
+        this.save(flush: true)
+    }
+
+    def aumentarVisitas() {
+        this.cantVisitas++
+        this.save(flush: true)
+    }
 	
 }

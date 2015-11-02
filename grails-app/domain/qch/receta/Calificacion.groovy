@@ -10,5 +10,16 @@ class Calificacion implements Serializable {
     }
 
     Integer puntaje
+
+    static def crearCalificacion(Receta receta, Usuario usuario, Integer puntaje) {
+        def calificacion = new Calificacion()
+
+        calificacion.receta = receta
+        calificacion.usuario = usuario
+
+        calificacion.puntaje = Integer.valueOf(puntaje)
+
+        calificacion.save(flush: true)
+    }
 }
 

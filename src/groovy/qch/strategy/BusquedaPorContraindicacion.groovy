@@ -1,6 +1,7 @@
 package qch.strategy
 
-import qch.receta.Receta
+import qch.enums.CondicionPreexistente
+import qch.receta.Contraindicacion
 
 /**
  * Created by mfraboschi on 13/10/15.
@@ -8,6 +9,12 @@ import qch.receta.Receta
 class BusquedaPorContraindicacion implements EstrategiaBusqueda {
     @Override
     def obtenerResultados(Map parametros) {
-        Receta.findAllByContraindicacionesInList([parametros.contraindicacion])
+        def criteria = Contraindicacion.createCriteria()
+
+        def result = criteria.list {
+            eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)
+        }
+
+        return result.collect { it.receta }
     }
 }

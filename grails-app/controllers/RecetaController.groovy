@@ -32,10 +32,9 @@ class RecetaController {
    	def detalle(){
    		if(params.id){
     		Long id = params.id.toLong()
-    		Receta recetaActual = Receta.findById(id)
-            recetaActual.cantVisitas = recetaActual.cantVisitas + 1
+    		Receta recetaActual = Receta.buscarPorId(id)
 
-            recetaActual.save(flush: true)
+            recetaActual.aumentarVisitas()
 
 			def calificacion = Calificacion.findByRecetaAndUsuario(recetaActual, session.user)
 
@@ -46,19 +45,13 @@ class RecetaController {
     def seleccionar() {
         if(params.id) {
             Long id = params.id.toLong()
-            Receta recetaActual = Receta.findById(id)
 
-            HistorialUsuario historial = new HistorialUsuario()
-            historial.receta = recetaActual
-            historial.usuario = session.user
-            historial.fechaCreacion = new Date()
+            Receta recetaActual = Receta.buscarPorId(id)
 
-            historial.save()
+            HistorialUsuario.guardarHistorialUsuario(recetaActual, session.user)
 
             return render(view:"detalleReceta", model:[receta: recetaActual, exito:"Seleccionaste la receta!"])
         }
-
-        Receta.findAllByCantVisitasGreaterThan()
     }
 
     def todas() {
@@ -146,13 +139,13 @@ class RecetaController {
         def recetas = []
 
 
-        EstrategiaBusqueda estrategiaDeBusqueda = recetaService.obtenerEstrategiaDeBusqueda(params.findAll { it.value != 'null'}.keySet())
+        EstrategiaBusqueda estrategiaDeBusqueda = recetaService.obtenerEstrategiaDeBusqueda(params.findAll { it.value }.keySet())
 
         if (estrategiaDeBusqueda) {
             recetas = estrategiaDeBusqueda.obtenerResultados(params)
         }
 
-        render(view:"buscarReceta", model: [recetas: recetas])
+        render(view:"buscarReceta", model: [recetas: recetas, dificultad: params.dificultad, dieta: params.dieta, contraindicacion: params.contraindicacion])
     }
 
 	/*def estadisticas()
@@ -170,24 +163,9 @@ class RecetaController {
 	}*/
 
     def calificar() {
-        def calificacion = new Calificacion()
+        def calificacion = Calificacion.crearCalificacion(Receta.buscarPorId(params.id), session.user, Integer.valueOf(params.calificacion))
 
-        calificacion.receta = Receta.findById(params.id)
-        calificacion.usuario = session.user
-
-		calificacion.puntaje = Integer.valueOf(params.calificacion)
-
-        calificacion.save(flush: true)
-
-        def calificacionesReceta = Calificacion.findAllByReceta(calificacion.receta)
-        Integer promedio = 0
-        calificacionesReceta.each() {
-            promedio += it.puntaje
-        }
-        def receta = calificacion.receta
-        receta.calificacionPromedio = promedio / calificacionesReceta.size()
-
-        receta.save(flush: true)
+        calificacion.receta.actualizarCalificacionPromedio()
 
         render(status: 200)
     }

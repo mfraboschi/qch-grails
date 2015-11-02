@@ -53,7 +53,7 @@ environments {
                jdbcInterceptors = "ConnectionState"
                defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
             }
-            
+
             /*dataSource {
             dbCreate = "validate"
             url = "jdbc:mysql://127.0.0.1:3316"

@@ -12,8 +12,6 @@ import qch.receta.Receta
 class BusquedaPorDificultadDietaYContraindicacion implements EstrategiaBusqueda {
     @Override
     def obtenerResultados(Map parametros) {
-        def contraindicacion = new Contraindicacion(condicionPreexistente: CondicionPreexistente.valueOf(parametros.contraindicacion))
-        //Receta.findAllByDificultadAndDietaAndContraindicacionesInList(parametros.dificultad, parametros.dieta, [contraindicacion])
 
         def criteria = Contraindicacion.createCriteria()
 

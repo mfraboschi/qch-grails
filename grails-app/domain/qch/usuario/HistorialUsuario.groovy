@@ -17,4 +17,13 @@ class HistorialUsuario {
         receta lazy: false
     }
 
+    static void guardarHistorialUsuario(receta, usuario) {
+        HistorialUsuario historial = new HistorialUsuario()
+        historial.receta = receta
+        historial.usuario = usuario
+        historial.fechaCreacion = new Date()
+
+        historial.save(flush: true)
+    }
+
 }
