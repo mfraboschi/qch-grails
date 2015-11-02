@@ -161,6 +161,16 @@ class RecetaController {
 
         calificacion.save(flush: true)
 
+        def calificacionesReceta = Calificacion.findAllByReceta(calificacion.receta)
+        Integer promedio = 0
+        calificacionesReceta.each() {
+            promedio += it.puntaje
+        }
+        def receta = calificacion.receta
+        receta.calificacionPromedio = promedio / calificacionesReceta.size()
+
+        receta.save(flush: true)
+
         render(status: 200)
     }
 

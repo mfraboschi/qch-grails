@@ -53,6 +53,30 @@ environments {
                jdbcInterceptors = "ConnectionState"
                defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
             }
+            
+            /*dataSource {
+            dbCreate = "validate"
+            url = "jdbc:mysql://127.0.0.1:3316"
+            username = "root"
+            password = ""
+            dialect=org.hibernate.dialect.MySQLDialect.class
+
+            properties {
+                maxActive = 100
+                maxIdle = 20
+                minIdle = 10
+                initialSize = 5
+                minEvictableIdleTimeMillis = 1000 * 60
+                timeBetweenEvictionRunsMillis = 1000 * 60
+                maxWait = 10000
+                testOnBorrow=true
+                testWhileIdle=true
+                testOnReturn=true
+                validationQuery="SELECT 1"
+                removeAbandoned = true
+                logAbandoned = true
+            }
+            }*/
         }
     }
 }

@@ -13,12 +13,10 @@ class Receta {
     String nombre
     Dificultad dificultad
     Integer caloriasTotal
-    Integer calificacionPromedio = 0
+    Float calificacionPromedio = 0
     Integer porciones
     String creador
     Integer cantVisitas = 0
-    Integer cantVisitasHembras = 0
-    Integer cantVisitasMachos = 0
     Dieta dieta
     List procedimientos
 

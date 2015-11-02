@@ -45,6 +45,16 @@
                 <li>
                     <div style="display: inline-block; border-style: solid; border-color: #E3E0BB; height: 55px; width: 500px;">
                         <b><g:link style="color:#85A32F" action="detalle" id="${receta.id}">${receta.nombre}</g:link></b>
+                        <table style="display: block; margin-top: 13px;">
+                            <tbody style="display: block;">
+                            <tr style="display: block;">
+                                <td style="width: 385px; font-size:13px;">Visitas: <b>${receta.cantVisitas}</b></td>
+                                <g:if test="${receta.calificacionPromedio}">
+                                    <td style="align-items: right;align-self: right;font-size:12px;">Calificación: <b>${receta.calificacionPromedio}</b></td>
+                                </g:if>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </li>
             </g:each>
