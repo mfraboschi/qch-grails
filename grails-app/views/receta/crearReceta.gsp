@@ -96,7 +96,7 @@
                         </tr>
                         <tr>
                             <td><label>Condicion especial:</label></td>
-                            <td><g:select name="precondicion" from="${CondicionPreexistente.values()}" valueMessagePrefix="ENUM.CondicionPreexistente" noSelection="['':'Seleccionar']"/></td>
+                            <td><g:select name="precondicion" from="${CondicionPreexistente.values()}" valueMessagePrefix="ENUM.CondicionPreexistente"/></td>
                         </tr>
                         <tr>
                             <td><label>Temporada:</label></td>

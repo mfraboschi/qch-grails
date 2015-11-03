@@ -43,8 +43,9 @@
     </head>
     <body>
         <header>
-            <h1><a href="/"></a></h1>
+            <h1><a href="/que-comemos-hoy/receta/index"></a></h1>
             <h2>¿Qué comemos hoy?</h2>
+            <h4><a style="color: black" href="/que-comemos-hoy/usuario/perfil">${usuario.nombre}</a>  |  <a style="color: #2E5C8A" href="/que-comemos-hoy/">Log Out</a></h4>
         </header>
         <section id="mainContent" class="clear">
             <nav>

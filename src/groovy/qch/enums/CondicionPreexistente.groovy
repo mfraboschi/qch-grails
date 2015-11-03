@@ -5,6 +5,7 @@ package qch.enums
  */
 enum CondicionPreexistente {
 
+    NINGUNA('Ninguna'),
     DIABETES('Diabetes'),
     HIPERTENSION('Hipertension'),
     CELIAQUIA('Celiasis')

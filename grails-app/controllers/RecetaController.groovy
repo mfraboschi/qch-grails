@@ -38,7 +38,7 @@ class RecetaController {
 
 			def calificacion = Calificacion.findByRecetaAndUsuario(recetaActual, session.user)
 
-    		return render(view:"detalleReceta", model: [receta: recetaActual, calificacion: calificacion])
+    		return render(view:"detalleReceta", model: [usuario: session.user, receta: recetaActual, calificacion: calificacion])
     	}
    	}
 
@@ -99,24 +99,17 @@ class RecetaController {
         nuevaReceta.creador = usuario.nickName
         nuevaReceta.dieta = params.dieta
         nuevaReceta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: params.precondicion))
-        /*
-        def invierno = params.boxInvierno
-        if (invierno == Temporada.INVIERNO) nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
-        def verano = params.boxVerano
-        if (verano == Temporada.VERANO) nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
-        def otonio = params.boxOtonio
-        if (otonio == Temporada.OTONIO) nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
-        def primavera = params.boxPrimavera
-        if (primavera == Temporada.PRIMAVERA) nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
-        def desayuno = params.boxDesayuno
-        if (desayuno == CategoriaEnum.DESAYUNO) nuevaReceta.addToTemporadas(new Categoria(nombre: CategoriaEnum.DESAYUNO))
-        def almuerzo = params.boxAlmuerzo
-        if (almuerzo == CategoriaEnum.ALMUERZO) nuevaReceta.addToTemporadas(new Categoria(nombre: CategoriaEnum.ALMUERZO))
-        def merienda = params.boxMerienda
-        if (merienda == CategoriaEnum.MERIENDA) nuevaReceta.addToTemporadas(new Categoria(nombre: CategoriaEnum.MERIENDA))
-        def cena = params.boxCena
-        if (cena == CategoriaEnum.CENA) nuevaReceta.addToTemporadas(new Categoria(nombre: CategoriaEnum.CENA))
-        */
+
+        if (params.boxInvierno == "INVIERNO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+        if (params.boxVerano == "VERANO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
+        if (params.boxOtonio == "OTONIO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+        if (params.boxPrimavera == "PRIMAVERA") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+
+        if (params.boxDesayuno == "DESAYUNO") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.DESAYUNO))
+        if (params.boxAlmuerzo == "ALMUERZO") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
+        if (params.boxMerienda == "MERIENDA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
+        if (params.boxCena == "CENA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+
         def ingredientes = params.ingredientes instanceof String[] ? params.ingredientes : [params.ingredientes]
         def cantidades = params.cantidades instanceof String[] ? params.cantidades : [params.cantidades]
         def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]
