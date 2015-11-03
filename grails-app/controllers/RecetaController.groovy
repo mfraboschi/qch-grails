@@ -98,18 +98,19 @@ class RecetaController {
         nuevaReceta.dificultad = params.dificultad
         nuevaReceta.creador = usuario.nickName
         nuevaReceta.dieta = params.dieta
+        nuevaReceta.urlImagen = params.url
         nuevaReceta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: params.precondicion))
 
         if (params.boxInvierno == "INVIERNO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
         if (params.boxVerano == "VERANO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
         if (params.boxOtonio == "OTONIO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
         if (params.boxPrimavera == "PRIMAVERA") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
-
+/*
         if (params.boxDesayuno == "DESAYUNO") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.DESAYUNO))
         if (params.boxAlmuerzo == "ALMUERZO") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
         if (params.boxMerienda == "MERIENDA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
         if (params.boxCena == "CENA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
-
+*/
         def ingredientes = params.ingredientes instanceof String[] ? params.ingredientes : [params.ingredientes]
         def cantidades = params.cantidades instanceof String[] ? params.cantidades : [params.cantidades]
         def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]
@@ -138,7 +139,7 @@ class RecetaController {
             recetas = estrategiaDeBusqueda.obtenerResultados(params)
         }
 
-        render(view:"buscarReceta", model: [recetas: recetas, dificultad: params.dificultad, dieta: params.dieta, contraindicacion: params.contraindicacion])
+        render(view:"buscarReceta", model: [usuario: session.user, recetas: recetas, dificultad: params.dificultad, dieta: params.dieta, contraindicacion: params.contraindicacion])
     }
 
 	/*def estadisticas()
@@ -154,6 +155,11 @@ class RecetaController {
 
 		render(view:"estadisticas", model: [recetas: recetas])
 	}*/
+
+    def recomendadas() {
+        Usuario userActual = session.user
+
+    }
 
     def calificar() {
         def calificacion = Calificacion.crearCalificacion(Receta.buscarPorId(params.id), session.user, Integer.valueOf(params.calificacion))

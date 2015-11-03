@@ -18,6 +18,7 @@ class Receta {
     String creador
     Integer cantVisitas = 0
     Dieta dieta
+    String urlImagen = ""
     List procedimientos
 
     static hasMany = [ingredientes: IngredienteReceta,
@@ -57,5 +58,5 @@ class Receta {
         this.cantVisitas++
         this.save(flush: true)
     }
-	
+
 }

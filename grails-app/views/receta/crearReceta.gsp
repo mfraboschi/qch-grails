@@ -123,6 +123,7 @@
                             <td><g:checkBox name="boxCena" value="${CategoriaEnum.CENA}"/> Cena</td>
                         </tr>
                     </table>
+                    &nbspURL Imagen: &nbsp&nbsp&nbsp<input type="text" size="62" name="url"/><br><br>
                     <br><b><span>Procedimiento: </span></b><a href="#" id="addScnt">(Agregar otro Paso)</a><br><br>
                     <div id="p_scents">
                         <p><label for="p_scnts">Paso 1: &emsp;<input type="text" size="80" id="p_scnt" name="procedimientos"/></label></p>

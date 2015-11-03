@@ -58,24 +58,38 @@
             </nav>
             <section id="mainRight">
                 <ul>
-                    <b><h2>${receta.nombre}</h2></b>
+                    <b style="font-size: 1.4em"><h2>${receta.nombre}</h2></b>
+                    <h4><u>Procedimiento:</u></h4>
                     <ul style="list-style:initial">
                     <g:each var="procedimiento" in="${receta.procedimientos}">
                         <li>${procedimiento}</li>
                     </g:each>
                     </ul>
-                    <table>
+                    <table style="margin-left: 15%">
                         <tr>
-                            <td style="width: 200px">
+                            <td style="width: 240px">
                                 <b><div style="text-align: center">Ingredientes</div></b>
                                 <ul class="lista-ingredientes">
                                     <g:each var="ingrediente" in="${receta.ingredientes}">
-                                        <li>${ingrediente.ingrediente.nombre} ${ingrediente.cantidadGramos}grs</li>
+                                        <li>${ingrediente.ingrediente.nombre} ${ingrediente.cantidadGramos} grs</li>
                                     </g:each>
                                 </ul>
                             </td>
-                            <td style="padding-left: 140px;">
-                                <div><img src="http://www.cocinerosargentinos.com/images/1_bondiola-con-salsa-de-panceta-y-porotos-con-batatas-agridulces.jpg"></div>
+                            <td style="width: 210px">
+                                <b><div style="text-align: center">Condimentos</div></b>
+                                <ul class="lista-ingredientes">
+                                    <g:each var="condimento" in="${receta.condimentos}">
+                                        <li>${condimento.condimento.nombre} ${condimento.cantidadEnMiligramos} mgrs</li>
+                                    </g:each>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="text-align: center">----------------------------------------------------------------------------------------</div><br>
+                    <table style="margin-left: 3%">
+                        <tr>
+                            <td><img src="${receta.urlImagen}"></td>
+                            <td>
                                 <table>
                                     <tr>
                                         <td><label><b>Dificultad: </b></label></td>
