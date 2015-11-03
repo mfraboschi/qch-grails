@@ -44,7 +44,7 @@ class BootStrap {
         }
 
         Receta.withTransaction {
-            Receta receta = new Receta(nombre: "Bondiola con salsa de panceta y porotos con batatas agridulces", dificultad: Dificultad.MEDIA, porciones: 6, caloriasTotal: 123131, dieta: Dieta.NORMAL)
+            Receta receta = new Receta(nombre: "Bondiola con salsa de panceta y porotos con batatas agridulces", dificultad: Dificultad.MEDIA, porciones: 6, caloriasTotal: 123131, dieta: Dieta.NORMAL, urlImagen: "http://www.chacinadosscarano.com.ar/images/bondiola-de-cerdo.jpg")
 
             receta.addToProcedimientos("Bridar la bondiola entera para que no se deforme. Dorar de todos los lados en oliva junto con las cebolla, ajo y panceta en grandes trozos. Salpimentar. Desglasar con vino blanco.")
             receta.addToProcedimientos("Cuando evapora el alcohol, pasar toda la preparaciÃ³n a una fuente para horno junto con los porotos negros (hidratados en agua y hervidos por una hora y media).")
@@ -79,7 +79,7 @@ class BootStrap {
 
 
         Receta.withTransaction {
-            Receta receta = new Receta(nombre: "Supremas de pollo al horno con mojo y papas a la leche", dificultad: Dificultad.BAJA, porciones: 6, caloriasTotal: 123131, dieta: Dieta.NORMAL)
+            Receta receta = new Receta(nombre: "Supremas de pollo al horno con mojo y papas a la leche", dificultad: Dificultad.BAJA, porciones: 6, caloriasTotal: 123131, dieta: Dieta.NORMAL, urlImagen: "http://www.mis-recetas.org/receta/foto/0002/5076/grande/P1010094.jpg")
 
             receta.addToProcedimientos("Empezamos con el mojo. Picamos todos los ingredientes del mojo bien chiquito y ponemos en un pote con el vinagre el aceite y el jugo de limon")
             receta.addToProcedimientos("por otro lado condimentamos el pollo lo colocamos en una asadera previamente aceitada y le ponemos por arriba las aceitunas y la cebolla con el morron en tiritas. ..le vertimos el mojo y ponemos al horno previamente calentado.")
@@ -115,7 +115,7 @@ class BootStrap {
 
         Receta.withTransaction {
 
-            Receta receta = new Receta(nombre: "Pollo relleno con papas dauphine", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.DEPORTE)
+            Receta receta = new Receta(nombre: "Pollo relleno con papas dauphine", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.DEPORTE, urlImagen: "http://www.cocinerosargentinos.com/images/1_pollo-a-la-mostaza-con-papas-a-la-provenzal.jpg")
 
             receta.addToProcedimientos("Deshuesar el pollo (con piel) manteniendo la forma para lograr una especie de bolsa para luego rellenar.")
             receta.addToProcedimientos("Para el relleno, en sartÃ©n con oliva, rehogar los champignones en cuartos, sin mover hasta que doren, dar vuelta y dorar del otro lado. Sumar la panceta en bastones, el jamÃ³n en tiritas, la cebolla y puerro picados y condimentar.")
@@ -154,7 +154,7 @@ class BootStrap {
 
         Receta.withTransaction {
 
-            Receta receta = new Receta(nombre: "Bifes de chorizo a la mostaza al disco con papas fritas", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL)
+            Receta receta = new Receta(nombre: "Bifes de chorizo a la mostaza al disco con papas fritas", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://i.ytimg.com/vi/CdDoXyOjFZ8/maxresdefault.jpg")
 
             receta.addToProcedimientos("En disco con oliva, sellar los bifes de ambos lados, y cuando doran agregar la cebolla y morrones fileteados.")
             receta.addToProcedimientos("Para elAl transparentar los vegetales, sumar el ajo picado. Desglasar con vino blanco. Cuando evapora el alcohol, sumar la mostaza y cocer por unos 15 minutos.")
@@ -284,7 +284,7 @@ class BootStrap {
 
 		Receta.withTransaction
 		{
-			Receta receta = new Receta(nombre: "Torreja al Horno", dificultad: Dificultad.MEDIA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.VEGANO)
+			Receta receta = new Receta(nombre: "Torreja al Horno", dificultad: Dificultad.MEDIA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.VEGANO, urlImagen: "https://img-global.cpcdn.com/002_recipes/1223874af6216aff/640x640sq70/photo.jpg")
 
 			receta.addToProcedimientos("Hacer una capa de salsa blanca, luego un colchón de espinaca (cruda) y los dos huevos crudos.")
 			receta.addToProcedimientos("Sobre los huevos poner otra capa de salsa blanca y otra de espinaca cruda. Después los granos de choclo, queso y algo de orégano.")
