@@ -99,7 +99,7 @@ class RecetaController {
         nuevaReceta.creador = usuario.nickName
         nuevaReceta.dieta = params.dieta
         nuevaReceta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: params.precondicion))
-
+        /*
         def invierno = params.boxInvierno
         if (invierno == Temporada.INVIERNO) nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
         def verano = params.boxVerano
@@ -116,7 +116,7 @@ class RecetaController {
         if (merienda == CategoriaEnum.MERIENDA) nuevaReceta.addToTemporadas(new Categoria(nombre: CategoriaEnum.MERIENDA))
         def cena = params.boxCena
         if (cena == CategoriaEnum.CENA) nuevaReceta.addToTemporadas(new Categoria(nombre: CategoriaEnum.CENA))
-
+        */
         def ingredientes = params.ingredientes instanceof String[] ? params.ingredientes : [params.ingredientes]
         def cantidades = params.cantidades instanceof String[] ? params.cantidades : [params.cantidades]
         def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]

@@ -5,6 +5,7 @@ import qch.enums.Contextura
 import qch.enums.Dieta
 import qch.enums.Rutina
 import qch.enums.Sexo
+import qch.enums.CondicionPreexistente
 
 class Usuario {
 
@@ -21,11 +22,12 @@ class Usuario {
     Dieta dieta
     Rutina rutina
 
-    static hasMany = [recetas: Receta, grupos: Grupo]
+    static hasMany = [condiciones: CondicionPreexistente, recetas: Receta, grupos: Grupo]
 
     static mapping = {
         id generator:'assigned', name: 'nickName'
         grupos lazy: false
+        condiciones lazy: false
     }
 
     static belongsTo = Grupo
@@ -51,9 +53,14 @@ class Usuario {
 		this.contextura = formNuevoUsuario.contextura
 		this.dieta = formNuevoUsuario.dieta
 		this.rutina = formNuevoUsuario.rutina
-		this.save(flush:true)
+
+    if (formNuevoUsuario.boxCeliaco == "CELIAQUIA") this.addToCondiciones(CondicionPreexistente.CELIAQUIA)
+    if (formNuevoUsuario.boxHipertenso == "HIPERTENSION") this.addToCondiciones(CondicionPreexistente.HIPERTENSION)
+    if (formNuevoUsuario.boxDiabetes == "DIABETES") this.addToCondiciones(CondicionPreexistente.DIABETES)
+
+    this.save(flush:true)
 	}
-	
+
 	public agregarA(Grupo grupo)
 	{
 		this.addToGrupos(grupo)

@@ -2,6 +2,7 @@
 <%@ page import="qch.enums.Dieta" %>
 <%@ page import="qch.enums.Rutina" %>
 <%@ page import="qch.enums.Contextura" %>
+<%@ page import="qch.enums.CondicionPreexistente" %>
 
 <!DOCTYPE html>
 <html>
@@ -75,6 +76,20 @@
                         <tr>
                             <td><label>Rutina:</label></td>
                             <td><g:select name="rutina" from="${Rutina.values()}" valueMessagePrefix="ENUM.Rutina"/></td>
+                        </tr>
+                        <tr><td></td></tr>
+                        <tr>
+                            <td><label>Condiciones Prexistentes:</label></td>
+                            <td><g:checkBox name="boxDiabetes" value="${CondicionPreexistente.DIABETES}"/> Diabetes</td>
+                            <!--td><g:checkBox name="boxDiabetes" value="${CondicionPreexistente.DIABETES}"/> Diabetes</td-->
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><g:checkBox name="boxHipertenso" value="${CondicionPreexistente.HIPERTENSION}"/> Hipertensión</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><g:checkBox name="boxCeliaco" value="${CondicionPreexistente.CELIAQUIA}"/> Celiaquia</td>
                         </tr>
                         <tr><td></td></tr>
                         <tr>
