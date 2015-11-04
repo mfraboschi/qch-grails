@@ -14,8 +14,11 @@ import qch.strategy.BusquedaPorDificultadYDieta
 import qch.strategy.BusquedaPorContraindicacionTemporadaCategoriaYDieta
 import qch.strategy.BusquedaPorTemporada
 import qch.strategy.BusquedaPorCategoria
+import qch.strategy.BusquedaPorTemporadaYCategoria
+import qch.strategy.BusquedaPorCategoriaYContraindicacion
+import qch.strategy.BusquedaPorCategoriaTemporadaYContraindicacion
+import qch.strategy.BusquedaPorTemporadaYContraindicacion
 import qch.strategy.EstrategiaBusqueda
-
 /**
  * Created by mfraboschi on 27/9/15.
  */
@@ -36,9 +39,13 @@ class RecetaService {
                                     dieta_ingredientePpal: new BusquedaPorDietaEIngredientePrincipal(),
                                     contraindicacion_ingredientePpal: new BusquedaPorContraindicacionEIngredientePrincipal(),
                                     dificultad_dieta_contraindicacion: new BusquedaPorDificultadDietaYContraindicacion(),
+									contraindicacion_categoria: new BusquedaPorCategoriaYContraindicacion(),
+									temporada_categoria: new BusquedaPorTemporadaYCategoria(),
+									temporada_contraindicacion: new BusquedaPorTemporadaYContraindicacion(),
                                     dieta_contraindicacion_ingredientePpal: new BusquedaPorDietaContraindicacionEIngredientePrincipal(),
                                     dificultad_dieta_contraindicacion_ingredientePpal: new BusquedaPorDificultadDietaContraindicacionEIngredientePrincipal(),
-									categoria_temporada_dieta_contraindicacion: new BusquedaPorContraindicacionTemporadaCategoriaYDieta()]
+									contraindicacion_temporada_categoria: new BusquedaPorCategoriaTemporadaYContraindicacion(),
+									contraindicacion_temporada_categoria_dieta: new BusquedaPorContraindicacionTemporadaCategoriaYDieta()]
 
     public crearReceta() {
 
