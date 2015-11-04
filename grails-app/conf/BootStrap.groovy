@@ -191,7 +191,7 @@ class BootStrap {
 
         Receta.withTransaction {
 
-            Receta receta = new Receta(nombre: "Milanesas de ciervo napolitanas", dificultad: Dificultad.BAJA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.DEPORTE)
+            Receta receta = new Receta(nombre: "Milanesas de ciervo napolitanas", dificultad: Dificultad.BAJA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.DEPORTE, urlImagen: "http://www.just-eat.es/blog/wp-content/uploads/2011/04/milanesa-napolitana1.jpg")
 
             receta.addToProcedimientos("Cortar las milanesas del lomo. Salar.")
             receta.addToProcedimientos("Pasar los bifes por el batido de huevos con ajo y perejil picados, sal, orï¿½gano, ajï¿½ molido y pimienta. Pasar por pan rallado y freï¿½r.")
@@ -224,7 +224,7 @@ class BootStrap {
 		
 		Receta.withTransaction
 		{
-			Receta receta = new Receta(nombre: "Tortilla al horno", dificultad: Dificultad.MEDIA, porciones: 2, caloriasTotal: 1231321, dieta: Dieta.VEGANO)
+			Receta receta = new Receta(nombre: "Tortilla al horno", dificultad: Dificultad.MEDIA, porciones: 2, caloriasTotal: 1231321, dieta: Dieta.VEGANO, urlImagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyO8UzrqiZp9LvAcyyJty3lTu2QMmtPBjYGXLuJyvSjNIH3lUw")
 
 			receta.addToProcedimientos("Pelar y cortar en cubos a las papas . Rayar las zanahorias.")
 			receta.addToProcedimientos("En un molde de horno, poner aceite en aerosol.")
@@ -253,7 +253,7 @@ class BootStrap {
 		
 		Receta.withTransaction
 		{
-			Receta receta = new Receta(nombre: "Pizza express sin horno y muy crocantita", dificultad: Dificultad.BAJA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.VEGETARIANO)
+			Receta receta = new Receta(nombre: "Pizza express sin horno y muy crocantita", dificultad: Dificultad.BAJA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.VEGETARIANO, urlImagen: "http://servinox.com.mx/blog/wp-content/uploads/2015/03/4b7d08_25661c7cb90c4a2a95f28b05c7fe11fb.jpg")
 
 			receta.addToProcedimientos("Hacemos una corona en el centro añadimos el aceite y la levadura disuelta en el agua lejitos por algun costadito agregamos la sal ya que si la agregamos junto a la levadura esta moriria y no tendria efecto la misma.")
 			receta.addToProcedimientos("Armamos la masa amasando muy bien hasta que este lisita y elástica, tapamos con trapo húmedo o bolsa de polietileno hasta que duplique su volumen.")
@@ -311,7 +311,7 @@ class BootStrap {
 		
 		Receta.withTransaction
 		{
-			Receta receta = new Receta(nombre: "Lomos De Pescado al horno", dificultad: Dificultad.MEDIA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.OVOLACTO)
+			Receta receta = new Receta(nombre: "Lomos De Pescado al horno", dificultad: Dificultad.MEDIA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.OVOLACTO, urlImagen: "http://www.cocinillas.es/wp-content/uploads/2011/04/merluza-al-horno.jpg")
 
 			receta.addToProcedimientos("Hacer una capa de salsa blanca, luego un colchón de espinaca (cruda) y los dos huevos crudos.")
 			receta.addToProcedimientos("Sobre los huevos poner otra capa de salsa blanca y otra de espinaca cruda. Después los granos de choclo, queso y algo de orégano.")
