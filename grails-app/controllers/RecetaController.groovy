@@ -108,12 +108,12 @@ class RecetaController {
         if (params.boxVerano == "VERANO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
         if (params.boxOtonio == "OTONIO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
         if (params.boxPrimavera == "PRIMAVERA") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
-
+/*
         if (params.boxDesayuno == "DESAYUNO") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.DESAYUNO))
         if (params.boxAlmuerzo == "ALMUERZO") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
         if (params.boxMerienda == "MERIENDA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
         if (params.boxCena == "CENA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
-
+*/
         def ingredientes = params.ingredientes instanceof String[] ? params.ingredientes : [params.ingredientes]
         def cantidades = params.cantidades instanceof String[] ? params.cantidades : [params.cantidades]
         def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]
