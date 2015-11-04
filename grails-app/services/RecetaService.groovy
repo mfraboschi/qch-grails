@@ -11,6 +11,9 @@ import qch.strategy.BusquedaPorDificultadDietaContraindicacionEIngredientePrinci
 import qch.strategy.BusquedaPorDificultadDietaYContraindicacion
 import qch.strategy.BusquedaPorDificultadYContraindicacion
 import qch.strategy.BusquedaPorDificultadYDieta
+import qch.strategy.BusquedaPorContraindicacionTemporadaCategoriaYDieta
+import qch.strategy.BusquedaPorTemporada
+import qch.strategy.BusquedaPorCategoria
 import qch.strategy.EstrategiaBusqueda
 
 /**
@@ -18,9 +21,11 @@ import qch.strategy.EstrategiaBusqueda
  */
 class RecetaService {
 
-    final static CRITERIOS_BUSQUEDA = ["dificultad", "dieta", "contraindicacion", "ingredientePpal"]
+    final static CRITERIOS_BUSQUEDA = ["dificultad", "dieta", "contraindicacion", "ingredientePpal", "temporada", "categoria"]
 
-    final static Map busquedas = [  dificultad: new BusquedaPorDificultad(),
+    final static Map busquedas = [  categoria: new BusquedaPorCategoria(),
+									temporada: new BusquedaPorTemporada(),
+									dificultad: new BusquedaPorDificultad(),
                                     dieta: new BusquedaPorDieta(),
                                     contraindicacion: new BusquedaPorContraindicacion(),
                                     ingredientePpal: new BusquedaPorIngredientePrincipal(),
@@ -32,7 +37,8 @@ class RecetaService {
                                     contraindicacion_ingredientePpal: new BusquedaPorContraindicacionEIngredientePrincipal(),
                                     dificultad_dieta_contraindicacion: new BusquedaPorDificultadDietaYContraindicacion(),
                                     dieta_contraindicacion_ingredientePpal: new BusquedaPorDietaContraindicacionEIngredientePrincipal(),
-                                    dificultad_dieta_contraindicacion_ingredientePpal: new BusquedaPorDificultadDietaContraindicacionEIngredientePrincipal()]
+                                    dificultad_dieta_contraindicacion_ingredientePpal: new BusquedaPorDificultadDietaContraindicacionEIngredientePrincipal(),
+									categoria_temporada_dieta_contraindicacion: new BusquedaPorContraindicacionTemporadaCategoriaYDieta()]
 
     public crearReceta() {
 
