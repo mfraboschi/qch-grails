@@ -215,17 +215,20 @@ class RecetaController {
                 categoria = CategoriaEnum.CENA
         }
 
-        if (userActual.condiciones.size() == 0) condicion = CondicionPreexistente.NINGUNA
-        else condicion = userActual.condiciones.first()
+        if (userActual.condiciones.size() == 0) {
+            condicion = CondicionPreexistente.NINGUNA
+        } else {
+            condicion = userActual.condiciones.first()
+        }
 
         Map pref = [
-            temporada: temporada.name(),
-            categoria: categoria.name(),
-            dieta: userActual.dieta.name(),
-            contraindicacion: condicion.name()
+                contraindicacion: condicion.name(),
+                temporada: temporada.name(),
+                categoria: categoria.name(),
+                dieta: userActual.dieta.name()
         ]
 
-        EstrategiaBusqueda estrategiaDeBusqueda = recetaService.busquedas["categoria_temporada_dieta_contraindicacion"]
+        EstrategiaBusqueda estrategiaDeBusqueda = recetaService.obtenerEstrategiaDeBusqueda(pref.keySet())
 
         if (estrategiaDeBusqueda) {
             recetas = estrategiaDeBusqueda.obtenerResultados(pref)

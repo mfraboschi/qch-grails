@@ -45,7 +45,7 @@ class RecetaService {
                                     dieta_contraindicacion_ingredientePpal: new BusquedaPorDietaContraindicacionEIngredientePrincipal(),
                                     dificultad_dieta_contraindicacion_ingredientePpal: new BusquedaPorDificultadDietaContraindicacionEIngredientePrincipal(),
 									contraindicacion_temporada_categoria: new BusquedaPorCategoriaTemporadaYContraindicacion(),
-									contraindicacion_temporada_categoria_dieta: new BusquedaPorContraindicacionTemporadaCategoriaYDieta()]
+									dieta_contraindicacion_temporada_categoria: new BusquedaPorContraindicacionTemporadaCategoriaYDieta()]
 
     public crearReceta() {
 
