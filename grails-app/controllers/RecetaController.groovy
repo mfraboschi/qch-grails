@@ -53,7 +53,7 @@ class RecetaController {
 
             HistorialUsuario.guardarHistorialUsuario(recetaActual, session.user)
 
-            return render(view:"detalleReceta", model:[receta: recetaActual, exito:"Seleccionaste la receta!"])
+            return render(view:"detalleReceta", model:[usuario: session.user, receta: recetaActual, exito:"Seleccionaste la receta!"])
         }
     }
 
