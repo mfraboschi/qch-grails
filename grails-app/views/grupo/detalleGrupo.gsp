@@ -39,6 +39,8 @@
             </div>
             <p><b>Creador: </b>
                 ${grupo.creadorId}</p>
+                <b><g:link action="verMiembros" id="${grupo.id}">${miembros}</g:link></b>
+                
             </ul>
              <div style="display: inline-block; border-style: solid; border-color: #E3E0BB; height: 20px; width: 120px;">
              <b><g:link style="color:blue" action="eliminarGrupo" id="${grupo.id}">${eliminar}</g:link></b>

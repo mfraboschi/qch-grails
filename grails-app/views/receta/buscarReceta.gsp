@@ -28,6 +28,8 @@
                     <g:select name="dificultad" from="${qch.enums.Dificultad.values()}" valueMessagePrefix="ENUM.Dificultad" value="${dificultad}" noSelection="['':'Dificultad']"></g:select>
                     <g:select name="dieta" from="${qch.enums.Dieta.values()}" valueMessagePrefix="ENUM.Dieta" noSelection="['':'Dieta']" value="${dieta}"></g:select>
                     <g:select name="contraindicacion" from="${qch.enums.CondicionPreexistente.values()}" valueMessagePrefix="ENUM.CondicionPreexistente" noSelection="['':'Contraindicacion']" value="${contraindicacion}"></g:select>
+                    <g:select name="temporada" from="${qch.enums.Temporada.values()}" valueMessagePrefix="ENUM.Temporada" value="${temporada}" noSelection="['':'Temporada']"></g:select>
+                    <g:select name="categoria" from="${qch.enums.CategoriaEnum.values()}" valueMessagePrefix="ENUM.Categoria" value="${categoria}" noSelection="['':'Categoria']"></g:select>
                     <g:submitButton name="submit">Buscar</g:submitButton>
                 </g:form>
             </div>
