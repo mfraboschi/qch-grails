@@ -6,6 +6,8 @@ import qch.enums.Dieta
 import qch.enums.Rutina
 import qch.enums.Sexo
 import qch.enums.CondicionPreexistente
+import qch.enums.Temporada;
+import qch.receta.TemporadaReceta
 
 class Usuario {
 
@@ -72,4 +74,43 @@ class Usuario {
         this.removeFromGrupos(grupo)
 		this.save()
 	}
+	
+	public Temporada mes(int month, int day)
+	{
+		Temporada temporada
+		switch (month)
+		{
+			case Calendar.JANUARY:
+				temporada = Temporada.VERANO
+			case Calendar.FEBRUARY:
+				temporada = Temporada.VERANO
+			case Calendar.MARCH:
+				if (day <= 21) temporada = Temporada.VERANO
+				else temporada = Temporada.OTONIO
+			case Calendar.APRIL:
+				temporada = Temporada.OTONIO
+			case Calendar.MAY:
+				temporada = Temporada.OTONIO
+			case Calendar.JUNE:
+				if (day <= 21) temporada = Temporada.OTONIO
+				else temporada = Temporada.INVIERNO
+			case Calendar.JULY:
+				temporada = Temporada.INVIERNO
+			case Calendar.AUGUST:
+				temporada = Temporada.INVIERNO
+			case Calendar.SEPTEMBER:
+				if (day <= 21) temporada = Temporada.INVIERNO
+				else temporada = Temporada.PRIMAVERA
+			case Calendar.OCTOBER:
+				temporada = Temporada.PRIMAVERA
+			case Calendar.NOVEMBER:
+				temporada = Temporada.PRIMAVERA
+			case Calendar.DECEMBER:
+				if (day <= 21) temporada = Temporada.PRIMAVERA
+				else temporada = Temporada.VERANO
+			default: break
+		}	
+		return temporada;
+	}
+
 }

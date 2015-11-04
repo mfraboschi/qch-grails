@@ -4,9 +4,13 @@ import qch.enums.CondicionPreexistente
 import qch.enums.Dieta
 import qch.enums.Dificultad
 import qch.enums.Temporada
+import qch.enums.CategoriaEnum
 import qch.receta.ingrediente.Ingrediente
 import qch.receta.ingrediente.CondimentoReceta
 import qch.receta.ingrediente.IngredienteReceta
+import qch.receta.Categoria
+import qch.receta.Contraindicacion
+import qch.receta.TemporadaReceta
 import qch.usuario.Usuario
 
 class Receta {
@@ -43,6 +47,28 @@ class Receta {
         Receta.findById(id)
     }
 
+	public guardarReceta(parametro, Usuario usuario)
+	{
+        this.nombre = parametro.nombre
+        this.caloriasTotal = Integer.valueOf(parametro.caloriasTotal)
+        this.porciones = Integer.valueOf(parametro.porciones)
+        this.dificultad = parametro.dificultad
+        this.creador = usuario.nickName
+        this.dieta = parametro.dieta
+        this.urlImagen = parametro.url
+        this.addToContraindicaciones(new Contraindicacion(condicionPreexistente: parametro.precondicion))
+
+		if (parametro.boxInvierno == "INVIERNO") this.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+		if (parametro.boxVerano == "VERANO") this.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
+		if (parametro.boxOtonio == "OTONIO") this.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+		if (parametro.boxPrimavera == "PRIMAVERA") this.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+
+		if (parametro.boxDesayuno == "DESAYUNO") this.addToCategorias(new Categoria(nombre: CategoriaEnum.DESAYUNO))
+		if (parametro.boxAlmuerzo == "ALMUERZO") this.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
+		if (parametro.boxMerienda == "MERIENDA") this.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
+		if (parametro.boxCena == "CENA") this.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+	}
+	
     def actualizarCalificacionPromedio() {
         def calificacionesReceta = Calificacion.findAllByReceta(this)
         Integer promedio = 0
@@ -58,5 +84,4 @@ class Receta {
         this.cantVisitas++
         this.save(flush: true)
     }
-
 }

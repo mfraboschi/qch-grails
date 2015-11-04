@@ -94,7 +94,7 @@ class RecetaController {
         if(!params.cantidades) {
             return render(view:"crearReceta", model: [usuario: usuario, error: "Debes especificar las cantidades"])
         }
-
+/*
         nuevaReceta.nombre = params.nombre
         nuevaReceta.caloriasTotal = Integer.valueOf(params.caloriasTotal)
         nuevaReceta.porciones = Integer.valueOf(params.porciones)
@@ -104,6 +104,7 @@ class RecetaController {
         nuevaReceta.urlImagen = params.url
         nuevaReceta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: params.precondicion))
 
+		
         if (params.boxInvierno == "INVIERNO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
         if (params.boxVerano == "VERANO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
         if (params.boxOtonio == "OTONIO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
@@ -113,11 +114,13 @@ class RecetaController {
         if (params.boxAlmuerzo == "ALMUERZO") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
         if (params.boxMerienda == "MERIENDA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
         if (params.boxCena == "CENA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
-
+*/
         def ingredientes = params.ingredientes instanceof String[] ? params.ingredientes : [params.ingredientes]
         def cantidades = params.cantidades instanceof String[] ? params.cantidades : [params.cantidades]
         def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]
 
+		nuevaReceta.guardarReceta(params, usuario)
+		
         procedimientos.each {
             nuevaReceta.addToProcedimientos(it)
         }
@@ -145,32 +148,21 @@ class RecetaController {
         render(view:"buscarReceta", model: [usuario: session.user, recetas: recetas, dificultad: params.dificultad, dieta: params.dieta, contraindicacion: params.contraindicacion])
     }
 
-	/*def estadisticas()
+    def recomendadas() 
 	{
-		def recetas = []
-
-
-		EstrategiaEstadistica estrategiaDeEstadisticas = recetaService.obtenerEstrategiaDeEstadisticas(params.estadistica)
-
-		if (estrategiaDeEstadisticas) {
-			recetas = estrategiaDeEstadisticas.obtenerEstadisticas(params)
-		}
-
-		render(view:"estadisticas", model: [recetas: recetas])
-	}*/
-
-    def recomendadas() {
         Usuario userActual = session.user
         def recetas = []
         Temporada temporada
         CategoriaEnum categoria
         CondicionPreexistente condicion
+		Receta receta
         Date dt = new Date();
         int month = dt.getMonth();
         int day = dt.getDay();
         int hours = dt.getHours();
-
-        switch (month) {
+/*
+        switch (month) 
+		{
             case Calendar.JANUARY:
                 temporada = Temporada.VERANO
             case Calendar.FEBRUARY:
@@ -201,7 +193,9 @@ class RecetaController {
                 else temporada = Temporada.VERANO
             default: break
         }
-
+*/
+		temporada = userActual.mes(month, day)
+		
         switch (hours) {
             case 5..10:
                 categoria = CategoriaEnum.DESAYUNO

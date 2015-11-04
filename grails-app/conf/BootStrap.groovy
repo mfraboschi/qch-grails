@@ -336,6 +336,68 @@ class BootStrap {
 			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
 			receta.save()
 		}
+		
+		Receta.withTransaction {
+			
+			Receta receta = new Receta(nombre: "Capelettis de verduras asadas con estofado de asado", dificultad: Dificultad.MEDIA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.DEPORTE, urlImagen: "http://i.ytimg.com/vi/VBFdCfUZ-cs/maxresdefault.jpg")
+
+			receta.addToProcedimientos("Para el relleno, picar los vegetales previamente asados en oliva con sal y pimienta y saltear en oliva.")
+			receta.addToProcedimientos("Mezclar en un bol junto con el queso y mozzarella rallados y el huevo.")
+			receta.addToProcedimientos("Para los capelettis, estirar las masas de tarta y cortar formas de capelletti. Rellenar, cerrar y hervir en agua y sal.")
+
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 50))
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Pimienta"), cantidadEnMiligramos: 50))
+
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Tapa de tarta", nivelPiramide: PiramideAlimenticia.QUINTO_NIVEL).save(), esIngredientePrincipal: true, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Zanahoria"), esIngredientePrincipal: false, cantidadGramos: 500, calorias: 4213))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Aceite de oliva"), esIngredientePrincipal: false, cantidadGramos: 500, calorias: 4213))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Tomate"), esIngredientePrincipal: false, cantidadGramos: 500, calorias: 4213))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Cebolla"), esIngredientePrincipal: false, cantidadGramos: 200, calorias: 12313))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Papa"), esIngredientePrincipal: false, cantidadGramos: 500, calorias: 14319))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Morron rojo"), esIngredientePrincipal: false, cantidadGramos: 150, calorias: 435))
+			
+
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+
+			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.NINGUNA))
+
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+
+			receta.save()
+		}
+		
+		Receta.withTransaction {
+			
+			Receta receta = new Receta(nombre: "Alfajores de dulce de leche por Mauricio Asta", dificultad: Dificultad.BAJA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://www.cocinerosargentinos.com/images/1_alfajores-de-dulce-de-leche-por-mauricio-asta.jpg")
+
+			receta.addToProcedimientos("En bol, colocar manteca a punto pomada, agregar azúcar impalpable, pizca de sal y batir. Sumar las yemas de huevo y continuar batiendo.")
+			receta.addToProcedimientos("Aplicar en forma tamizada la harina junto con  almidón de maíz y la sal y mezclar a mano.")
+			receta.addToProcedimientos("Formada la masa seguir amasando con la parte posterior de la palma. Colocar masa entre dos pliegos de papel manteca ,estirarla.")
+			receta.addToProcedimientos("Reposar en la heladera durante 30 min. Posar masa ya estirada y fría sobre mesada y cortar las tapas para los alfajores con molde. Rellenar manga repostera")
+			receta.addToProcedimientos("La tapa inferior de los alfajores con dulce de leche. Colocar la tapa superior y presionar suavemente. Espolvorear con azúcar impalpable y hornear durante 12 min a 170°.")
+
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 50))
+
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Harina"), esIngredientePrincipal: true, cantidadGramos: 250, calorias: 200))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Manteca"), esIngredientePrincipal: false, cantidadGramos: 100, calorias: 1231))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Esencia de vainilla", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Almidón de maíz", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Dulce de leche", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+
+			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.NINGUNA))
+
+			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
+
+			receta.save()
+		}
+
     }
     def crearCondimentos() {
         new Condimento(nombre: "Sal").save()
