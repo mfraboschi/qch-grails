@@ -17,20 +17,29 @@ class BusquedaPorContraindicacionTemporadaCategoriaYDieta implements EstrategiaB
 	@Override
 	def obtenerResultados(Map parametros)
 	{
-		def criteria = Contraindicacion.createCriteria()
-
-		def result = criteria.list
+		def categoria = Categoria.findByNombre(parametros.categoria)
+		
+		Receta.withCriteria 
 		{
-			"receta"
+			and 
 			{
 				eq "dieta", Dieta.valueOf(parametros.dieta)
-			}
-			eq "temporada", Temporada.valueOf(parametros.temporada)
-			eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)
-			eq "categoria", Categoria.valueOf(parametros.categoria)
-			
-		}
 
-		return result.collect { it.receta }
+				temporadas 
+				{
+					eq "temporada", Temporada.valueOf(parametros.temporada)
+				}
+				categorias 
+				{
+					eq "nombre", CategoriaEnum.valueOf(parametros.categoria)
+				}
+
+				contraindicaciones
+				{
+					eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)
+				}
+			}
+
+		}
 	}
 }
