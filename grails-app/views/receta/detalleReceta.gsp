@@ -108,14 +108,15 @@
                         </tr>
                     </table>
                 </ul>
-                <form action="/que-comemos-hoy/receta/seleccionar/${receta.id}" id="seleccionar" method="post">
-                    <div style="text-align: center;" id="seleccionar-div">
-                                <input style="width: 150px;" type="submit" value="Seleccionar"/>
+                <g:form name="formSeleccionar" controller="receta" action="seleccionar">
+                    <div style="text-align: center;">
+                        <input type="hidden" name="id" value="${receta.id}" />
+                        <input style="width: 150px;" type="submit" value="Seleccionar"/>
                     </div>
                     <div style="text-align: center; margin-top: 10px">
                         <label id="mensaje-exito" style="color: green; font-size: large;">${exito}</label>
                     </div>
-                </form>
+                </g:form>
                 <g:if test="${!calificacion}">
                     <div style="text-align:center; margin-top:20px;">
                     <div style="width:250px; border: #E3E0BB; border-style: solid; display: inline-block;" id="form-calificar">
