@@ -51,11 +51,11 @@ class GrupoController {
       		  Usuario usuario = session.user
 
       		  if ( grupoActual.creadorId.equals(usuario.nickName)) {
-      			    return render(view:"detalleGrupo", model: [eliminar:"Eliminar Grupo", grupo: grupoActual])
+      			    return render(view:"detalleGrupo", model: [miembros:"Ver Miembros", eliminar:"Eliminar Grupo", grupo: grupoActual])
     		    }
 
         		if( grupoActual.pertenece(usuario) ) {
-        			  return render(view:"detalleGrupo", model: [abandonar:"Abandonar Grupo", grupo: grupoActual])
+        			  return render(view:"detalleGrupo", model: [miembros:"Ver Miembros", abandonar:"Abandonar Grupo", grupo: grupoActual])
         		}
 
     		    return render(view:"detalleGrupo", model: [unirse:"Unirse al Grupo", grupo: grupoActual])
@@ -112,4 +112,18 @@ class GrupoController {
       			return redirect(controller: "grupo", action: "index")
     		}
   	}
+	  
+   def verMiembros()
+   {
+	   if (params.id)
+	   {
+		   Long id = params.id.toLong()
+		  
+		   Grupo grupoActual = Grupo.findById(id)
+		   List miembros = grupoActual.usuarios.asList()
+		   Usuario usuario = session.user
+			
+		   render(view:"verMiembros", model: [usuario: usuario, miembros: miembros])
+	   }
+   }
 }

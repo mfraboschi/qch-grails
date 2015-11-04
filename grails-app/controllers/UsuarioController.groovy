@@ -86,6 +86,18 @@ class UsuarioController {
 				render(view:"perfilUsuario", model: [usuario: userActual, ninguna: ninguna, exito: "Has actualizado tus datos!"])
 		}
 
+	def recetasUsuario() 
+	{
+		if (params.id) 
+		{
+			Long id = params.id.toLong()
+			Usuario miembro = Usuario.findById(id)
+			
+			List recetas = miembro.recetas.asList()
+			
+			render(view:"verRecetas", model: [miembro: miembro, recetas: recetas])
+		}
+	}
     def index() {
         render(view: 'index')
     }
