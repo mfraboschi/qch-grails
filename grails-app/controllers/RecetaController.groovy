@@ -10,6 +10,9 @@ import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
 import qch.enums.Temporada
 import qch.enums.CategoriaEnum
+import qch.enums.CondicionPreexistente
+import qch.enums.Dieta
+
 
 class RecetaController {
 
@@ -158,7 +161,77 @@ class RecetaController {
 
     def recomendadas() {
         Usuario userActual = session.user
+        def recetas = []
+        Temporada temporada
+        CategoriaEnum categoria
+        CondicionPreexistente condicion
+        Date dt = new Date();
+        int month = dt.getMonth();
+        int day = dt.getDay();
+        int hours = dt.getHours();
 
+        switch (month) {
+            case Calendar.JANUARY:
+                temporada = Temporada.VERANO
+            case Calendar.FEBRUARY:
+                temporada = Temporada.VERANO
+            case Calendar.MARCH:
+                if (day <= 21) temporada = Temporada.VERANO
+                else temporada = Temporada.OTONIO
+            case Calendar.APRIL:
+                temporada = Temporada.OTONIO
+            case Calendar.MAY:
+                temporada = Temporada.OTONIO
+            case Calendar.JUNE:
+                if (day <= 21) temporada = Temporada.OTONIO
+                else temporada = Temporada.INVIERNO
+            case Calendar.JULY:
+                temporada = Temporada.INVIERNO
+            case Calendar.AUGUST:
+                temporada = Temporada.INVIERNO
+            case Calendar.SEPTEMBER:
+                if (day <= 21) temporada = Temporada.INVIERNO
+                else temporada = Temporada.PRIMAVERA
+            case Calendar.OCTOBER:
+                temporada = Temporada.PRIMAVERA
+            case Calendar.NOVEMBER:
+                temporada = Temporada.PRIMAVERA
+            case Calendar.DECEMBER:
+                if (day <= 21) temporada = Temporada.PRIMAVERA
+                else temporada = Temporada.VERANO
+            default: break
+        }
+
+        switch (hours) {
+            case 5..10:
+                categoria = CategoriaEnum.DESAYUNO
+            case 11..15:
+                categoria = CategoriaEnum.ALMUERZO
+            case 16..18:
+                categoria = CategoriaEnum.MERIENDA
+            case 19..23:
+                categoria = CategoriaEnum.CENA
+            case 0..4:
+                categoria = CategoriaEnum.CENA
+        }
+
+        if (userActual.condiciones.size() == 0) condicion = CondicionPreexistente.NINGUNA
+        else condicion = userActual.condiciones.first()
+
+        Map pref = [
+            temporada: temporada.name(),
+            categoria: categoria.name(),
+            dieta: userActual.dieta.name(),
+            contraindicacion: condicion.name()
+        ]
+
+        EstrategiaBusqueda estrategiaDeBusqueda = recetaService.busquedas["categoria_temporada_dieta_contraindicacion"]
+
+        if (estrategiaDeBusqueda) {
+            recetas = estrategiaDeBusqueda.obtenerResultados(pref)
+        }
+
+        render(view:"recomendaciones", model: [usuario: userActual, recetas: recetas])
     }
 
     def calificar() {
