@@ -28,7 +28,7 @@
                         <g:each var="miembro" in="${miembros}">
                             <li>
                                 <div style="display: inline-block; border-style: solid; border-color: #E3E0BB; height: 55px; width: 500px;">
-                                    <b><g:link  style="color:#85A32F" controller="usuario" action="recetasUsuario" id="${miembro.id}">${miembro.nombre}</g:link></b>
+                                    <b><g:link  style="color:#85A32F" action="recetasUsuario" id="${miembro.nickName}">${miembro.nombre}</g:link></b>
                                 </div>
                             </li>
                         </g:each>

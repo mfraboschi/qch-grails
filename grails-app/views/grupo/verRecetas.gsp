@@ -28,7 +28,7 @@
                         <g:each var="receta" in="${recetas}">
                             <li>
                                 <div style="display: inline-block; border-style: solid; border-color: #E3E0BB; height: 55px; width: 500px;">
-                                    <b> id="${receta.id}">${receta.nombre}</b>
+                                  <b><g:link style="color:#85A32F" controller="receta" action="detalle" id="${receta.id}">${receta.nombre}</g:link></b>
                                 </div>
                             </li>
                         </g:each>

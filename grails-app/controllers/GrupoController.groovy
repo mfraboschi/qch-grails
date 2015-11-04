@@ -1,5 +1,6 @@
 import qch.usuario.Grupo
 import qch.usuario.Usuario;
+import qch.receta.Receta
 
 import java.text.DateFormat
 
@@ -43,12 +44,28 @@ class GrupoController {
 
     		render(view:"verGrupos", model: [usuario: usuario, grupos: grupos])
   	}
-
-  	def detalle() {
-    		if (params.id) {
-      		  Long id = params.id.toLong()
-            Grupo grupoActual = Grupo.findById(id)
-      		  Usuario usuario = session.user
+    
+	def recetasUsuario()
+    {
+		
+		println("GOOOOOL")
+		if (params.id)
+	    {
+		   Usuario miembro = Usuario.findByNickName(params.id)
+		  
+		   List recetas = Receta.findAllByCreador(miembro.nickName)
+		  
+		   render(view:"verRecetas", model: [usuario: session.user, miembro: miembro, recetas: recetas])
+	    }
+    }
+	
+  	def detalle() 
+	{
+    		if (params.id) 
+			{
+				Long id = params.id.toLong()
+				Grupo grupoActual = Grupo.findById(id)
+				Usuario usuario = session.user
 
       		  if ( grupoActual.creadorId.equals(usuario.nickName)) {
       			    return render(view:"detalleGrupo", model: [miembros:"Ver Miembros", eliminar:"Eliminar Grupo", grupo: grupoActual])
