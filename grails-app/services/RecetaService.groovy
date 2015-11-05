@@ -17,7 +17,14 @@ import qch.strategy.BusquedaPorCategoria
 import qch.strategy.BusquedaPorTemporadaYCategoria
 import qch.strategy.BusquedaPorCategoriaYContraindicacion
 import qch.strategy.BusquedaPorCategoriaTemporadaYContraindicacion
-import qch.strategy.BusquedaPorTemporadaYContraindicacion
+import qch.strategy.BusquedaPorContraindicacionYTemporada
+import qch.strategy.BusquedaPorDificultadYCategoria
+import qch.strategy.BusquedaPorDificultadTemporadaYCategoria
+import qch.strategy.BusquedaPorDificultadYTemporada
+import qch.strategy.BusquedaPorDietaTemporadaYCategoria
+import qch.strategy.BusquedaPorDietaYTemporada
+import qch.strategy.BusquedaPorDietaYCategoria
+import qch.strategy.BusquedaPorDificultadDietaTemporadaCategoriaYContraindicacion
 import qch.strategy.EstrategiaBusqueda
 /**
  * Created by mfraboschi on 27/9/15.
@@ -33,19 +40,26 @@ class RecetaService {
                                     contraindicacion: new BusquedaPorContraindicacion(),
                                     ingredientePpal: new BusquedaPorIngredientePrincipal(),
                                     dificultad_dieta: new BusquedaPorDificultadYDieta(),
+									dieta_temporada: new BusquedaPorDietaYTemporada(),
+									dieta_categoria: new BusquedaPorDietaYCategoria(),
                                     dificultad_contraindicacion: new BusquedaPorDificultadYContraindicacion(),
                                     dificultad_ingredientePpal: new BusquedaPorDificultadEIngredientePrincipal(),
+									dificultad_categoria: new BusquedaPorDificultadYCategoria(),
+									dificultad_temporada: new BusquedaPorDificultadYTemporada(),
                                     dieta_contraindicacion: new BusquedaPorDietaYContraindicacion(),
                                     dieta_ingredientePpal: new BusquedaPorDietaEIngredientePrincipal(),
                                     contraindicacion_ingredientePpal: new BusquedaPorContraindicacionEIngredientePrincipal(),
                                     dificultad_dieta_contraindicacion: new BusquedaPorDificultadDietaYContraindicacion(),
 									contraindicacion_categoria: new BusquedaPorCategoriaYContraindicacion(),
 									temporada_categoria: new BusquedaPorTemporadaYCategoria(),
-									temporada_contraindicacion: new BusquedaPorTemporadaYContraindicacion(),
+									dieta_temporada_categoria: new BusquedaPorDietaTemporadaYCategoria(),
+									dificultad_temporada_categoria: new BusquedaPorDificultadTemporadaYCategoria(),
+									contraindicacion_temporada: new BusquedaPorContraindicacionYTemporada(),
                                     dieta_contraindicacion_ingredientePpal: new BusquedaPorDietaContraindicacionEIngredientePrincipal(),
                                     dificultad_dieta_contraindicacion_ingredientePpal: new BusquedaPorDificultadDietaContraindicacionEIngredientePrincipal(),
 									contraindicacion_temporada_categoria: new BusquedaPorCategoriaTemporadaYContraindicacion(),
-									dieta_contraindicacion_temporada_categoria: new BusquedaPorContraindicacionTemporadaCategoriaYDieta()]
+									dieta_contraindicacion_temporada_categoria: new BusquedaPorContraindicacionTemporadaCategoriaYDieta(),
+									dificultad_dieta_temporada_categoria_contraindicacion: new BusquedaPorDificultadDietaTemporadaCategoriaYContraindicacion()]
 
     public crearReceta() {
 
@@ -62,16 +76,4 @@ class RecetaService {
 
         return busquedas[key]
     }
-	
-	/*public EstrategiaEstadistica obtenerEstrategiaDeEstadisticas(estadistica)
-	{
-		if(estadistica.equals("masVisto"))
-		{
-			return new EstadisticaPorMasConsultadas()
-		}
-		if(estadistica.equals("dificultad"))
-		{
-			return new EstadisticaPorDificultad()
-		}
-	}*/
 }
