@@ -1,7 +1,9 @@
 import qch.receta.Calificacion
 import qch.receta.Receta
 import qch.receta.ingrediente.Ingrediente
+import qch.receta.ingrediente.Condimento
 import qch.receta.ingrediente.IngredienteReceta
+import qch.receta.ingrediente.CondimentoReceta
 import qch.receta.TemporadaReceta
 import qch.receta.Categoria
 import qch.receta.Contraindicacion
@@ -68,7 +70,8 @@ class RecetaController {
 
     def nueva() {
         def ingredientes = Ingrediente.findAll()
-        render (view:"crearReceta", model:[usuario: session.user, ingredientes: ingredientes])
+        def condimentos = Condimento.findAll()
+        render (view:"crearReceta", model:[usuario: session.user, ingredientes: ingredientes, condimentos: condimentos])
     }
 
     /**
@@ -115,9 +118,13 @@ class RecetaController {
         if (params.boxMerienda == "MERIENDA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
         if (params.boxCena == "CENA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
 */
+
+        def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]
+
         def ingredientes = params.ingredientes instanceof String[] ? params.ingredientes : [params.ingredientes]
         def cantidades = params.cantidades instanceof String[] ? params.cantidades : [params.cantidades]
-        def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]
+        def condimentos = params.condimentos instanceof String[] ? params.condimentos : [params.condimentos]
+        def cantidades2 = params.cantidades2 instanceof String[] ? params.cantidades2 : [params.cantidades2]
 
 		nuevaReceta.guardarReceta(params, usuario)
 
@@ -127,6 +134,10 @@ class RecetaController {
 
         [ingredientes, cantidades].transpose().each() {
             nuevaReceta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findById(it[0]), cantidadGramos: it[1], calorias: 1234, esIngredientePrincipal: false))
+        }
+
+        [condimentos, cantidades2].transpose().each() {
+            nuevaReceta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findById(it[0]), cantidadEnMiligramos: it[1]))
         }
 
         nuevaReceta.save(flush:true)
