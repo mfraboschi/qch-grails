@@ -104,7 +104,7 @@ class RecetaController {
         nuevaReceta.urlImagen = params.url
         nuevaReceta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: params.precondicion))
 
-		
+
         if (params.boxInvierno == "INVIERNO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
         if (params.boxVerano == "VERANO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
         if (params.boxOtonio == "OTONIO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
@@ -120,7 +120,7 @@ class RecetaController {
         def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]
 
 		nuevaReceta.guardarReceta(params, usuario)
-		
+
         procedimientos.each {
             nuevaReceta.addToProcedimientos(it)
         }
@@ -145,10 +145,10 @@ class RecetaController {
             recetas = estrategiaDeBusqueda.obtenerResultados(params)
         }
 
-        render(view:"buscarReceta", model: [usuario: session.user, recetas: recetas, dificultad: params.dificultad, dieta: params.dieta, contraindicacion: params.contraindicacion])
+        render(view:"buscarReceta", model: [usuario: session.user, recetas: recetas, dificultad: params.dificultad, dieta: params.dieta, temporada: params.temporada, categoria: params.categoria, contraindicacion: params.contraindicacion])
     }
 
-    def recomendadas() 
+    def recomendadas()
 	{
         Usuario userActual = session.user
         def recetas = []
@@ -161,7 +161,7 @@ class RecetaController {
         int day = dt.getDay();
         int hours = dt.getHours();
 /*
-        switch (month) 
+        switch (month)
 		{
             case Calendar.JANUARY:
                 temporada = Temporada.VERANO
@@ -195,7 +195,7 @@ class RecetaController {
         }
 */
 		temporada = userActual.mes(month, day)
-		
+
         switch (hours) {
             case 5..10:
                 categoria = CategoriaEnum.DESAYUNO
