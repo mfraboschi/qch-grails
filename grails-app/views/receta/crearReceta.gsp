@@ -17,13 +17,13 @@
                 var scntDiv = $('#p_scents');
                 var i = $('#p_scents p').size() + 1;
                 var j = $('#div_ingredientes p').size() + 1;
+                var k = $('#div_condimentos p').size() + 1;
 
                 $('#addScnt').live('click', function() {
                         $('<p><label for="p_scnts">Paso '+i+': &emsp;<input type="text" size="80" id="p_scnt" name="procedimientos"/></label><a href="#" id="remScnt"> Quitar paso</a></p>').appendTo(scntDiv);
                         i++;
                         return false;
                 });
-
                 $('#remScnt').live('click', function() {
                     if (i > 2) {
                         $(this).parents('p').remove();
@@ -31,6 +31,7 @@
                     }
                     return false;
                 });
+
 
                 $('#addIngrediente').live('click', function() {
                     var elclon = $('#p_ingrediente').clone();
@@ -40,7 +41,6 @@
                     j++;
                     return false;
                 });
-
                 $('#remIngrediente').live('click', function() {
                     if (j > 2) {
                         $(this).parents('p').remove();
@@ -49,6 +49,22 @@
                     return false;
                 });
 
+
+                $('#addCondimento').live('click', function() {
+                    var elclon2 = $('#p_condimento').clone();
+                    elclon2.attr('id2', k);
+                    $('<a href="#" id="remCondimento"> Quitar condimento</a>').appendTo(elclon2);
+                    elclon2.appendTo($('#div_condimentos'));
+                    k++;
+                    return false;
+                });
+                $('#remCondimento').live('click', function() {
+                    if (k > 2) {
+                        $(this).parents('p').remove();
+                        k--;
+                    }
+                    return false;
+                });
             });
         </script>
         <style>
@@ -131,6 +147,10 @@
                     <br><b><span>Ingredientes: </span></b><a href="#" id="addIngrediente">(Agregar otro)</a><br><br>
                     <div id="div_ingredientes">
                         <p id="p_ingrediente"><g:select name="ingredientes" id="ingrediente" from="${ingredientes}" optionKey="id" optionValue="nombre" noSelection="['':'Seleccionar']"/><label>&nbsp&nbsp Cantidad: (g/cm³) </label><input type="text" name="cantidades" size="5"/></p>
+                    </div>
+                    <br><b><span>Condimentos: </span></b><a href="#" id="addCondimento">(Agregar otro)</a><br><br>
+                    <div id="div_condimentos">
+                        <p id="p_condimento"><g:select name="condimentos" id="condimento" from="${condimentos}" optionKey="id" optionValue="nombre" noSelection="['':'Seleccionar']"/><label>&nbsp&nbsp Cantidad: (mg) </label><input type="text" name="cantidades2" size="5"/></p>
                     </div>
                     <g:submitButton name="ingresar" value="Crear"/>
                 </g:form>

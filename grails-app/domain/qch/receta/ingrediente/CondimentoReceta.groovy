@@ -12,5 +12,6 @@ class CondimentoReceta implements Serializable {
 
     static mapping = {
         id composite: ['receta', 'condimento']
+        version false
     }
 }
