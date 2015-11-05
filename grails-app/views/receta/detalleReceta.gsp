@@ -59,16 +59,17 @@
             <section id="mainRight">
                 <ul>
                     <b style="font-size: 1.4em"><h2>${receta.nombre}</h2></b>
-                    <h4><u>Procedimiento:</u></h4>
-                    <ul style="list-style:initial">
-                    <g:each var="procedimiento" in="${receta.procedimientos}">
-                        <li>${procedimiento}</li>
-                    </g:each>
+                 
                     </ul>
-                    <table style="margin-left: 15%">
-                        <tr>
+                    
+                    <td><img src="${receta.urlImagen}" style="width: 55%; height: 55%"></td>
+                    <p>
+                    </p><p>
+                    </p>
+                    <table>
+                        <tr>                            
                             <td style="width: 240px">
-                                <b><div style="text-align: center">Ingredientes</div></b>
+                                <b><div>Ingredientes</div></b>
                                 <ul class="lista-ingredientes">
                                     <g:each var="ingrediente" in="${receta.ingredientes}">
                                         <li>${ingrediente.ingrediente.nombre} ${ingrediente.cantidadGramos} grs</li>
@@ -76,7 +77,7 @@
                                 </ul>
                             </td>
                             <td style="width: 210px">
-                                <b><div style="text-align: center">Condimentos</div></b>
+                                <b><div>Condimentos</div></b>
                                 <ul class="lista-ingredientes">
                                     <g:each var="condimento" in="${receta.condimentos}">
                                         <li>${condimento.condimento.nombre} ${condimento.cantidadEnMiligramos} mgrs</li>
@@ -88,8 +89,16 @@
                     <div style="text-align: center">----------------------------------------------------------------------------------------</div><br>
                     <table style="margin-left: 3%">
                         <tr>
-                            <td><img src="${receta.urlImagen}"></td>
                             <td>
+                             <ul>
+                    <h4><u><b>Procedimiento:</b></u></h4>
+                    <ul style="list-style:initial">
+                    <g:each var="procedimiento" in="${receta.procedimientos}">
+                        <li>${procedimiento}</li>
+                    </g:each>
+                    </ul>
+                    <p>
+                    </p>
                                 <table>
                                     <tr>
                                         <td><label><b>Dificultad: </b></label></td>
@@ -108,6 +117,8 @@
                         </tr>
                     </table>
                 </ul>
+                <p>
+                    </p>
                 <g:form name="formSeleccionar" controller="receta" action="seleccionar">
                     <div style="text-align: center;">
                         <input type="hidden" name="id" value="${receta.id}" />
