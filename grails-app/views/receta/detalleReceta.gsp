@@ -25,7 +25,7 @@
                     return false;
                 });
 
-                var frmSelec =  $('#seleccionar');
+                var frmSelec =  $('#formSeleccionar');
                 frmSelec.submit(function () {
                     $.ajax({
                         type: frmSelec.attr('method'),

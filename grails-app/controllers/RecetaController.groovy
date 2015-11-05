@@ -4,17 +4,12 @@ import qch.receta.ingrediente.Ingrediente
 import qch.receta.ingrediente.Condimento
 import qch.receta.ingrediente.IngredienteReceta
 import qch.receta.ingrediente.CondimentoReceta
-import qch.receta.TemporadaReceta
-import qch.receta.Categoria
-import qch.receta.Contraindicacion
 import qch.strategy.EstrategiaBusqueda
 import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
 import qch.enums.Temporada
 import qch.enums.CategoriaEnum
 import qch.enums.CondicionPreexistente
-import qch.enums.Dieta
-
 
 class RecetaController {
 
@@ -97,27 +92,6 @@ class RecetaController {
         if(!params.cantidades) {
             return render(view:"crearReceta", model: [usuario: usuario, error: "Debes especificar las cantidades"])
         }
-/*
-        nuevaReceta.nombre = params.nombre
-        nuevaReceta.caloriasTotal = Integer.valueOf(params.caloriasTotal)
-        nuevaReceta.porciones = Integer.valueOf(params.porciones)
-        nuevaReceta.dificultad = params.dificultad
-        nuevaReceta.creador = usuario.nickName
-        nuevaReceta.dieta = params.dieta
-        nuevaReceta.urlImagen = params.url
-        nuevaReceta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: params.precondicion))
-
-
-        if (params.boxInvierno == "INVIERNO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
-        if (params.boxVerano == "VERANO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
-        if (params.boxOtonio == "OTONIO") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
-        if (params.boxPrimavera == "PRIMAVERA") nuevaReceta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
-
-        if (params.boxDesayuno == "DESAYUNO") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.DESAYUNO))
-        if (params.boxAlmuerzo == "ALMUERZO") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
-        if (params.boxMerienda == "MERIENDA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
-        if (params.boxCena == "CENA") nuevaReceta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
-*/
 
         def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]
 
@@ -248,6 +222,11 @@ class RecetaController {
         calificacion.receta.actualizarCalificacionPromedio()
 
         render(status: 200)
+    }
+
+    def estadisticas() {
+        def userActual = session.user
+        render(view:"/estadisticas/estadisticas", model: [usuario: userActual])
     }
 
 }
