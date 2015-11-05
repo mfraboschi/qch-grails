@@ -76,21 +76,23 @@ class RecetaController {
     def crear() {
         Receta nuevaReceta = new Receta()
         Usuario usuario = session.user
+        def ingredient = Ingrediente.findAll()
+        def condiment = Condimento.findAll()
 
         if(!params.nombre) {
-            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes completar el nombre"])
+            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes completar el nombre", ingredientes: ingredient, condimentos: condiment])
         }
         if(!params.caloriasTotal) {
-            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes completar las calorías"])
+            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes completar las calorías", ingredientes: ingredient, condimentos: condiment])
         }
         if(!params.procedimientos) {
-            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes agregar al menos un procedimiento"])
+            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes agregar al menos un procedimiento", ingredientes: ingredient, condimentos: condiment])
         }
         if(!params.ingredientes) {
-            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes agregar al menos un ingrediente"])
+            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes agregar al menos un ingrediente", ingredientes: ingredient, condimentos: condiment])
         }
         if(!params.cantidades) {
-            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes especificar las cantidades"])
+            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes especificar las cantidades", ingredientes: ingredient, condimentos: condiment])
         }
 
         def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]
@@ -116,7 +118,7 @@ class RecetaController {
 
         nuevaReceta.save(flush:true)
 
-        render(view:"crearReceta", model: [usuario: usuario, exito: "La receta ha sido creada!"])
+        render(view:"crearReceta", model: [usuario: usuario, exito: "La receta ha sido creada!", ingredientes: ingredient, condimentos: condiment])
     }
 
     def buscar() {
