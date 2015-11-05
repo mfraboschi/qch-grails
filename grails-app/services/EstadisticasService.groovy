@@ -1,4 +1,5 @@
 import qch.estadistica.strategy.MasConsultadasEstadistica
+import qch.estadistica.strategy.MasConsultadasPorDificultadEstadistica
 import qch.estadistica.strategy.MasConsultadasPorSexoEstadistica
 
 /**
@@ -13,7 +14,8 @@ class EstadisticasService {
                 break
             case "sexo": estrategiaEstadistica = new MasConsultadasPorSexoEstadistica()
                 break
-            case "dificultad": break
+            case "dificultad": estrategiaEstadistica = new MasConsultadasPorDificultadEstadistica()
+                break
         }
 
         return estrategiaEstadistica
