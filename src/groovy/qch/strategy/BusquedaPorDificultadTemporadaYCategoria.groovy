@@ -13,23 +13,25 @@ import qch.receta.Categoria
 /**
  * Created by mfraboschi on 13/10/15.
  */
-class BusquedaPorTemporadaYContraindicacion implements EstrategiaBusqueda {
+class BusquedaPorDificultadTemporadaYCategoria implements EstrategiaBusqueda {
 	@Override
 	def obtenerResultados(Map parametros)
 	{
-		def categoria = Categoria.findByNombre(parametros.categoria)
-		Receta.withCriteria
+		def result = Receta.withCriteria
 		{
-			temporadas
-			{
-				eq "temporada", Temporada.valueOf(parametros.temporada)
+			and {
+                eq "dificultad", Dificultad.valueOf(parametros.dificultad)
+
+				temporadas {
+					eq "temporada", Temporada.valueOf(parametros.temporada)
+				}
+				categorias {
+					eq "nombre", CategoriaEnum.valueOf(parametros.categoria)
+				}
 			}
-			
-			contraindicaciones
-			{
-				eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)
-			}
-		
+
 		}
+
+		return result
 	}
 }
