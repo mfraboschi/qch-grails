@@ -70,9 +70,9 @@ class BootStrap {
             receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
 
             receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.HIPERTENSION))
-
-            receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
-            receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
 
             receta.save()
         }
@@ -102,13 +102,12 @@ class BootStrap {
             receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Manteca"), esIngredientePrincipal: false, cantidadGramos: 100, calorias: 1231))
 
             receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
-            receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
             receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
 
-            receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.HIPERTENSION))
-
-            receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
-            receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+            receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.NINGUNA))
+			
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
 
             receta.save()
         }
@@ -140,14 +139,13 @@ class BootStrap {
             receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Tomate seco", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 150, calorias: 12313))
             receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Espinaca", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 150, calorias: 12313))
 
-            receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
             receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
-            receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+            receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
 
             receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.HIPERTENSION))
-
-            receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
-            receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+			
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
 
             receta.save()
         }
@@ -179,11 +177,12 @@ class BootStrap {
             receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
             receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
             receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+            receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
 
             receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.HIPERTENSION))
-
-            receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
-            receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+			
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
 
             receta.save()
         }
@@ -214,10 +213,10 @@ class BootStrap {
             receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
             receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
 
-            receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.HIPERTENSION))
-
-            receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
-            receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+            receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.CELIAQUIA))
+            
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
 
             receta.save()
         }
@@ -245,8 +244,8 @@ class BootStrap {
 
 			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.CELIAQUIA))
 
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
 
 			receta.save()
 		}
@@ -276,8 +275,9 @@ class BootStrap {
 
 			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.CELIAQUIA))
 
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
+			
 			receta.save()
 		}
 		
@@ -304,8 +304,9 @@ class BootStrap {
 
 			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.CELIAQUIA))
 
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
+			
 			receta.save()
 		}
 		
@@ -329,11 +330,14 @@ class BootStrap {
 			
 			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
 			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
 
 			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.DIABETES))
 
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+			
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
+			
 			receta.save()
 		}
 		
@@ -363,15 +367,15 @@ class BootStrap {
 
 			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.NINGUNA))
 
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.CENA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
 
 			receta.save()
 		}
 		
 		Receta.withTransaction {
 			
-			Receta receta = new Receta(nombre: "Alfajores de dulce de leche por Mauricio Asta", dificultad: Dificultad.BAJA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://www.cocinerosargentinos.com/images/1_alfajores-de-dulce-de-leche-por-mauricio-asta.jpg")
+			Receta receta = new Receta(nombre: "Alfajores de dulce de leche", dificultad: Dificultad.BAJA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://www.cocinerosargentinos.com/images/1_alfajores-de-dulce-de-leche-por-mauricio-asta.jpg")
 
 			receta.addToProcedimientos("En bol, colocar manteca a punto pomada, agregar azúcar impalpable, pizca de sal y batir. Sumar las yemas de huevo y continuar batiendo.")
 			receta.addToProcedimientos("Aplicar en forma tamizada la harina junto con  almidón de maíz y la sal y mezclar a mano.")
@@ -379,7 +383,7 @@ class BootStrap {
 			receta.addToProcedimientos("Reposar en la heladera durante 30 min. Posar masa ya estirada y fría sobre mesada y cortar las tapas para los alfajores con molde. Rellenar manga repostera")
 			receta.addToProcedimientos("La tapa inferior de los alfajores con dulce de leche. Colocar la tapa superior y presionar suavemente. Espolvorear con azúcar impalpable y hornear durante 12 min a 170°.")
 
-			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 50))
+            receta.addToCondimentos(new CondimentoReceta(condimento: new Condimento(nombre: "Azucar").save(), cantidadEnMiligramos: 1200))
 
 			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Harina"), esIngredientePrincipal: true, cantidadGramos: 250, calorias: 200))
 			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Manteca"), esIngredientePrincipal: false, cantidadGramos: 100, calorias: 1231))
@@ -390,16 +394,107 @@ class BootStrap {
 			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
 			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
 			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
 
 			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.NINGUNA))
 
-			receta.addToCategorias(Categoria.findByNombre(CategoriaEnum.ALMUERZO))
-
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
+			
 			receta.save()
 		}
+		
+		Receta.withTransaction {
+			
+			Receta receta = new Receta(nombre: "Alfajores enrollados", dificultad: Dificultad.MEDIA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://i.ytimg.com/vi/DSJs24DuzPc/maxresdefault.jpg")
 
+			receta.addToProcedimientos("Para  el pionono, batir los huevos con la esencia de vainilla y el azúcar por 10 minutos hasta cremar.")
+			receta.addToProcedimientos("Agregar la harina con movimientos envolventes y disponer en placa de 30 cm por 40 cm (enmantecada y con papel manteca enmantecado) de manera pareja.")
+			receta.addToProcedimientos("Cocer al horno fuerte (200 grados) por 10 minutos. Dejar entibiar y enrollar con el mismo papel manteca.")
+			receta.addToProcedimientos("Cubrir el pionono con dulce de leche (o con membrillo derretido a baño María con un poquito de agua o con la crema o bien combinarlos) y enrollar desde la parte más ancha.")
+			receta.addToProcedimientos("Envolver con el mismo papel manteca y llevar al freezer para que solidifique y no se desarme al cortar las rodajas (alfajores). Bañar con chocolate blanco y/o negro.")
+
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Azucar"), cantidadEnMiligramos: 50))
+
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Huevo"), esIngredientePrincipal: false, cantidadGramos: 600, calorias: 7231))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Harina"), esIngredientePrincipal: true, cantidadGramos: 250, calorias: 200))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Esencia de vainilla", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Nuez", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Dulce de membrillo", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Dulce de leche"), esIngredientePrincipal: false, cantidadGramos: 600, calorias: 7231))
+			
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
+
+			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.NINGUNA))
+
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.DESAYUNO))
+			
+			receta.save()
+		}
+		
+		Receta.withTransaction {
+			
+			Receta receta = new Receta(nombre: "Chocolatada caliente", dificultad: Dificultad.BAJA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://www.cocinerosargentinos.com/images/1_chocolatadacaliente.jpg")
+
+			receta.addToProcedimientos("En una olla calentar 250 cc de leche y volcar el chocolate.")
+			receta.addToProcedimientos("Revolver bien para que se derrita todo el chocolate.")
+			receta.addToProcedimientos("Agregar el resto de la leche, la sal y la canela. Revover. Servir.")
+			
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Azucar"), cantidadEnMiligramos: 100))
+
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Leche", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: true, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Café semiamargo", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 300, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Canela", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
+
+			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.DIABETES))
+
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.DESAYUNO))
+			
+			receta.save()
+		}
+		
+		Receta.withTransaction {
+			
+			Receta receta = new Receta(nombre: "Tiramisú con vainillas caseras", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://www.cocinerosargentinos.com/images/1_tiramisu-con-vainillas-caseras.jpg")
+
+			receta.addToProcedimientos("En bol, colocar manteca a punto pomada, agregar azúcar impalpable, pizca de sal y batir. Sumar las yemas de huevo y continuar batiendo.")
+			receta.addToProcedimientos("Aplicar en forma tamizada la harina junto con  almidón de maíz y la sal y mezclar a mano.")
+			receta.addToProcedimientos("Formada la masa seguir amasando con la parte posterior de la palma. Colocar masa entre dos pliegos de papel manteca ,estirarla.")
+			receta.addToProcedimientos("Reposar en la heladera durante 30 min. Posar masa ya estirada y fría sobre mesada y cortar las tapas para los alfajores con molde. Rellenar manga repostera")
+			receta.addToProcedimientos("La tapa inferior de los alfajores con dulce de leche. Colocar la tapa superior y presionar suavemente. Espolvorear con azúcar impalpable y hornear durante 12 min a 170°.")
+
+			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 50))
+
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Harina"), esIngredientePrincipal: true, cantidadGramos: 250, calorias: 200))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Yema", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Esencia de vainilla", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Dulce de leche", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Agua"), esIngredientePrincipal: false, cantidadGramos: 250, calorias: 200))
+			
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.OTONIO))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.PRIMAVERA))
+			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.VERANO))
+
+			receta.addToContraindicaciones(new Contraindicacion(condicionPreexistente: CondicionPreexistente.DIABETES))
+
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.MERIENDA))
+			receta.addToCategorias(new Categoria(nombre: CategoriaEnum.ALMUERZO))
+			
+			receta.save()
+		}
     }
     def crearCondimentos() {
+		new Condimento(nombre: "Azucar").save()
         new Condimento(nombre: "Sal").save()
         new Condimento(nombre: "Pimienta").save()
         new Condimento(nombre: "Romero").save()
