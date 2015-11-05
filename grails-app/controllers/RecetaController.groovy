@@ -112,8 +112,10 @@ class RecetaController {
             nuevaReceta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findById(it[0]), cantidadGramos: it[1], calorias: 1234, esIngredientePrincipal: false))
         }
 
-        [condimentos, cantidades2].transpose().each() {
-            nuevaReceta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findById(it[0]), cantidadEnMiligramos: it[1]))
+        if (condimentos[0].size() > 0) {
+            [condimentos, cantidades2].transpose().each() {
+                nuevaReceta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findById(it[0]), cantidadEnMiligramos: it[1]))
+            }
         }
 
         nuevaReceta.save(flush:true)
