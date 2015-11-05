@@ -17,8 +17,7 @@ class BusquedaPorCategoriaYContraindicacion implements EstrategiaBusqueda {
 	@Override
 	def obtenerResultados(Map parametros)
 	{
-		def categoria = Categoria.findByNombre(parametros.categoria)
-		Receta.withCriteria {
+        Receta.withCriteria {
 			contraindicaciones
 			{
 				eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)

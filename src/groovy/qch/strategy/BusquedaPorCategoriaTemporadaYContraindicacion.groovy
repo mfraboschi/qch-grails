@@ -17,7 +17,6 @@ class BusquedaPorCategoriaTemporadaYContraindicacion implements EstrategiaBusque
 	@Override
 	def obtenerResultados(Map parametros)
 	{
-		def categoria = Categoria.findByNombre(parametros.categoria)
 		Receta.withCriteria
 		{
 			temporadas

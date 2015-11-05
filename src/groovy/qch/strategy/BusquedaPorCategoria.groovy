@@ -10,7 +10,10 @@ import qch.receta.Receta
 class BusquedaPorCategoria implements EstrategiaBusqueda {
 	@Override
 	def obtenerResultados(Map parametros) {
-		def categoria = Categoria.findByNombre(parametros.categoria)
-		return categoria.recetas
+		Receta.withCriteria {
+            categorias {
+                eq "nombre", CategoriaEnum.valueOf(parametros.categoria)
+            }
+        }
 	}
 }
