@@ -22,7 +22,7 @@
                 </ul>
             </nav>
             <section id="mainRight">
-                <h1>Grupos</h1>
+                <h1>Miembros</h1>
                 <div>
                     <ul style="margin-left:0px; font-size:15px;">
                         <g:each var="miembro" in="${miembros}">

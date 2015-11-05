@@ -47,8 +47,6 @@ class GrupoController {
     
 	def recetasUsuario()
     {
-		
-		println("GOOOOOL")
 		if (params.id)
 	    {
 		   Usuario miembro = Usuario.findByNickName(params.id)
