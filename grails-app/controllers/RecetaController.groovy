@@ -91,8 +91,11 @@ class RecetaController {
         if(!params.ingredientes) {
             return render(view:"crearReceta", model: [usuario: usuario, error: "Debes agregar al menos un ingrediente", ingredientes: ingredient, condimentos: condiment])
         }
-        if(!params.cantidades) {
-            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes especificar las cantidades", ingredientes: ingredient, condimentos: condiment])
+        if(!params.dieta) {
+            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes especificar la dieta", ingredientes: ingredient, condimentos: condiment])
+        }
+        if(!params.dificultad) {
+            return render(view:"crearReceta", model: [usuario: usuario, error: "Debes especificar la dificultad", ingredientes: ingredient, condimentos: condiment])
         }
 
         def procedimientos = params.procedimientos instanceof String[] ? params.procedimientos : [params.procedimientos]

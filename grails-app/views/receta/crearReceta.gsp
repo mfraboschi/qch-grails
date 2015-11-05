@@ -88,6 +88,8 @@
             </nav>
             <section id="mainRight">
                 <h1>Ingrese los datos de la receta</h1>
+                <label style="color: red">${error}</label>
+                <label style="color: green">${exito}</label>
                 <g:form name="formNuevaReceta" controller="receta" action="crear">
                     <table>
                         <tr>
@@ -154,8 +156,6 @@
                     </div>
                     <g:submitButton name="ingresar" value="Crear"/>
                 </g:form>
-                <label style="color: red">${error}</label>
-                <label style="color: green">${exito}</label>
             </section> <!-- end mainRight -->
         </section> <!-- end mainContent -->
         <footer>
