@@ -254,10 +254,10 @@ class BootStrap {
 		{
 			Receta receta = new Receta(nombre: "Pizza express sin horno y muy crocantita", dificultad: Dificultad.BAJA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.VEGETARIANO, urlImagen: "http://servinox.com.mx/blog/wp-content/uploads/2015/03/4b7d08_25661c7cb90c4a2a95f28b05c7fe11fb.jpg")
 
-			receta.addToProcedimientos("Hacemos una corona en el centro añadimos el aceite y la levadura disuelta en el agua lejitos por algun costadito agregamos la sal ya que si la agregamos junto a la levadura esta moriria y no tendria efecto la misma.")
-			receta.addToProcedimientos("Armamos la masa amasando muy bien hasta que este lisita y elástica, tapamos con trapo húmedo o bolsa de polietileno hasta que duplique su volumen.")
+			receta.addToProcedimientos("Hacemos una corona en el centro aï¿½adimos el aceite y la levadura disuelta en el agua lejitos por algun costadito agregamos la sal ya que si la agregamos junto a la levadura esta moriria y no tendria efecto la misma.")
+			receta.addToProcedimientos("Armamos la masa amasando muy bien hasta que este lisita y elï¿½stica, tapamos con trapo hï¿½medo o bolsa de polietileno hasta que duplique su volumen.")
 			receta.addToProcedimientos("Una vez duplicado su volumen desgasificamos y cortamos 4 bollos iguales bollamos y dejamos descansar hasta que dupliquen otra vez. Una vez infladitos procedemos a estirar el bollo dentro del sarten previamente aceitado.")
-			receta.addToProcedimientos("Una vez estirada la masa dentro de la sartén disponemos salsa de tomate, mozzarella y lo que se nos ocurra como cualquier pizza tapamos y cocinamos en fuego corona unos 10 minutos o hasta que esta bien cocida.")
+			receta.addToProcedimientos("Una vez estirada la masa dentro de la sartï¿½n disponemos salsa de tomate, mozzarella y lo que se nos ocurra como cualquier pizza tapamos y cocinamos en fuego corona unos 10 minutos o hasta que esta bien cocida.")
 			receta.addToProcedimientos("Abajo decoramos con aceite con condimentos, perejil, queso rallado y aceitunas.")
 			
 			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 10))
@@ -286,8 +286,8 @@ class BootStrap {
 		{
 			Receta receta = new Receta(nombre: "Torreja al Horno", dificultad: Dificultad.MEDIA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.VEGANO, urlImagen: "https://img-global.cpcdn.com/002_recipes/1223874af6216aff/640x640sq70/photo.jpg")
 
-			receta.addToProcedimientos("Hacer una capa de salsa blanca, luego un colchón de espinaca (cruda) y los dos huevos crudos.")
-			receta.addToProcedimientos("Sobre los huevos poner otra capa de salsa blanca y otra de espinaca cruda. Después los granos de choclo, queso y algo de orégano.")
+			receta.addToProcedimientos("Hacer una capa de salsa blanca, luego un colchï¿½n de espinaca (cruda) y los dos huevos crudos.")
+			receta.addToProcedimientos("Sobre los huevos poner otra capa de salsa blanca y otra de espinaca cruda. Despuï¿½s los granos de choclo, queso y algo de orï¿½gano.")
 			receta.addToProcedimientos("Llevar al horno unos 15' o hasta q el queso se derrita.")
 		
 			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 10))
@@ -314,8 +314,8 @@ class BootStrap {
 		{
 			Receta receta = new Receta(nombre: "Lomos De Pescado al horno", dificultad: Dificultad.MEDIA, porciones: 1, caloriasTotal: 931321, dieta: Dieta.OVOLACTO, urlImagen: "http://www.cocinillas.es/wp-content/uploads/2011/04/merluza-al-horno.jpg")
 
-			receta.addToProcedimientos("Hacer una capa de salsa blanca, luego un colchón de espinaca (cruda) y los dos huevos crudos.")
-			receta.addToProcedimientos("Sobre los huevos poner otra capa de salsa blanca y otra de espinaca cruda. Después los granos de choclo, queso y algo de orégano.")
+			receta.addToProcedimientos("Hacer una capa de salsa blanca, luego un colchï¿½n de espinaca (cruda) y los dos huevos crudos.")
+			receta.addToProcedimientos("Sobre los huevos poner otra capa de salsa blanca y otra de espinaca cruda. Despuï¿½s los granos de choclo, queso y algo de orï¿½gano.")
 			receta.addToProcedimientos("Llevar al horno unos 15' o hasta q el queso se derrita.")
 		
 			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 10))
@@ -377,18 +377,18 @@ class BootStrap {
 			
 			Receta receta = new Receta(nombre: "Alfajores de dulce de leche", dificultad: Dificultad.BAJA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://www.cocinerosargentinos.com/images/1_alfajores-de-dulce-de-leche-por-mauricio-asta.jpg")
 
-			receta.addToProcedimientos("En bol, colocar manteca a punto pomada, agregar azúcar impalpable, pizca de sal y batir. Sumar las yemas de huevo y continuar batiendo.")
-			receta.addToProcedimientos("Aplicar en forma tamizada la harina junto con  almidón de maíz y la sal y mezclar a mano.")
+			receta.addToProcedimientos("En bol, colocar manteca a punto pomada, agregar azï¿½car impalpable, pizca de sal y batir. Sumar las yemas de huevo y continuar batiendo.")
+			receta.addToProcedimientos("Aplicar en forma tamizada la harina junto con  almidï¿½n de maï¿½z y la sal y mezclar a mano.")
 			receta.addToProcedimientos("Formada la masa seguir amasando con la parte posterior de la palma. Colocar masa entre dos pliegos de papel manteca ,estirarla.")
-			receta.addToProcedimientos("Reposar en la heladera durante 30 min. Posar masa ya estirada y fría sobre mesada y cortar las tapas para los alfajores con molde. Rellenar manga repostera")
-			receta.addToProcedimientos("La tapa inferior de los alfajores con dulce de leche. Colocar la tapa superior y presionar suavemente. Espolvorear con azúcar impalpable y hornear durante 12 min a 170°.")
+			receta.addToProcedimientos("Reposar en la heladera durante 30 min. Posar masa ya estirada y frï¿½a sobre mesada y cortar las tapas para los alfajores con molde. Rellenar manga repostera")
+			receta.addToProcedimientos("La tapa inferior de los alfajores con dulce de leche. Colocar la tapa superior y presionar suavemente. Espolvorear con azï¿½car impalpable y hornear durante 12 min a 170ï¿½.")
 
             receta.addToCondimentos(new CondimentoReceta(condimento: new Condimento(nombre: "Azucar").save(), cantidadEnMiligramos: 1200))
 
 			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Harina"), esIngredientePrincipal: true, cantidadGramos: 250, calorias: 200))
 			receta.addToIngredientes(new IngredienteReceta(ingrediente: Ingrediente.findByNombre("Manteca"), esIngredientePrincipal: false, cantidadGramos: 100, calorias: 1231))
 			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Esencia de vainilla", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
-			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Almidón de maíz", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Almidï¿½n de maï¿½z", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
 			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Dulce de leche", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
 			
 			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
@@ -407,11 +407,11 @@ class BootStrap {
 			
 			Receta receta = new Receta(nombre: "Alfajores enrollados", dificultad: Dificultad.MEDIA, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://i.ytimg.com/vi/DSJs24DuzPc/maxresdefault.jpg")
 
-			receta.addToProcedimientos("Para  el pionono, batir los huevos con la esencia de vainilla y el azúcar por 10 minutos hasta cremar.")
+			receta.addToProcedimientos("Para  el pionono, batir los huevos con la esencia de vainilla y el azï¿½car por 10 minutos hasta cremar.")
 			receta.addToProcedimientos("Agregar la harina con movimientos envolventes y disponer en placa de 30 cm por 40 cm (enmantecada y con papel manteca enmantecado) de manera pareja.")
 			receta.addToProcedimientos("Cocer al horno fuerte (200 grados) por 10 minutos. Dejar entibiar y enrollar con el mismo papel manteca.")
-			receta.addToProcedimientos("Cubrir el pionono con dulce de leche (o con membrillo derretido a baño María con un poquito de agua o con la crema o bien combinarlos) y enrollar desde la parte más ancha.")
-			receta.addToProcedimientos("Envolver con el mismo papel manteca y llevar al freezer para que solidifique y no se desarme al cortar las rodajas (alfajores). Bañar con chocolate blanco y/o negro.")
+			receta.addToProcedimientos("Cubrir el pionono con dulce de leche (o con membrillo derretido a baï¿½o Marï¿½a con un poquito de agua o con la crema o bien combinarlos) y enrollar desde la parte mï¿½s ancha.")
+			receta.addToProcedimientos("Envolver con el mismo papel manteca y llevar al freezer para que solidifique y no se desarme al cortar las rodajas (alfajores). Baï¿½ar con chocolate blanco y/o negro.")
 
 			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Azucar"), cantidadEnMiligramos: 50))
 
@@ -446,7 +446,7 @@ class BootStrap {
 			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Azucar"), cantidadEnMiligramos: 100))
 
 			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Leche", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: true, cantidadGramos: 2000, calorias: 3500))
-			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Café semiamargo", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 300, calorias: 3500))
+			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Cafï¿½ semiamargo", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 300, calorias: 3500))
 			receta.addToIngredientes(new IngredienteReceta(ingrediente: new Ingrediente(nombre: "Canela", nivelPiramide: PiramideAlimenticia.SEGUNDO_NIVEL).save(), esIngredientePrincipal: false, cantidadGramos: 2000, calorias: 3500))
 			
 			receta.addToTemporadas(new TemporadaReceta(temporada: Temporada.INVIERNO))
@@ -464,13 +464,13 @@ class BootStrap {
 		
 		Receta.withTransaction {
 			
-			Receta receta = new Receta(nombre: "Tiramisú con vainillas caseras", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://www.cocinerosargentinos.com/images/1_tiramisu-con-vainillas-caseras.jpg")
+			Receta receta = new Receta(nombre: "Tiramisï¿½ con vainillas caseras", dificultad: Dificultad.DIFICIL, porciones: 4, caloriasTotal: 1231321, dieta: Dieta.NORMAL, urlImagen: "http://www.cocinerosargentinos.com/images/1_tiramisu-con-vainillas-caseras.jpg")
 
-			receta.addToProcedimientos("En bol, colocar manteca a punto pomada, agregar azúcar impalpable, pizca de sal y batir. Sumar las yemas de huevo y continuar batiendo.")
-			receta.addToProcedimientos("Aplicar en forma tamizada la harina junto con  almidón de maíz y la sal y mezclar a mano.")
+			receta.addToProcedimientos("En bol, colocar manteca a punto pomada, agregar azï¿½car impalpable, pizca de sal y batir. Sumar las yemas de huevo y continuar batiendo.")
+			receta.addToProcedimientos("Aplicar en forma tamizada la harina junto con  almidï¿½n de maï¿½z y la sal y mezclar a mano.")
 			receta.addToProcedimientos("Formada la masa seguir amasando con la parte posterior de la palma. Colocar masa entre dos pliegos de papel manteca ,estirarla.")
-			receta.addToProcedimientos("Reposar en la heladera durante 30 min. Posar masa ya estirada y fría sobre mesada y cortar las tapas para los alfajores con molde. Rellenar manga repostera")
-			receta.addToProcedimientos("La tapa inferior de los alfajores con dulce de leche. Colocar la tapa superior y presionar suavemente. Espolvorear con azúcar impalpable y hornear durante 12 min a 170°.")
+			receta.addToProcedimientos("Reposar en la heladera durante 30 min. Posar masa ya estirada y frï¿½a sobre mesada y cortar las tapas para los alfajores con molde. Rellenar manga repostera")
+			receta.addToProcedimientos("La tapa inferior de los alfajores con dulce de leche. Colocar la tapa superior y presionar suavemente. Espolvorear con azï¿½car impalpable y hornear durante 12 min a 170ï¿½.")
 
 			receta.addToCondimentos(new CondimentoReceta(condimento: Condimento.findByNombre("Sal"), cantidadEnMiligramos: 50))
 
@@ -502,8 +502,14 @@ class BootStrap {
     }
 	def crearGrupo() 
 	{		
-		new Grupo(creadorId: "qch", nombre: "Amantes de la pizza", descripcion: "Adoramos la pizza")
-		new Grupo(creadorId: "qch", nombre: "Los cuadraditos de maizena", descripcion: "Aguante el rock y los alfajores de maizena").save()
-		new Grupo(creadorId: "qch", nombre: "Alto guiso", descripcion: "Con 15 pesos nomas nos arreglamos").save()
+		def grupo = new Grupo(creadorId: "qch", nombre: "Amantes de la pizza", descripcion: "Adoramos la pizza")
+        grupo.addToUsuarios(Usuario.findByNickName("qch"))
+        grupo.save()
+        grupo = new Grupo(creadorId: "qch", nombre: "Los cuadraditos de maizena", descripcion: "Aguante el rock y los alfajores de maizena").save()
+        grupo.addToUsuarios(Usuario.findByNickName("qch"))
+        grupo.save()
+        grupo = new Grupo(creadorId: "qch", nombre: "Alto guiso", descripcion: "Con 15 pesos nomas nos arreglamos").save()
+        grupo.addToUsuarios(Usuario.findByNickName("qch"))
+        grupo.save()
 	}
 }
