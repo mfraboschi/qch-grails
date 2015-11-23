@@ -2,19 +2,28 @@ package qch.strategy
 
 import qch.enums.CondicionPreexistente
 import qch.receta.Contraindicacion
+import qch.receta.Receta
+import qch.usuario.Grupo
+import qch.usuario.Usuario
 
 /**
  * Created by mfraboschi on 13/10/15.
  */
 class BusquedaPorContraindicacion implements EstrategiaBusqueda {
     @Override
-    def obtenerResultados(Map parametros) {
-        def criteria = Contraindicacion.createCriteria()
+    def obtenerResultados(Usuario usuario, Map parametros) {
+        def creadores = Grupo.obtenerUsuariosDeSusGrupos(usuario)
 
-        def result = criteria.list {
-            eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)
+        def result = Receta.withCriteria {
+            or {
+                isNull("creador")
+                'in' "creador", creadores
+            }
+            contraindicaciones {
+                eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)
+            }
         }
 
-        return result.collect { it.receta }
+        result
     }
 }

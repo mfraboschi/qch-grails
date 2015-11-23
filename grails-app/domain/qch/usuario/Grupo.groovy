@@ -37,4 +37,15 @@ class Grupo {
 		this.removeFromUsuarios(usuario)
 		this.save()
 	}
+
+    public static obtenerUsuariosDeSusGrupos(Usuario usuario) {
+        Set usuarios = new HashSet()
+        usuario.grupos.each { Grupo grupo ->
+            grupo.usuarios.each {
+                usuarios.add(it.nickName)
+            }
+        }
+
+        return usuarios
+    }
 }

@@ -3,6 +3,7 @@ package qch.strategy
 import qch.enums.CondicionPreexistente
 import qch.enums.Dieta
 import qch.receta.Contraindicacion
+import qch.usuario.Usuario
 
 
 /**
@@ -10,7 +11,7 @@ import qch.receta.Contraindicacion
  */
 class BusquedaPorDietaYContraindicacion implements EstrategiaBusqueda {
     @Override
-    def obtenerResultados(Map parametros) {
+    def obtenerResultados(Usuario usuario, Map parametros) {
         def criteria = Contraindicacion.createCriteria()
 
         def result = criteria.list {

@@ -6,6 +6,8 @@ import qch.enums.Temporada
 import qch.enums.CategoriaEnum
 import qch.receta.TemporadaReceta
 import qch.receta.Categoria
+import qch.usuario.Grupo
+import qch.usuario.Usuario
 
 /**
  * Created by mfraboschi on 13/10/15.
@@ -13,10 +15,15 @@ import qch.receta.Categoria
 
 class BusquedaPorDificultadYTemporada implements EstrategiaBusqueda {
 	@Override
-	def obtenerResultados(Map parametros)
+	def obtenerResultados(Usuario usuario, Map parametros)
 	{
-		def result = Receta.withCriteria
-		{
+        def creadores = Grupo.obtenerUsuariosDeSusGrupos(usuario)
+
+        Receta.withCriteria {
+            or {
+                isNull("creador")
+                'in' "creador", creadores
+            }
 			and
 			{
 				eq "dificultad", Dificultad.valueOf(parametros.dificultad)
@@ -28,7 +35,5 @@ class BusquedaPorDificultadYTemporada implements EstrategiaBusqueda {
 			}
 
 		}
-
-		return result
 	}
 }

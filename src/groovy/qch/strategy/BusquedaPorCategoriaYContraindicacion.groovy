@@ -9,16 +9,21 @@ import qch.receta.TemporadaReceta
 import qch.receta.Contraindicacion
 import qch.receta.Receta
 import qch.receta.Categoria
+import qch.usuario.Usuario
 
 /**
  * Created by mfraboschi on 13/10/15.
  */
 class BusquedaPorCategoriaYContraindicacion implements EstrategiaBusqueda {
 	@Override
-	def obtenerResultados(Map parametros)
+	def obtenerResultados(Usuario usuario, Map parametros)
 	{
         Receta.withCriteria {
-			contraindicaciones
+            or {
+                isNull("creador")
+                'in' "creador", creadores
+            }
+            contraindicaciones
 			{
 				eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)
 			}

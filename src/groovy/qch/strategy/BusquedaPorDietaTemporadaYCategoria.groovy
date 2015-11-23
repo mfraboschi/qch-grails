@@ -9,16 +9,23 @@ import qch.receta.TemporadaReceta
 import qch.receta.Contraindicacion
 import qch.receta.Receta
 import qch.receta.Categoria
+import qch.usuario.Grupo
+import qch.usuario.Usuario
 
 /**
  * Created by mfraboschi on 13/10/15.
  */
 class BusquedaPorDietaTemporadaYCategoria implements EstrategiaBusqueda {
 	@Override
-	def obtenerResultados(Map parametros)
+	def obtenerResultados(Usuario usuario, Map parametros)
 	{
-		def result = Receta.withCriteria
-		{
+        def creadores = Grupo.obtenerUsuariosDeSusGrupos(usuario)
+
+        Receta.withCriteria {
+            or {
+                isNull("creador")
+                'in' "creador", creadores
+            }
 			and {
 				eq "dieta", Dieta.valueOf(parametros.dieta)
 
@@ -29,9 +36,6 @@ class BusquedaPorDietaTemporadaYCategoria implements EstrategiaBusqueda {
 					eq "nombre", CategoriaEnum.valueOf(parametros.categoria)
 				}
 			}
-
 		}
-
-		return result
 	}
 }

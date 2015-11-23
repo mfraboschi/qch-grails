@@ -5,13 +5,14 @@ import qch.enums.Dieta
 import qch.enums.Dificultad
 import qch.receta.Contraindicacion
 import qch.receta.Receta
+import qch.usuario.Usuario
 
 /**
  * Created by mfraboschi on 13/10/15.
  */
 class BusquedaPorDificultadDietaYContraindicacion implements EstrategiaBusqueda {
     @Override
-    def obtenerResultados(Map parametros) {
+    def obtenerResultados(Usuario usuario, Map parametros) {
 
         def criteria = Contraindicacion.createCriteria()
 

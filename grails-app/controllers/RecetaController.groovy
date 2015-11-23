@@ -134,7 +134,7 @@ class RecetaController {
         EstrategiaBusqueda estrategiaDeBusqueda = recetaService.obtenerEstrategiaDeBusqueda(params.findAll { it.value }.keySet())
 
         if (estrategiaDeBusqueda) {
-            recetas = estrategiaDeBusqueda.obtenerResultados(params)
+            recetas = estrategiaDeBusqueda.obtenerResultados(session.user, params)
         }
 
         render(view:"buscarReceta", model: [usuario: session.user, recetas: recetas, dificultad: params.dificultad, dieta: params.dieta, temporada: params.temporada, categoria: params.categoria, contraindicacion: params.contraindicacion])
@@ -217,7 +217,7 @@ class RecetaController {
         EstrategiaBusqueda estrategiaDeBusqueda = recetaService.obtenerEstrategiaDeBusqueda(pref.keySet())
 
         if (estrategiaDeBusqueda) {
-            recetas = estrategiaDeBusqueda.obtenerResultados(pref)
+            recetas = estrategiaDeBusqueda.obtenerResultados(session.user, pref)
         }
 
         render(view:"recomendaciones", model: [usuario: userActual, recetas: recetas])
