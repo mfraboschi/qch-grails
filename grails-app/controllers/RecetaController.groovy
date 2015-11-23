@@ -7,6 +7,7 @@ import qch.receta.ingrediente.CondimentoReceta
 import qch.strategy.EstrategiaBusqueda
 import qch.usuario.HistorialUsuario
 import qch.usuario.Usuario
+import qch.usuario.Grupo
 import qch.enums.Temporada
 import qch.enums.CategoriaEnum
 import qch.enums.CondicionPreexistente
@@ -19,9 +20,21 @@ class RecetaController {
      * Listado total de recetas creadas
      * @return
      */
-    def index() {
-        List recetas = Receta.findAll()
+    def index() 
+	{
         Usuario usuario = session.user
+		
+		def creadores = Grupo.obtenerUsuariosDeSusGrupos(usuario)
+					
+		def recetas = Receta.withCriteria
+		{
+			or
+			{
+				isNull("creador")
+				'in' "creador", creadores
+			}
+		}
+		
         render(view:"main", model: [usuario: usuario, recetas: recetas])
     }
 
