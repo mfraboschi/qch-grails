@@ -1,3 +1,5 @@
+import java.util.concurrent.ThreadLocalRandom
+
 import qch.receta.Calificacion
 import qch.receta.Receta
 import qch.receta.ingrediente.Ingrediente
@@ -20,12 +22,12 @@ class RecetaController {
      * Listado total de recetas creadas
      * @return
      */
-    def index() 
+    def index()
 	{
         Usuario usuario = session.user
-		
+
 		def creadores = Grupo.obtenerUsuariosDeSusGrupos(usuario)
-					
+
 		def recetas = Receta.withCriteria
 		{
 			or
@@ -34,7 +36,7 @@ class RecetaController {
 				'in' "creador", creadores
 			}
 		}
-		
+
         render(view:"main", model: [usuario: usuario, recetas: recetas])
     }
 
@@ -48,7 +50,7 @@ class RecetaController {
     		Receta recetaActual = Receta.buscarPorId(id)
 
 			Usuario userActual = session.user
-			
+
 			userActual.aumentarVisitas()
             recetaActual.aumentarVisitas()
 
@@ -220,7 +222,9 @@ class RecetaController {
         if (userActual.condiciones.size() == 0) {
             condicion = CondicionPreexistente.NINGUNA
         } else {
-            condicion = userActual.condiciones.first()
+            int rand = ThreadLocalRandom.current().nextInt(0, userActual.condiciones.size())
+            condicion = userActual.condiciones[rand]
+            println(rand)
         }
 
         Map pref = [
