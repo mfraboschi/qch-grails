@@ -1,15 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mfraboschi
-  Date: 28/9/15
-  Time: 0:02
---%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width" />
-        <title>¿Qué comemos hoy? - Estadisticas</title>
+        <title>¿Qué comemos hoy? - Reportes</title>
         <asset:stylesheet href="default.css"/>
         <style>
 
@@ -33,7 +27,7 @@
 
             #estadisticas label {
                 float:left;
-                width:170px;
+                width:140px;
                 margin:4px;
                 background-color:#EFEFEF;
                 border-radius:4px;
@@ -62,20 +56,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
         <script>
             $(document).ready( function() {
-                var frm = $('#obtener-estadistica');
-                $('#obtener-estadistica').submit(function () {
+                var frm = $('#obtener-reporte');
+                $('#obtener-reporte').submit(function () {
                     $.ajax({
                         type: frm.attr('method'),
                         url: frm.attr('action'),
                         data: frm.serialize(),
                         success: function (data) {
-                            $('#estadistica-resultado').html(data);
+                            $('#reporte-resultado').html(data);
                         }
                     });
                     return false;
                 });
-                $('[name=tipo_estadistica]').live('click', function () {
-                    $('#obtener-estadistica').submit();
+                $('[name=tipo_reporte]').live('click', function () {
+                    $('#obtener-reporte').submit();
                 });
 
             });
@@ -92,22 +86,23 @@
                 <h3>Menu</h3>
                 <ul>
                     <li><a href="/que-comemos-hoy/receta/index">Home</a></li>
-                    <li><a href="/que-comemos-hoy/reportes/main">Ver Reportes</a></li>
+                    <li><a href="/que-comemos-hoy/estadisticas/main">Ver Estadisticas</a></li>
                     <li><a href="/que-comemos-hoy/historial/historialRecetas">Historial</a></li>
                 </ul>
             </nav>
             <section id="mainRight">
-                <h1>Estadisticas</h1>
+                <h1>Reportes</h1>
                 <div>
-                    <form id="obtener-estadistica" action="/que-comemos-hoy/estadisticas/obtener">
-                    <div id="estadisticas">
-                        <label><input type="radio" name="tipo_estadistica" value="consultas"><span>Mas consultadas</span></label>
-                        <label><input type="radio" name="tipo_estadistica" value="sexo"><span>Por sexo</span></label>
-                        <label><input type="radio" name="tipo_estadistica" value="dificultad"><span>Por dificultad</span></label>
-                    </div>
+                    <form id="obtener-reporte" action="/que-comemos-hoy/reportes/obtener">
+                        <div id="estadisticas">
+                            <label><input type="radio" name="tipo_reporte" value="consultas"><span>Consultadas</span></label>
+                            <label><input type="radio" name="tipo_reporte" value="nuevas"><span>Recetas nuevas</span></label>
+                            <label><input type="radio" name="tipo_reporte" value="preferencias"><span>Preferencias</span></label>
+                            <label><input type="radio" name="tipo_reporte" value="calorias"><span>Calorias</span></label>
+                        </div>
                     </form>
                 </div>
-                <div id="estadistica-resultado">
+                <div id="reporte-resultado">
                 </div>
             </section> <!-- end mainRight -->
         </section> <!-- end mainContent -->

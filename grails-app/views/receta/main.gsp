@@ -21,6 +21,7 @@
                     <li><a href="/que-comemos-hoy/receta/recomendadas">Recomendaciones</a></li>
                     <li><a href="/que-comemos-hoy/historial/historialRecetas">Historial</a></li>
                     <li><a href="/que-comemos-hoy/estadisticas/main">Ver Estadisticas</a></li>
+                    <li><a href="/que-comemos-hoy/reportes/main">Ver Reportes</a></li>
                 </ul>
             </nav>
             <section id="mainRight">
