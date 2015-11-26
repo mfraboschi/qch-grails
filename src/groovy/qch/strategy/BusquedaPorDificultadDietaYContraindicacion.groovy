@@ -6,6 +6,7 @@ import qch.enums.Dificultad
 import qch.receta.Contraindicacion
 import qch.receta.Receta
 import qch.usuario.Usuario
+import qch.usuario.Grupo
 
 /**
  * Created by mfraboschi on 13/10/15.
@@ -13,17 +14,24 @@ import qch.usuario.Usuario
 class BusquedaPorDificultadDietaYContraindicacion implements EstrategiaBusqueda {
     @Override
     def obtenerResultados(Usuario usuario, Map parametros) {
+          def creadores = Grupo.obtenerUsuariosDeSusGrupos(usuario)
 
-        def criteria = Contraindicacion.createCriteria()
-
-        def result = criteria.list {
-            "receta" {
-                eq "dificultad", Dificultad.valueOf(parametros.dificultad)
+          Receta.withCriteria {
+              or {
+                  isNull("creador")
+                  'in' "creador", creadores
+              }
+              and {
                 eq "dieta", Dieta.valueOf(parametros.dieta)
-            }
-            eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)
-        }
+                eq "dificultad", Dificultad.valueOf(parametros.dificultad)
 
-        return result.collect { it.receta }
+                if(parametros.contraindicacion != CondicionPreexistente.NINGUNA.toString()) {
+                    contraindicaciones {
+                        eq 'condicionPreexistente', CondicionPreexistente.valueOf(parametros.contraindicacion)
+                    }
+                }
+              }
+
+          }
     }
 }
