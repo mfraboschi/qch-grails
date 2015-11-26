@@ -1,10 +1,10 @@
-import qch.receta.strategy.BusquedaPorDietaContraindicacionEIngredientePrincipal
-import qch.receta.strategy.BusquedaPorDificultadEIngredientePrincipal
-import qch.receta.strategy.BusquedaPorIngredientePrincipal
+//import qch.receta.strategy.BusquedaPorDietaContraindicacionEIngredientePrincipal
+//import qch.receta.strategy.BusquedaPorDificultadEIngredientePrincipal
+//import qch.receta.strategy.BusquedaPorIngredientePrincipal
 import qch.strategy.BusquedaPorContraindicacion
 import qch.strategy.BusquedaPorDificultadDietaTemporadaYCategoria
 import qch.strategy.BusquedaPorDieta
-import qch.strategy.BusquedaPorDietaEIngredientePrincipal
+//import qch.strategy.BusquedaPorDietaEIngredientePrincipal
 import qch.strategy.BusquedaPorDietaYContraindicacion
 import qch.strategy.BusquedaPorDificultad
 import qch.strategy.BusquedaPorDificultadDietaYContraindicacion
@@ -38,24 +38,24 @@ class RecetaService {
 									dificultad: new BusquedaPorDificultad(),
                                     dieta: new BusquedaPorDieta(),
                                     contraindicacion: new BusquedaPorContraindicacion(),
-                                    ingredientePpal: new BusquedaPorIngredientePrincipal(),
+  //                                  ingredientePpal: new BusquedaPorIngredientePrincipal(),
                                     dificultad_dieta: new BusquedaPorDificultadYDieta(),
 									dieta_temporada: new BusquedaPorDietaYTemporada(),
 									dieta_categoria: new BusquedaPorDietaYCategoria(),
                                     dificultad_contraindicacion: new BusquedaPorDificultadYContraindicacion(),
-                                    dificultad_ingredientePpal: new BusquedaPorDificultadEIngredientePrincipal(),
+    //                                dificultad_ingredientePpal: new BusquedaPorDificultadEIngredientePrincipal(),
 									dificultad_categoria: new BusquedaPorDificultadYCategoria(),
 									dificultad_temporada: new BusquedaPorDificultadYTemporada(),
                                     dieta_contraindicacion: new BusquedaPorDietaYContraindicacion(),
   									dificultad_dieta_temporada_categoria: new BusquedaPorDificultadDietaTemporadaYCategoria(),
-                                    dieta_ingredientePpal: new BusquedaPorDietaEIngredientePrincipal(),
+   //                                 dieta_ingredientePpal: new BusquedaPorDietaEIngredientePrincipal(),
                                     dificultad_dieta_contraindicacion: new BusquedaPorDificultadDietaYContraindicacion(),
 									categoria_contraindicacion: new BusquedaPorCategoriaYContraindicacion(),
 									temporada_categoria: new BusquedaPorTemporadaYCategoria(),
 									dieta_temporada_categoria: new BusquedaPorDietaTemporadaYCategoria(),
 									dificultad_temporada_categoria: new BusquedaPorDificultadTemporadaYCategoria(),
 									contraindicacion_temporada: new BusquedaPorContraindicacionYTemporada(),
-                                    dieta_contraindicacion_ingredientePpal: new BusquedaPorDietaContraindicacionEIngredientePrincipal(),
+     //                               dieta_contraindicacion_ingredientePpal: new BusquedaPorDietaContraindicacionEIngredientePrincipal(),
 									contraindicacion_temporada_categoria: new BusquedaPorCategoriaTemporadaYContraindicacion(),
 									dieta_contraindicacion_temporada_categoria: new BusquedaPorContraindicacionTemporadaCategoriaYDieta(),
 									dificultad_dieta_contraindicacion_temporada_categoria: new BusquedaPorDificultadDietaTemporadaCategoriaYContraindicacion()]

@@ -16,7 +16,8 @@ class Usuario {
     Date fechaNacimiento
     Integer alturaEnCentimetros
     Integer pesoEnGramos
-
+	Integer cantVistas = 0
+	
     String nickName
     String password
 
@@ -112,5 +113,8 @@ class Usuario {
 		}	
 		return temporada;
 	}
-
+	def aumentarVisitas() {
+		this.cantVistas++
+		this.save(flush: true)
+	}
 }

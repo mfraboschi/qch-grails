@@ -47,6 +47,9 @@ class RecetaController {
     		Long id = params.id.toLong()
     		Receta recetaActual = Receta.buscarPorId(id)
 
+			Usuario userActual = session.user
+			
+			userActual.aumentarVisitas()
             recetaActual.aumentarVisitas()
 
 			def calificacion = Calificacion.findByRecetaAndUsuario(recetaActual, session.user)
