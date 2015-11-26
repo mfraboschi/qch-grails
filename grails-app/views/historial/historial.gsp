@@ -1,8 +1,3 @@
-<%@ page import="qch.enums.Sexo" %>
-<%@ page import="qch.enums.Dieta" %>
-<%@ page import="qch.enums.Rutina" %>
-<%@ page import="qch.enums.Contextura" %>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,14 +22,16 @@
             <section id="mainRight">
                 <h1>Tu historial</h1>
                 <table>
-                 <h4><a style="color: black">&nbsp;Receta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fecha Creacion</a></h4>
-              
-                <g:each var="historia" in="${historial}">
-                                   <tr>
-                        <td><label>${historia.receta.nombre}</label></td>
-                        <td><label>${historia.fechaCreacion}</label></td>
+                    <tr>
+                        <td><h4><a style="color: black">Receta</a></h4></td>
+                        <td><h4><a style="color: black">Fecha Selección</a></h4></td>
                     </tr>
-                </g:each>
+                    <g:each var="historia" in="${historial}">
+                        <tr>
+                            <td><label>${historia.receta.nombre}</label></td>
+                            <td><label><g:formatDate format="dd-MM-yyyy, HH:mm:ss" date="${historia.fechaCreacion}"/></label></td>
+                        </tr>
+                    </g:each>
                 </table>
                 <label style="color: #cc0000">${mensaje}</label>
             </section> <!-- end mainRight -->
