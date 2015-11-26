@@ -9,7 +9,7 @@ import qch.enums.Dieta
  */
 class NuevasReporte implements EstrategiaReporte {
 	@Override
-	def obtenerResultadoReporte(Object parametros) {
+	def obtenerResultadoReporte(Object parametros, Usuario userActual) {
 		
 		def result = Receta.countByCreadorIsNotNull()
 
