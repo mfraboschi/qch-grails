@@ -224,7 +224,6 @@ class RecetaController {
         } else {
             int rand = ThreadLocalRandom.current().nextInt(0, userActual.condiciones.size())
             condicion = userActual.condiciones[rand]
-            println(rand)
         }
 
         Map pref = [
