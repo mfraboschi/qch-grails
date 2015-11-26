@@ -64,7 +64,7 @@ class PreferenciasReporte implements EstrategiaReporte {
         }
         StringBuilder sb = new StringBuilder()
 
-        sb.append("<table class=\"estadistica-table\"><tr><td><b>Dieta</b></td><td><b>Consultas</b></td>")
+        sb.append("<table class=\"estadistica-table\"><tr><td><b>Dieta</b></td><td><b>Cantidad</b></td>")
         results.each {
             sb.append("<tr><td>${it[0]}</td><td>${it[1]}</td>")
         }
