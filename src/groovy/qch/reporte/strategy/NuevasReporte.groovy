@@ -10,25 +10,28 @@ import qch.enums.Dieta
 class NuevasReporte implements EstrategiaReporte {
 	@Override
 	def obtenerResultadoReporte(Object parametros, Usuario userActual) {
-		
+
 		def result = Receta.countByCreadorIsNotNull()
 
-		
+
 		return result
 	}
 
+	@Override
 	def obtenerHtml(Object results) {
         if(!results) {
             return ""
         }
+
         StringBuilder sb = new StringBuilder()
 
-        sb.append("<table class=\"estadistica-table\"><tr><td><b>Dificultad</b></td><td><b>Consultas</b></td>")
+        sb.append("<table class=\"estadistica-table\"><tr><td><b>Total de Recetas Nuevas</b></td></tr>")
         results.each {
-            sb.append("<tr><td>${it[0]}</td><td>${it[1]}</td>")
+            sb.append("<tr><td>${results}</td></tr>")
         }
         sb.append("</table>")
 
         return sb.toString()
+
     }
 }

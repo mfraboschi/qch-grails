@@ -9,10 +9,10 @@ import qch.enums.Dieta
  */
 class ConsultadasReporte implements EstrategiaReporte {
 	@Override
-	def obtenerResultadoReporte(Object parametros, Usuario userActual) {		
-		
+	def obtenerResultadoReporte(Object parametros, Usuario userActual) {
+
 		def result = userActual.cantVistas
-				
+
 		return result
 	}
 
@@ -23,10 +23,10 @@ class ConsultadasReporte implements EstrategiaReporte {
         }
         StringBuilder sb = new StringBuilder()
 
-        sb.append("<table class=\"reporte-table\"><tr><td><b>Consultas</b></td>")
-       
-            sb.append("<tr><td>${it[1]}</td>")
-        
+        sb.append("<table class=\"estadistica-table\"><tr><td><b>Consultadas en los ultimos 7 dias</b></td></tr>")
+
+            sb.append("<tr><td>${results}</td></tr>")
+
         sb.append("</table>")
 
         return sb.toString()
