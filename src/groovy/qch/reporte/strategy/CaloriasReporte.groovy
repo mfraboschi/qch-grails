@@ -12,11 +12,12 @@ class CaloriasReporte implements EstrategiaReporte {
 
 	@Override
 	def obtenerResultadoReporte(Object parametros, Usuario userActual) {
-		def result = criteria.list {
+		def results = criteria.list 
+		{
 
                lt "caloriasTotal", variableCaloriasMaxima
            }
-       }		
+       		
 		return results
 
 	}
